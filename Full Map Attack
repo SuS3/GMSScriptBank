@@ -1,0 +1,51 @@
+//174.2
+//Updated by Randomcity2
+/*
+Only works for the following skills without DC:
+Kinesis: Metal Press, Psychic Grab, Trainwreck, B.P.M
+Fire / Poison Mage: Ignite
+Ice/Lightning Mage: Chain Lightning, Chilling Step
+Luminous: Reflection
+Blaze Wizard: Orbital Flame, Blazing Extinction (if not injected)
+Phantom: Carte Rose Finale
+Wild Hunter: Summon Jaguar, Hunting Assistant Unit, Drill Salvo
+Mechanic: Support Unit: H-EX, Distortion Bomb
+Beast Tamer: Majestic Trumpet
+Demon Avenger: Nether Shield
+Marksman: Hookshot
+possibly Evan: Blaze in 10th job. .. I need to get one tenth job to test -_-\
+(everything else DC after like 1 - 5 uses, the big sun ball for blaze wizard 4th job works .. .for a while then DC)
+*/
+[enable]
+alloc(hook,128)
+label(return)
+label(return_true)
+
+004CD350: //8B 54 24 ?? 8b 42 ?? 55 56 8B 74 24 ??
+db 90 90
+jmp hook
+return:
+
+hook:
+cmp [esp],00BCB8AE// 8B 9C 24 ?? 00 00 00 83 C4 0C 85 C0 75 0F 81 FB ?? ?? ?? ?? 75 7F 83 7C [First Result]
+jne return_true  //<- if this isn't je, you did it wrong
+mov edx,[esp+08]
+mov eax,[edx+0C]
+jmp return
+
+return_true:
+mov eax,00000001
+ret
+
+019E9071:
+db EB
+
+[disable]
+004CD350:
+mov edx,[esp+08]
+mov eax,[edx+0C]
+
+//89 9E ?? ?? ?? ?? 8B 0D ?? ?? ?? ?? 3B CB 74 ?? ?? ?? ?? ?? ?? 53 [je below]
+019E9071:
+db 74
+dealloc(hook)
