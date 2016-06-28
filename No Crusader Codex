@@ -1,0 +1,16 @@
+//174.2
+//Updated by Randomcity2
+[ENABLE]
+019A71D3:
+db 90 E9
+
+01A09111:
+db 90 E9
+
+[DISABLE]
+019A71D3: // 0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1
+db 0F 85
+
+// 0192214E: addy in v173.1
+01A09111: // 0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85 [Second Result]
+db 0F 85

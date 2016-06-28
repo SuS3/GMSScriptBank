@@ -1,0 +1,107 @@
+//174.2
+//Updated by Randomcity2
+[Enable]
+alloc(MobFilter1,256)
+Label(Filter1)
+Label(FilterMobs1)
+Label(Exit1)
+alloc(MobFilter2,256)
+Label(FilterMobs2)
+Label(Filter2)
+Label(Exit2)
+alloc(MobList,2048)
+
+MobList:
+dd #9390620 //Corrupted Veilstone AKA the mob that spawns when fighting Gollux's head
+dd #9390621 //Corrupted Veilstone
+dd #9390622 //Corrupted Veilstone
+dd #9390623 //Corrupted Veilstone
+dd #8250031 // Red Dynamo - Those random flying mobs in black heaven
+dd #8250032 // Blue Dynamo
+dd #8250033 // Yellow Dynamo
+dd #8250034 // Green Dynamo
+dd #8250035 // Red Dynamo
+dd #8250036 // Blue Dynamo
+dd #8250037 // Green Dynamo
+dd #8250038 // Yellow Dynamo
+dd #8950007 // Self-destructive Chaos
+dd #8950005 // Self-destructive Yellow
+dd #8950004 // Self-destructive Blue
+dd #8950003 // Self-destructive Red
+dd #8240121 // Self-destructive Chaos
+dd #8240102 // Self-destructive Yellow
+dd #8240101 // Self-destructive Blue
+dd #8240100 // Self-destructive Red
+dd #9309300 // Finley - Tower of Oz
+dd #9309130 // Infuriated Fairy - Tower of Oz
+//dd #9309109 // Black Flower Golem - Tower of Oz
+//dd #9309103 // Black Flower Golem
+dd #9309086 // Trap - Tower of Oz
+dd #9309036
+dd #100004
+dd #9100011
+dd #9300229
+dd #9500102
+dd 00
+
+00C0453B: //E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
+jmp MobFilter1
+
+MobFilter1:
+call 0042C5C0 //original op
+push ebx
+mov ebx,MobList
+
+FilterMobs1:
+cmp eax,[ebx]
+je Filter1
+cmp [ebx],00
+je Exit1
+add ebx,4
+jmp FilterMobs1
+
+Filter1:
+pop ebx
+jmp 00C046EE //mov ecx,[esp+24] | address RIGHT BELOW last CALL in function
+
+Exit1:
+pop ebx
+jmp 00C04540 //mov[esp+18),eax | RIGHT BELOW MobFilter1 00B92A70
+
+00C0477A: //E8 ? ? ? ? 8B ? 85 ? 74 ? 8D ? ? ? 00 00 B9 [2nd Result]
+jmp MobFilter2
+
+MobFilter2:
+push ebx
+mov ebx,MobList
+
+FilterMobs2:
+cmp eax,[ebx]
+je Filter2
+cmp [ebx],00
+je Exit2
+add ebx,4
+jmp FilterMobs2
+
+Filter2:
+pop ebx
+call 004D0940 //original op
+mov esi,eax //original op
+jmp 00C04A56 //address below last CALL in function
+
+Exit2:
+pop ebx
+call 004D0940 //original op
+jmp 00C0477F //Below MobFilter2 address
+
+
+[Disable]
+00C0453B:
+call 0042C5C0
+
+00C0477A:
+call 004D0940
+
+Dealloc(MobFilter1)
+Dealloc(MobFilter2)
+Dealloc(MobList)

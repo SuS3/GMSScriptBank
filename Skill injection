@@ -1,0 +1,156 @@
+//v174.2
+//Updated by Randomcity2
+[Enable]
+alloc(skill_id_hook,128)
+label(skill_id_return)
+alloc(delay,4)
+define(skill_id, #12120011) //Skill ID goes here
+
+/*
+Battle Mage: 32001014 - Condemnation
+             32100010 - Grim Contract / Condemnation II
+             32110017 - Grim Contract II / Condemnation III
+             32120019 - Grim Contract III / Condemnation IV
+
+Fire / Poison  Mage: 2100010 - Ignite (works with FMA but not with No Delay)
+
+Ice / Lightning Mage: 2201009 - Chilling Step (works with FMA)
+
+Blaze Wizard: 12100029 - Ignition (works with No Delay)
+              12120011 - Blazing Extinction (works with No Delay, doesn't work with FMA if injected)
+              12121002 - Towering Inferno (Works with No Delay, uses mana stupid fast)
+
+Shade / Eunwol: 25100010 - Fox Spirits (Works with FMA & No Delay)
+                25100002 - Ground Pount (Works with No Delay)
+                25110003 - Shockwave Punch (works with No Delay)
+                25121000 - Bomb Punch 1st Hit
+                25121001 - Bomb Punch 2nd Hit
+                25121002 - Bomb Punch 3rd Hit
+                25121003 - Bomb Punch 4th Hit
+
+Kaiser: 61101100 - Impact Wave
+        61001000 - Stage 1 Basic Attack
+        61001004 - Stage 2 Basic Attack
+        61001005 - Stage 3 Basic Attack
+
+Angelic Buster: 65121101 - Trinity 1st Stage (ignores recharge)
+                65121007 - Trinity 2nd Stage (ignores recharge)
+                65121008 - Trinity 3rd Stage (ignores recharge, works with slide & attack)
+                65121052 - Supreme Supernova (only works on small maps, turn down delay if DC)
+
+Dual Blade: 4321006 - Flying Assaulter (jump to activate, works with No Delay)
+            4341052 - Asura's Anger
+            4331000 - Bloody Storm (works with No Delay)
+            4331006 - Chains of Hell (works with No Delay)
+
+Phantom: Any adventurer skills that you can steal and work with SI work
+         24111008 - Rapier Wit (skips dash)
+         24111006 - Rapier Wit Dash & Damage (works with No Delay)
+
+Kanna: 42001006 - Stage 3 Basic Attack (huge dps increase)
+       42111000 - Tengu Strike Stage 1 (no mana cost)
+       42111011 - Tengu Strike Stage 2 (no mana cost)
+       42111001 - Spirit Corral (no mana cost)
+
+Hayato: 41001004 - Sanrenzan Stage 2 Attack (best dps 1st job)
+        41101000 - Jin Sanrenan Stage 1 Attack (best dps 2nd job)
+        41111011 - Fuu Sanrenzan Stage 2 Attack (best dps 3rd job)
+        41121011 - Rai Sanrenzan Stage 2 Attack (best dps in 4th job)
+        41001002 - Surging Blade Up Swoop
+        41001006 - Surging Blade Down Swoop
+        41001007 - Surging Blade Jab
+        41001008 - Surging Blade Roll
+        41101004 - Vapor Blade (USE NO KNOCKBACK TO IGNORE JUMPING FUNCTION)
+        41101014 - Rising Slash (slight skill delay reduction)
+        41121002 - Hitokiri Strike (has slight delay)
+        41121016 - Rai Blade Flash (must be in stance mode)
+        41121020 - Sudden Strike
+
+Xenon: 36110005 - Triangulation (works with FMA & No Delay)
+       WARNING: Beam Splime Auto bans DO NOT USE WITH DO DELAY OR SKILL INJECT
+
+Aran: 21000002 - Double Swing
+      21100001 - Triple Swing
+      21100002 - Final Charge (no combo cost)
+      21110007 - Full Swing / Double Swing (natural semi no delay)
+      21110003 - Final Toss (no combo cost)
+      21110006 - Rolling Spin (no combo cost)
+      21120009 - Over Swing / Double Swing (natural semi no delay)
+      21120010 - Over Swing / Triple Swing (natural semi no delay)
+      21120005 - Final Blow (no combo cost)
+      21120006 - Combo Tempest (only works if you have enough combo points)
+      21120052 - Beyond Blade 1st Hit (natural semi no delay)
+      21121055 - Beyond Blade 2nd Hit (natural semi no delay)
+      21121056 - Beyond Blade 3rd Hit (natural semi no delay)
+
+Wild Hunter: 33111013 - Hunting Assistant Unit (works with FMA)
+             33121016 - Drill Salvo (works with FMA)
+
+Mechanic: 35111015 - Punch Launcher (working in non mount mode)
+          35121052 - Distortion Bomb (works with FMA & No Delay if delay is turned down)
+
+Kinesis: 142120030 - Mental Tempest (Hyper Skill)
+
+Beast Tamer: 112000000 - Paw Swipe 1st Hit
+             112000001 - Paw Swipe 2nd Hit
+             112000002 - Paw Swipe 3rd Hit
+             112100000 - Leopard's Paw 1st Hit
+             112100001 - Leopard's Paw 2nd Hit
+             112100002 - Leopard's Pounce
+             112001006 - Majestic Trumpet (works with FMA and No Delay)
+
+Demon Avenger: 31011004 - Double Slash (auto-exceed)
+               31201010 - Demon Strike (auto-exceed, works with No Delay)
+               31211010 - Lunar Slash (auto-exceed)
+               31221012 - Execution (auto-exceed)
+
+Cannoneer: 5011002 - Blast Back (works with Slide & Attack)
+
+Marksman: 3221014 - Arrow Illusion (works with FMA - may be client sided)
+
+Zero:
+       Beta: 101000101 - Air Riot (works with No Delay)
+       Alpha: 101000201 - Shadow Strike (works with No Delay)
+       Both: 101001100 - Shadow Strike (works with No Delay)
+*/
+
+delay:
+dw 0
+01810F88: //0F 84 ?? ?? ?? ?? 2B 9E ?? ?? ?? ?? 0F 88 ?? ?? ?? ?? A1 ?? ?? ?? ?? 85 C0
+db 90 90 90 90 90 90 //
+01810F94: //0F 88 ?? ?? ?? ?? A1 ?? ?? ?? ?? 85 C0 74 ?? 8B 50 ?? 8D 48 ??
+db 90 90 90 90 90 90
+01810FF3: //0F 84 ?? ?? ?? ?? 8B 16 8B 42 ?? 8B CE FF D0 3D ?? ?? ?? ?? 74 ?? 3D ?? ?? ?? ?? 74 ?? 3D ?? ?? ?? ?? 74 ?? 3D ?? ?? ?? ?? 74 ?? 3D ?? ?? ?? ?? 75 ?? 8D 4C 24 ?? 51
+db 90 E9
+01811113: //8B ?? ?? ?? ?? ?? 8B 44 24 ?? 6A ?? 6A ?? 6A ?? 6A ?? 8D 4C 24 ?? 51
+jmp skill_id_hook
+nop
+skill_id_return:
+skill_id_hook:
+inc [delay]
+cmp dword ptr [delay], #1 // Set your delay (optional till you don't d/c)
+jne skill_id_return
+mov [delay], 0
+mov edx,skill_id
+jmp skill_id_return
+018111B4: //0F 87 ?? ?? ?? ?? 0F B6 ?? ?? ?? ?? ?? FF 24 ?? ?? ?? ?? ?? 84 DB 74 ?? 8B 8E ?? ?? ?? ?? 85 C9
+db 90 90 90 90 90 90 //
+018111C1: //address at jmp dword ptr following the address above
+jmp 018111F7 //81 BE ?? ?? ?? ?? ?? ?? ?? ?? 8B CE 75 ?? 8B 44 24 ?? 6A ??
+dw 9090
+
+
+[Disable]
+01810F88:
+db 0F 84 A7 03 00 00
+01810F94:
+db 0F 88 9B 03 00 00
+01810FF3:
+db 0F 84 CC 00 00 00
+01811113:
+mov edx,[esi+00010CF8]
+018111B4:
+db 0F 87 71 01 00 00
+018111C1:
+jmp dword ptr [ecx*4+01811340]
+dealloc(skill_id_hook)

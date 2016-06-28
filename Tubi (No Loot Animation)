@@ -1,0 +1,27 @@
+//174.2
+//Updated by Randomcity2
+[ENABLE]
+alloc(Tubi,64)
+label(Ret)
+
+Tubi:
+mov eax, 0
+push esi
+jmp Ret
+
+01954FF0:
+jmp Tubi
+Ret:
+
+00515A6A: // Remove loot animation
+db 81 FE 00 00 00 00
+
+[DISABLE]
+01954FF0: // FUNCTION START (mov eax,[esp+04]): 8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50
+mov eax,[esp+04]
+push esi
+
+00515A6A: // 81 ? ? ? 00 00 0F 8D ? ? 00 00 85 ? 0F 84 [1st Result]
+db 81 FE BC 02 00 00
+
+dealloc(Tubi)
