@@ -1,0 +1,29 @@
+//174.1
+//Updated by Randomcity2
+[ENABLE]
+alloc(Aggro,128)
+
+
+Aggro:
+mov eax,[0225B6D4] //Char Base 8B 3D ? ? ? ? 8B 40
+lea eax,[eax+04]
+mov [ecx+418+08],eax //Aggro offset 83 ? ? ? ? ? ? 0F 85 ? ? ? ? 8B ? ? 8B ? ? 8D ? ? FF D0 [Offset+0x08]
+push ebp
+mov ebp,esp
+and esp,-40
+jmp 018E4AC0+6 //Return to func 55 8B EC 83 E4 ?? 6A ?? 68 ?? ?? ?? ?? 64 A1 00 00 00 00 50 83 EC ?? 53 56 57 A1 ?? ?? ?? ?? 33 C4 50 8D 44 24 ?? 64 A3 ?? ?? ?? ?? 8B F1 8B 4D ?? 8B 06
+
+
+018E4AC0:
+jmp Aggro
+nop
+
+
+[DISABLE]
+018E4AC0:
+push ebp
+mov ebp,esp
+and esp,C0
+
+
+dealloc(Aggro)

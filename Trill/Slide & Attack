@@ -1,0 +1,10 @@
+//v174.2
+//Updated by ngnam87
+[Enable]
+018EDF9B: //74 0B 8B CF E8 ? ? ? ? 85 C0 74 72 81 FB
+db 75 0B
+
+
+[Disable]
+018EDF9B:
+db 74 0B

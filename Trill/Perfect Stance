@@ -1,0 +1,17 @@
+//Perfect Stance
+
+[Enable]
+017C633F: //85 F6 75 ? 39 ? 24 ? ? ? ? 74
+xor esi,esi
+nop
+nop
+
+017C634A: //address of JE below
+db EB
+
+[Disable]
+017C633F:
+db 85 F6 75 09
+
+017C634A:
+db 74
