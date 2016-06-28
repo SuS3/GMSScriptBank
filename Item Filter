@@ -1,0 +1,531 @@
+//Updated by Randomcity2
+//v174.2
+[ENABLE]
+alloc(ItemFilter,256)
+alloc(ItemList,2048)
+alloc(Mesos,4)
+alloc(Mode,4)
+label(Return)
+label(End)
+label(FilterMesos)
+label(RejectOrAccept)
+label(AcceptFilter)
+label(RejectFilter)
+label(Ignore)
+
+Mesos:
+dd #100 // Minimum meso
+
+Mode:
+dd #0 // 0 = Accept, 1 = reject
+
+ItemList:
+dd #2434891 // Heroes Box
+dd #2433882 // ?? singles vs couples thingy
+dd #2433896 // ?? singles vs couples thingy
+dd #4000999 // Spell Trace
+dd #4001832 // Spell Trace
+dd #2070006 // Spell Trace
+dd #2433834 // Rare Treasure Chest
+dd #2432408 // Accesory
+dd #2432396 // Armor
+dd #2432397 // Weapon
+dd #2432398 // Rare Item
+dd #2432407 // Reward Pouch
+dd #2431174 // Medal of Honor
+dd #2432970 // Special Medal of Honor
+dd #2433103 // Boss Medal of Honor
+dd #2433803 // Singles vs.Couples Medal of Honor
+dd #2433808 // Special Medal of Honor
+dd #2433926 // Regular Medal of Honor
+dd #2434021 // Medal of Honor
+dd #2434288 // Special Medal of Honor
+dd #2434290 // Mu Gong's Guarenteed Medal of Honor
+dd #2434502 // Ursus Medal of Honor
+dd #2433457 // Grand Medal of Honor
+dd #2512277 // Legendary Fortitude Potion Recipe
+dd #2512276 // Exceptional Fortitue Potion Recipe
+dd #2512274 // Exceptional Concentration Potion Recipe
+dd #2512271 // Legendary Blessing Potion Recipe
+dd #2512270 // Exceptional Blessing Potion Recipe
+dd #2512268 // Legendary Hero Potion Recipe
+dd #2512267 // Exceptional Hero Potion Recipe
+dd #2512279 // Exceptional Insight Potion Recipe
+dd #2512280 // Legendary Insight Potion Recipe
+dd #2512282 // Exceptional Strength Boost Potion
+dd #2512284 // Exceptional Intelligence Boost Potion
+dd #2512286 // Exceptional Dexterity Boost Potion
+dd #2512288 // Exceptional Luck Boost Potion
+dd #2512289 // Resistance Potion Recipe
+dd #2512290 // Cleansing Potion Recipe
+dd #2512291 // Invinsibility Potion Recipe
+dd #2512292 // EXP Accumulation Potion Recipe
+dd #2512293 // Wealth Acquisition Potion Recipe
+dd #4009307 // Hunter's Guide
+dd #4000895 // Typhon Feather
+dd #4032005 // Typhon Feather
+dd #4032006 // Stormbreaker Badge
+dd #4032007 // Windraider Badge
+dd #4032008 // Firebrand Badge
+dd #4032009 // Nightshadow Badge
+dd #4032012 // Crimson Heart
+dd #4032015 // Tao of Shadows
+dd #4032016 // Tao of Sight
+dd #4032017 // Tao of Harmony
+dd #4032021 // Triferium Fuel Cell
+dd #4032022 // Diferium Fuel Cell
+dd #4032023 // Sparkplug
+dd #4032024 // Jumper Cable
+dd #4032025 // T-1 Socket Adapter
+dd #4000391 // Boomer Core
+dd #4000337 // Genin Doll
+dd #4000338 // Chunin Poison Dart
+dd #4000339 // Jonin Throwing Star
+dd #4000340 // Ninto Scroll
+dd #4000341 // Straw Sandals
+dd #4000342 // Kacchuu Musha Fragment
+dd #4000343 // Toad Oil
+dd #4000344 // Kunoichi Dagger
+dd #4000345 // Castellan's Stolen Armrest
+dd #4000346 // Emeror Toad Wallet
+dd #4020008 // Black Crystal Ore
+dd #4020009 // Piece of Time
+dd #4020013 // Dream Fragment
+dd #4011006 // Gold Plate
+dd #4010006 // Gold Ore
+dd #4010007 // Lidium Ore
+dd #4020004 // Opal Ore
+dd #4021004 // Opal
+dd #4021008 // Black Crystal
+dd #4021010 // Rock of Time
+dd #4007005 // Magic Powder(Purple)
+dd #4007007 // Magic Powder(Black)
+dd #4005004 // Dark Crystal
+dd #4005003 // LUK Crystal
+dd #4005002 // DEX Crystal
+dd #4005001 // Wisdom Crystal
+dd #4005000 // Power Crystal
+dd #4004004 // Dark Crystal Ore
+dd #4004003 // LUK Crystal Ore
+dd #4004002 // DEX Crystal Ore
+dd #4004001 // Wisdom Crystal Ore
+dd #4004000 // Power Crystal Ore
+dd #4021015 // Advanced Item Crystal
+dd #4021016 // Superior Item Crystal
+dd #4021017 // Alchemist Stone
+dd #4021019 // Dream Stone
+dd #4021020 // Confusion Fragment
+dd #4022019 // Juniper Berry Seed
+dd #4022020 // Juniper Berry Flower
+dd #4022021 // Hyssop Flower
+dd #4023019 // Juniper Berry Seed Oil
+dd #4023020 // Juniper Berry Flower Oil
+dd #4023021 // Hyssop Flower Oil
+dd #4011008 // Lidium
+dd #4021021 // Philosopher's Stone
+dd #4021022 // Primal Essence
+dd #4021036 // Cube Fragment
+dd #4021041 // Cubic Blade
+dd #4021042 // Cubic Chaos Blade
+dd #2432336 // Sealed Cubic Blade
+dd #2432337 // Sealed Cubic Chaos Blade
+dd #4023023 // Dusk Essence
+dd #4023024 // Brilliant Dusk Essence
+dd #4032933 // Rose Clipping
+dd #2070018 // Balanced Fury
+dd #2070006 // Ilbi Throwing Stars
+dd #2710002 // Master Craftsman Cube
+dd #2710000 // Occult Cube
+dd #2710001 // Unknown Item
+dd #2710003 // Meister's Cube
+dd #2710004 // Meister's Cube
+dd #2710006 // Unknown Item
+dd #2710007 // Master Craftsman Cube
+dd #2711000 // Occult Cube
+dd #2711001 // Occult Cube
+dd #2711003 // Master Craftsman Cube
+dd #2711004 // Meister Cube
+dd #2711005 // Master Craftsman Cube
+dd #2711006 // Meister's Cube
+dd #2711008 // Unknown Item
+dd #2040922 // Dark Scroll for Shield for Magic Attack 50%
+dd #2040919 // Scroll for Shield for Magic Attack 60%
+dd #2870452 // Mutant Snail Familiar
+dd #2870455 // Mutant Ribbon Pig Familiar
+dd #2870295 // Big Spider Familiar
+dd #4021040 // Dimension Fragment
+dd #2430692 // Nebulite Box
+dd #1632003 // Pure Gold Machine Leg
+dd #1622004 // Pure Gold Machine Armor
+dd #1612004 // Pure Gold Engine
+dd #1642003 // Pure Gold Body Frame
+dd #1652004 // Pure Gold Transistor
+dd #1102481 // Tyrant Hyades Cloak
+dd #1102482 // Tyrant Hermes Cloak
+dd #1102483 // Tyrant Charon Cloak
+dd #1102484 // Tyrant Lycaon Cloak
+dd #1102485 // Tyrant Altair Cloak
+dd #1152108 // Lionheart Battle Shoulder
+dd #2048902 // Lionheart Lucky Item Scroll
+dd #1152111 // Falcon Wing Sentinel Shoulder
+dd #1152110 // Dragon Tail Mage Shoulder
+dd #1452229 // Lightseeker
+dd #1004075 // Aquarius Crown
+dd #1152112 // Raven Horn Chaser Shoulder
+dd #1152113 // Shark Tooth Skipper Shoulder
+dd #4310058 // Magnus Coin
+dd #4310098 // Gollux Penny
+dd #4310097 // Gollux Coin
+dd #1122264 // Cracked Engraved Gollux Pendant
+dd #1122265 // Solid Engraved Gollux Pendant
+dd #1122266 // Reinforced Engraved Gollux Pendant
+dd #1122267 // Superior Engraved Gollux Pendant
+dd #1132243 // Cracked Engraved Gollux Belt
+dd #1132244 // Solid Engraved Gollux Belt
+dd #1132245 // Reinforced Engraved Gollux Belt
+dd #1132246 // Superior Engraved Gollux Belt
+dd #2432091 // Gollux's Head Teleport Rock
+dd #2049300 // Advanced Equip Enhancement Scroll
+dd #2049303 // Advanced Equip Enhancement Scroll
+dd #2049304 // 3 Star Enhancement Scroll
+dd #2049305 // 4 Star Enhancement Scroll
+dd #2049306 // Advanced Equip Enhancement Scroll
+dd #2049308 // 5 Star Enhancement Scroll
+dd #2049309 // 2-Star Enhancement Scroll
+dd #2049311 // 3 Star Enhancement Scroll
+dd #2049312 // 4 Star Enhancement Scroll
+dd #2049313 // 5 Star Enhancement Scroll
+dd #2049319 // 3 Star Enhancement Scroll
+dd #2049320 // 2 Star Enhancement Scroll
+dd #2049321 // 3 Star Enhancement Scroll
+dd #2049322 // 5 Star Enhancement Scroll
+dd #2049323 // Advanced Equip Enhancement Scroll
+dd #2049324 // 5 Star Enhancement Scroll
+dd #2049325 // Advanced Equip Enhancement Scroll
+dd #2049326 // 2 Star Enhancement Scroll
+dd #2049327 // 2 Star Enhancement Scroll
+dd #2049328 // 3 Star Enhancement Scroll
+dd #2049330 // 2 Star Enhancement Scroll
+dd #2049334 // 5 Star Enhancement Scroll
+dd #2049353 // 5 Star Enhancement Scroll
+dd #2049600 // Innocence Scroll 70%
+dd #2049601 // Innocence Scroll 20%
+dd #2049602 // Innocence Scroll 20%
+dd #2049603 // Innocence Scroll 50%
+dd #2049604 // Innocence Scroll 60%
+dd #2049605 // Innocence Scroll 40%
+dd #2049606 // Innocence Scroll 50%
+dd #2049607 // Innocence Scroll 20%
+dd #2049608 // Innocence Scroll 40%
+dd #2049609 // Innocence Scroll 50%
+dd #2049610 // Innocence Scroll 100%
+dd #2049611 // Innocence Scroll 60%
+dd #2049612 // Innocence Scroll 50%
+dd #2049615 // Perfect Innocence Scroll 50%
+dd #2049616 // Perfect Innocence Scroll 50%
+dd #2049618 // Perfect Innocence Scroll 50%
+dd #2049002 // Clean Slate Scroll 5%
+dd #2049003 // Clean Slate Scroll 20%
+dd #2049004 // Clean Slate Scroll 10%
+dd #2049005 // Clean Slate Scroll 20%
+dd #2049009 // Clean Slate Scroll 10%
+dd #2049010 // Clean Slate Scroll 5%
+dd #2049011 // Clean Slate Scroll 10%
+dd #2049013 // Clean Slate Scroll 20%
+dd #2049015 // Special Clean Slate Scroll 1%
+dd #2049016 // Clean Slate Scroll 20%
+dd #2049018 // Clean Slate Scroll 10%
+dd #2049019 // Clean Slate Scroll 5%
+dd #2049022 // Clean Slate Scroll 10%
+dd #2049024 // Clean Slate Scroll 20%
+dd #2049025 // Clean Slate Scroll 100%
+dd #2049026 // Clean Slate Scroll 5%
+dd #5530555 // Clean Slate Scroll 10%
+dd #2531007 // Protection Scroll
+dd #5530620 // Protection Scroll
+dd #2531000 // Protection Scroll
+dd #2531001 // Protection Scroll
+dd #2531004 // Protection Scroll
+dd #2531005 // Protection Scroll
+dd #2532000 // Safety Scroll
+dd #2532002 // Safety Scroll
+dd #2532003 // Safety Scroll
+dd #2530000 // Lucky Day Scroll
+dd #2530002 // Lucky Day Scroll
+dd #2530004 // Lucky Day Scroll
+dd #2590004 // Prototype Soul Enchanter
+dd #2590005 // Prototype Soul Enchanter
+dd #2590006 // Production Soul Enchanter
+dd #2590007 // Production Soul Enchanter
+dd #2590008 // Customized Soul Enchanter
+dd #2590009 // Customized Soul Enchanter
+dd #2590010 // Customized Soul Enchanter
+dd #2590014 // Production Soul Enchanter
+dd #2048202 // Advanced Bonus Potential Stamp
+dd #2048203 // Special Bonus Potential Stamp
+dd #2048204 // Superior Bonus Potential Stamp
+dd #2048205 // Advanced Bonus Potential Stamp
+dd #2048206 // Superior Bonus Potential Stamp
+dd #2048207 // Advanced Bonus Potential Stamp
+dd #2048208 // Superior Bonus Potential Stamp
+dd #2048210 // Advanced Bonus Potential Stamp
+dd #2048212 // Perfect Bonus Potential Stamp
+dd #2048213 // Special Bonus Potential Stamp
+dd #2048214 // Superior Bonus Potential Stamp
+dd #2048215 // Advanced Bonus Potential Stamp
+dd #2048300 // Silver Bonus Potential Stamp
+dd #2048301 // Gold Bonus Potential Stamp
+dd #2048302 // Gold Bonus Potential Stamp
+dd #2048303 // Silver Bonus Potential Stamp
+dd #2048304 // Perfect Bonus Potential Stamp
+dd #2048330 // Perfect Bonus Potential Stamp
+dd #2049500 // Gold Potential Stamp
+dd #2049501 // Silver Potential Stamp
+dd #2049505 // Gold Potential Stamp
+dd #2049506 // Perfect Potential Stamp
+dd #2049507 // Gold Potential Stamp
+dd #2049509 // Gold Potential Stamp
+dd #2049510 // Silver Potential Stamp
+dd #2049511 // Silver Potential Stamp
+dd #2049512 // Perfect Potential Stamp
+dd #5062300 // Perfect Potential Stamp
+dd #5530341 // Perfect Potential Stamp
+dd #5530342 // Perfect Bonus Potential Stamp
+dd #2022345 // The Energizer Drink
+dd #3010513 // Happy Pierre Chair
+dd #1003721 // Chaos Queen's Tiara
+dd #3010514 // Crimson Queen's Throne
+dd #1003719 // Chaos Pierre Hat
+dd #1003720 // Chaos Von Bon Helmet
+dd #3010512 // Von Bon's Von Chair
+dd #1003722 // Chaos Vellum's Helm
+dd #3010515 // Vellum Rock Chair
+dd #2431659 // Mu Gong's Soul Shard
+dd #2431661 // Pink Bean's Soul Shard
+dd #2431711 // Cygnus's Soul Shard
+dd #2431752 // Ephenia's Soul Shard
+dd #2431896 // Hilla's Soul Shard
+dd #2431964 // Magnus's Soul Shard
+dd #2432138 // Murgoth's Soul Shard
+dd #2433446 // Pierre's Soul Shard
+dd #2433515 // Von Bon's Soul Shard
+dd #2433591 // Crimson Queen's Soul Shard
+dd #2433592 // Vellum's Soul Shard
+dd #2433593 // Lotus's Soul Shard
+dd #2434470 // Ursus Soul Shard
+dd #5064100 // Shield Scroll
+dd #5064300 // Guardian Scroll
+dd #2049750 // Unique Potential Scroll 80%
+dd #2049751 // Unique Potential Scroll 60%
+dd #2049752 // Unique Potential Scroll 30%
+dd #2049753 // Unique Potential Scroll 80%
+dd #2049754 // Unique Potential Scroll 60%
+dd #2049755 // Unique Potential Scroll 30%
+dd #2049756 // Unique Potential Scroll 30%
+dd #2049757 // Unique Potential Scroll 50%
+dd #2049758 // Unique Potential Scroll 50%
+dd #2049762 // Unique Potential Scroll 100%
+dd #2049764 // Unique Potential Scroll 100%
+dd #2049710 // Epic Potential Scroll 50%
+dd #2049700 // Epic Potential Scroll 100%
+dd #2049701 // Epic Potential Scroll 80%
+dd #2049702 // Epic Potential Scroll 100%
+dd #2049703 // Epic Potential Scroll 100%
+dd #2049704 // Epic Potential Scroll 40%
+dd #2049705 // Epic Potential Scroll 50%
+dd #2049706 // Epic Potential Scroll 100%
+dd #2049707 // Epic Potential Scroll 40%
+dd #2049708 // Epic Potential Scroll 50%
+dd #2049417 // Special Potential Scroll
+dd #2049419 // Special Potential Scroll
+dd #2049412 // Advanced Potential Scroll
+dd #2049413 // Advanced Potential Scroll
+dd #2049407 // Advanced Potential Scroll
+dd #2049402 // Special Potential Scroll
+dd #2049406 // Special Potential Scroll
+dd #2049360 // Miraculous Equip Scroll
+dd #2049361 // Miraculous Equip Scroll
+dd #2049400 // Advanced Potential Scroll
+dd #2049116 // Miraculous Chaos Scroll 60%
+dd #2049119 // Incredible Chaos Scroll 60%
+dd #2049122 // Chaos Scroll of Goodness 50%
+dd #2049129 // Chaos Scroll of Goodness 50%
+dd #2049130 // Chaos Scroll of Goodness 30%
+dd #2049131 // Chaos Scroll of Goodness 20%
+dd #2049132 // Miraculous Chaos Scroll 30%
+dd #2049133 // Miraculous Chaos Scroll 50%
+dd #2049134 // Miraculous Chaos Scroll 70%
+dd #2049135 // Incredible Chaos Scroll of Goodness 20%
+dd #2049136 // Incredible Chaos Scroll of Goodness 20%
+dd #2049137 // Incredible Chaos Scroll of Goodness 40%
+dd #2049142 // Miraculous Chaos Scroll 40%
+dd #2049148 // Chaos Scroll of Goodness 50%
+dd #2049149 // Chaos Scroll of Goodness 30%
+dd #2049150 // Miraculous Chaos Scroll 50%
+dd #2049151 // Miraculous Chaos Scroll 70%
+dd #2049152 // Miraculous Chaos Scroll 60%
+dd #2049153 // Incredible Chaos Scroll of Goodness 60%
+dd #2049156 // Incredible Chaos Scroll of Goodness 20%
+dd #2049157 // Chaos Scroll of Goodness 30%
+dd #2049159 // Miraculous Chaos Scroll 50%
+dd #2049160 // Chaos Scroll of Goodness 50%
+dd #2049165 // Incredible Chaos Scroll of Goodness 50%
+dd #2049169 // Chaos Scroll of Goodness 30%
+dd #2049173 // Incredible Chaos Scroll of Goodness 40%
+dd #2470001 // Golden Hammer 50%
+dd #2470002 // Golden Hammer 50%
+dd #2470003 // Golden Hammer 100%
+dd #2470004 // Golden Hammer 20%
+dd #2470005 // Golden Hammer 20%
+dd #2470007 // Golden Hammer 100%
+dd #2470009 // Golden Hammer 50%
+dd #2470010 // Golden Hammer 100%
+dd #2470011 // Golden Hammer 100%
+dd #2470013 // Golden Hammer 50%
+dd #1002957 // Pink Bean Hat
+dd #1002971 // Pink Bean Hat
+dd #1003450 // Pink Bean Hat
+dd #1003621 // Chaos Pink Bean Hat
+dd #1003695 // Pink Bean Hat
+dd #1022144 // Chaos Pink Bean Mark
+dd #1022182 // Chaos Pink Bean Mark
+dd #1052198 // Pink Bean Suit
+dd #1052202 // Pink Bean Suit
+dd #1052434 // Pink Bean Suit
+dd #1052526 // Chaos Pink Bean Suit
+dd #1052548 // Pink Bean Suit
+dd #1004229 // Pensalir Battle Helm
+dd #1004230 // Pensalir Mage Sallet
+dd #1004231 // Pensalir Sentinel Hat
+dd #1004232 // Pensalir Chaser Hat
+dd #1004233 // Pensalir Skipper Hat
+dd #1102718 // Pensalir Battle Cape
+dd #1102719 // Pensalir Mage Cape
+dd #1102720 // Pensalir Sentinel Cape
+dd #1102721 // Pensalir Chaser Cape
+dd #1102722 // Pensalir Skipper Cape
+dd #1082608 // Pensalir Battle Gloves
+dd #1082609 // Pensalir Mage Gloves
+dd #1082610 // Pensalir Sentinel Gloves
+dd #1082611 // Pensalir Chaser Gloves
+dd #1082612 // Pensalir Skipper Gloves
+dd #1052799 // Pensalir Battle Mail
+dd #1052800 // Pensalir Mage Robes
+dd #1052801 // Pensalir Sentinel Suit
+dd #1052802 // Pensalir Chaser Armor
+dd #1052803 // Pensalir Skipper Coat
+dd #1072967 // Pensalir Battle Boots
+dd #1072968 // Pensalir Mage Boots
+dd #1072969 // Pensalir Sentinel Boots
+dd #1072970 // Pensalir Chaser Boots
+dd #1072971 // Pensalir Skipper Boots
+dd #1003976 // Sweetwater Hat
+dd #1012438 // Sweetwater Tattoo
+dd #1022211 // Sweetwater Glasses
+dd #1032224 // Sweetwater Earrings
+dd #1052669 // Sweetwater Suit
+dd #1072870 // Sweetwater Shoes
+dd #1082556 // Sweetwater Gloves
+dd #1102623 // Sweetwater Cape
+dd #1113078 // Sweetwater Ring
+dd #1122269 // Sweetwater Pendant
+dd #1132247 // Sweetwater Belt
+dd #1152160 // Sweetwater Shoulder
+dd #1212089 // Sweetwater Shining Rod
+dd #1222084 // Sweetwater Soul Shooter
+dd #1232084 // Sweetwater Demon Sword
+dd #1242090 // Sweetwater Chain Sword
+dd #1252033 // Sweetwater Tigress Scepter
+dd #1262029 // Sweetwater Psy-limiter
+dd #1302297 // Sweetwater Sword
+dd #1312173 // Sweetwater Axe
+dd #1322223 // Sweetwater Mace
+dd #1332247 // Sweetwater Knife
+dd #1342090 // Sweetwater Katara
+dd #1362109 // Sweetwater Cane
+dd #1372195 // Sweetwater Wand
+dd #1382231 // Sweetwater Staff
+dd #1402220 // Sweetwater Two-Handed Sword
+dd #1412152 // Sweetwater Two-Handed Axe
+dd #1422158 // Sweetwater Maul
+dd #1432187 // Sweetwater Spear
+dd #1442242 // Sweetwater Polearm
+dd #1452226 // Sweetwater Bow
+dd #1462213 // Sweetwater Crossbow
+dd #1472235 // Sweetwater Steer
+dd #1482189 // Sweetwater Grip
+dd #1492199 // Sweetwater Shooter
+dd #1522113 // Sweetwater Twin Angels
+dd #1532118 // Sweetwater Hand Cannon
+dd #1542072 // Sweetwater Katana
+dd #1552072 // Sweetwater Wind
+dd #2048909 // Sweetwater Lucky Item Scroll
+dd #4001842 // Diffusion-Line Energy Core (Grade A)
+dd #4001843 // Extraordinary Energy Core (Grade S)
+dd #2431998 // Anti-magic Stone Piece
+dd #2431999 // Anti-magic Stone Piece
+dd #2432000 // Anti-magic Container (I.M.S.)
+dd #2432001 // Anti-magic Stone Piece
+dd #2432002 // Anti-magic Container (I.M.S.)
+dd #4009005 // Anti-magic Stone
+dd #2431974 // Anti-magic Stone Piece
+dd 00 // End of list
+
+ItemFilter:
+push edx
+mov edx,[Mesos]
+cmp eax,edx
+jle FilterMesos
+mov edx,ItemList
+jmp RejectOrAccept
+
+FilterMesos:
+mov [esi+44],0
+jmp End
+
+RejectOrAccept:
+cmp byte ptr [Mode],0
+je AcceptFilter
+cmp byte ptr [Mode],1
+je RejectFilter
+
+AcceptFilter:
+cmp eax,[edx]
+je End
+cmp dword ptr [edx],0
+je Ignore
+add edx,4
+jmp AcceptFilter
+
+RejectFilter:
+cmp eax,[edx]
+je Ignore
+cmp dword ptr [edx],0
+je End
+add edx,4
+jmp RejectFilter
+
+Ignore:
+cmp eax,#50000 // Added this code otherwise mesos is dropped but not shown in accept mode
+jle End
+mov eax,0
+
+End:
+pop edx
+mov ecx,ebx // Original Opcode
+mov [esi+48],eax // Original Opcode
+jmp Return
+
+0076A689:
+jmp ItemFilter
+Return:
+
+[DISABLE]
+0076A689: // 8B ? 89 ? ? E8 ? ? ? ? 8B ? 89 ? ? E8 ? ? ? ? 0F ? ? 89 ? ? 8B ? E8 ? ? ? ? 0F
+mov ecx,ebx
+mov [esi+48],eax
+
+dealloc(ItemFilter)
+dealloc(ItemList)
+dealloc(Mesos)
+dealloc(Mode)

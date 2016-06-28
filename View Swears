@@ -1,0 +1,9 @@
+//174
+[Enable]
+00EAD4DB: //74 ? 80 ? ? 75 ? 0FB6 ? 52
+db 90 90
+
+
+[Disable]
+00EAD4DB:
+db 74 27
