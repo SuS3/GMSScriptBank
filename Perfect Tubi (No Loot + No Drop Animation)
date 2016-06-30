@@ -1,8 +1,8 @@
-//174.2
-// Updated By Randomcity2
+//174.3
+// Updated By HackBender
 // Called address (First mov below called address)
 // E8 ? ? ? ? 8B 86 ? ? ? ? C6 44 24 ? 05 85 C0 74 ? 83 C0 04
-Define(Tubi, 008B14E4)
+Define(Tubi, 008B14D4)
 
 
 // calculate_parbolic_motion_duration
