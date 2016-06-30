@@ -1,0 +1,8 @@
+//Created by Outerhaven
+[Enable]
+00892BB7:
+db 0F 85
+
+[Disable]
+00892BB7:
+db 0F 84
