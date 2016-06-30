@@ -1,4 +1,4 @@
-//Updated By Outerhaven
+//Updated By SU
 [ENABLE]
 alloc(find_hit_mob_in_rect_hook,128)
 
@@ -7,15 +7,15 @@ mov eax,[0225FEF4] // CWvsPhysicalSpace2D:
 //B8 0A 00 00 00 EB ? 3D                  (mov ecx,[XXXXXXX])
 lea eax,[eax+0C] // Left Wall Offset
 mov [esp+04],eax
-jmp 00BFF660 // Original call (CMobPool::FindHitMobInRect)
+jmp 00BFF720 // Original call (CMobPool::FindHitMobInRect)
 
 
-0095C0B9: // Function: CForceAtom_NonTargetAttack::UpdateAttackCollision
+0095C0A9: // Function: CForceAtom_NonTargetAttack::UpdateAttackCollision
 call find_hit_mob_in_rect_hook
 
 [DISABLE]
 
-0095C0B9: // E8 ? ? ? ? 8B ? 89 ? ? ? 85 ? 0F 8E [First Result]
-call 00BFF660
+0095C0A9: // E8 ? ? ? ? 8B ? 89 ? ? ? 85 ? 0F 8E [First Result]
+call 00BFF720
 
 dealloc(find_hit_mob_in_rect_hook)
