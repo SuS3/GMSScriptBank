@@ -1,0 +1,27 @@
+//Credits to Outhaven
+define(SkillGrip_Addy,0074F953)
+define(SkillGrip_RET,SkillGrip_Addy+7)
+define(Skill_ID, #21120024) // Skill_ID
+alloc(SkillGrip_Hook,305)
+
+[Enable]
+
+SkillGrip_Hook:
+mov ecx,Skill_ID
+mov [esi+01],ecx
+mov ecx,[esp+14]
+jmp SkillGrip_RET
+
+
+SkillGrip_Addy:
+jmp SkillGrip_Hook
+nop
+nop
+
+[Disable]
+
+SkillGrip_Addy:
+mov [esi+01],ecx
+mov ecx,[esp+14]
+
+dealloc(SkillGrip_Hook,305)
