@@ -1,9 +1,9 @@
-//174.2
-//Updated by Randomcity2
+//174.3
+
 [Enable]
-00EB789A:
+00EB795A:
 db 00
 
 [Disable]
-00EB789A: //01 00 00 00 D8 D1 DF E0
+00EB795A: //01 ? 00 ? D8 D1 DF E0 F6 ? ? 7A ?
 db 01
