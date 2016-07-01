@@ -1,10 +1,11 @@
-//Unlimited Arrow Platter GMS v174.2
-//Updated by Randomcity2
+//174.3
+//Unlimited Arrow Platter
 //Credits to Chubbz
+//Updated by Su
 [ENABLE]
-009247A0: //55 8B ? 83 ? ? 6A ? 68 ? ? ? ? 64 A1 00 00 00 00 50 83 ? ? 53 56 57 A1 ? ? ? ? 33 ? 50 8D ? 24 ? 64 A3 00 00 00 00 8B ? 8B ? ? E8
+00924790: //55 8B ? 83 ? ? 6A ? 68 ? ? ? ? 64 A1 00 00 00 00 50 83 ? ? 53 56 57 A1 ? ? ? ? 33 ? 50 8D ? 24 ? 64 A3 00 00 00 00 8B ? 8B ? ? E8
 db C2 04 00
 
 [DISABLE]
-009247A0:
+00924790:
 db 55 8B EC
