@@ -1,15 +1,15 @@
-//174.2
+//174.3
 //no fade stages
 [ENABLE]
-00E58A50: // CStage::FadeOut
+0197EF12: // CStage::FadeOut
 ret 0004
 
-00E58490: // CStage::FadeIn
+0197EF6C: // CStage::FadeIn
 ret 0004
 
 [DISABLE]
-00E58A50: // 33 C9 6A 00 E8 ? ? ? ? 8B 35 [Call]
+0197EF12: // 33 C9 6A 00 E8 ? ? ? ? 8B 35 [Call]
 db 6A FF 68
 
-00E58490: // 33 C9 6A 00 E8 ? ? ? ? 8B 44 [Call]
+0197EF6C: // 33 C9 6A 00 E8 ? ? ? ? 8B 44 [Call]
 db 6A FF 68
