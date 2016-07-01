@@ -1,9 +1,10 @@
-//174.2
-//Updated by Randomcity2
+//174.3
+//Updated by Tsonline1458
+//Crazy Mobs
 [Enable]
-00C5A056: //D9 C0 D8 C9 D9 C0
+00C5A116: //D9 C0 D8 C9 D9 C0
 db D9 C1
 
 [Disable]
-00C5A056:
+00C5A116:
 db D9 C0
