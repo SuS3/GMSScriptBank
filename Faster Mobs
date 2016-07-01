@@ -1,9 +1,9 @@
-//174.2
-//Updated by Randomcity2
+//174.3
+//Updated by Su
 [Enable]
-00C5BF56: //75 ?? 33 DB 8D 97 ?? 00 00 00 B9 ?? 00 00 00 E8
+00C5C016: //75 ?? 33 DB 8D 97 ?? 00 00 00 B9 ?? 00 00 00 E8
 db 90 90
 
 [Disable]
-00C5BF56:
+00C5C016:
 db 75 98
