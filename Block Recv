@@ -1,5 +1,5 @@
-//174.2
-//Updated by Randomcity2
+//174.3
+//Updated by Su
 [ENABLE]
 alloc(BlockRecvHook,256)
 label(RecvCheckLoop)
@@ -8,7 +8,7 @@ label(End)
 
 alloc(RecvList,512)
 
-//Hook address: 008078D0
+//Hook address: 0083D560
 //8B ? 24 ? 3D ? ? ? ? 0F 8F ? ? ? ? 0F 84 ? ? ? ? 8D
 
 BlockRecvHook:
@@ -31,7 +31,7 @@ xor eax,eax
 End:
 pop edx
 cmp eax,00000422 //Opcode below Hook address
-jmp 0083D579 //Address of jg
+jmp 0083D569 //Address of jg
 
 RecvList:
 dd 01E6 //Block Pierre's Hat/Vellum Rocks
@@ -44,7 +44,7 @@ dd BlockRecvHook
 
 [DISABLE]
 01EA7F08: //Same as above
-dd 0083D570 //Hook address
+dd 0083D560 //Hook address
 
 dealloc(BlockRecv)
 dealloc(RecvList)
