@@ -1,9 +1,9 @@
-//174.2
-//Updated by Randomcity2
+//174.3
+//Updated by Tsonline1458
+//Face Left
 [Enable]
 00588543: // 83 E1 01 83 C9 06
 db B9 07 00 00 00 90
-
 
 [Disable]
 00588543:
