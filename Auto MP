@@ -1,0 +1,129 @@
+// Auto MP GMS v174.3
+//By OChemMaster
+//This script is cancer but it works hopefully for u too
+//Appreciate any help on improving it
+//Mostly Reused Code From Franc[e]sco
+// and foster
+
+
+define(KEY_NORMAL,0)
+
+define(KEY_EXTENDED,1)
+
+define(VK_NEXT,22) //Page Down
+
+define(Threshold,#1000) //Doesnt Do Anything, IDK wat happens when you change value
+// BUT Go to your game settings and set the mp flash value to what MP value
+//You want to use potion. Then it automatically pots.
+
+//If standing still give it some time (approx. 6 sec)
+
+define(MPPotKey,VK_NEXT)
+
+define(MPPotKeyType,KEY_NORMAL)
+
+
+// Will Add Soon
+define(MPLeftAddy,01524788)
+
+
+
+// 8B 15 ?? ?? ?? ?? 85 D2 74 23
+define(TSingleton_CWndMan___ms_pInstance,005FB810)
+
+
+
+// Will Add Soon
+define(CWndMan__OnKey,019100C0)
+
+
+
+
+[Enable]
+alloc(MPPotHook,128)
+alloc(PressKey,128)
+label(DontFeed)
+
+
+
+define(KEY_PRESS,0)
+define(KEY_UP,1)
+define(MAPVK_VK_TO_VSC,0)
+
+MPLeftAddy:
+jmp MPPotHook
+nop
+
+
+
+MPPotHook:
+mov [esi+00002A98],ebx
+cmp [esi+00002A98],Threshold
+jl DontFeed
+
+
+
+push KEY_PRESS
+push MPPotKeyType
+push MPPotKey // virtual_key
+call PressKey
+
+
+
+DontFeed:
+jmp MPLeftAddy+6
+
+
+
+PressKey:
+push ebx
+push edx
+push esi
+push ecx
+
+
+
+mov edx, [esp+10+4]
+mov esi, [esp+10+8]
+mov ebx, [esp+10+C]
+mov ecx, edx
+
+
+
+push MAPVK_VK_TO_VSC
+push ecx
+call MapVirtualKeyA
+shl eax,#16
+shl esi,#24
+shl ebx,#31
+or eax, esi
+or eax, ebx
+mov ecx,eax
+
+
+
+push ecx
+push edx
+mov ecx,[TSingleton_CWndMan___ms_pInstance]
+call CWndMan__OnKey
+
+
+
+pop ecx
+pop esi
+pop edx
+pop ebx
+ret 000C
+
+
+
+
+
+[Disable]
+MPLeftAddy:
+mov [esi+00002A98],ebx
+
+
+
+dealloc(MPPotHook)
+dealloc(PressKey)
