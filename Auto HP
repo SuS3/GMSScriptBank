@@ -1,0 +1,128 @@
+// Auto HP GMS v174.3
+//By OChemMaster
+//Mostly Reused Code From Franc[e]sco
+// and foster
+
+
+define(KEY_NORMAL,0)
+
+define(KEY_EXTENDED,1)
+
+define(VK_PRIOR,21) //Page Down
+//https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
+//Link for VK Values. Change 21 to what key value you so desire.
+
+define(Threshold,#1000) //Threshold HP Value
+
+//If standing still (not getting attacked or attacking) give it some time (approx. 6 sec)
+//Make sure HP Warning Display Set to Max
+
+define(HPPotKey,VK_PRIOR)
+
+define(HPPotKeyType,KEY_NORMAL)
+
+
+// 89 ?? ?? ?? ?? ?? EB ?? 0F AF ?? B8 ?? ?? ?? ?? F7 ?? C1 ?? 05 8B ?? C1 ?? 1F 03 ?? 89 ?? ?? ?? ?? ?? 80
+define(HPLeftAddy,01524721)
+
+
+
+// 8B 15 ?? ?? ?? ?? 85 D2 74 23
+define(TSingleton_CWndMan___ms_pInstance,005FB810)
+
+
+
+// ?? ?? ?? ?? ?? 85 ?? 74 ?? 8D ?? ?? 8B ?? 8B ?? FF ?? C2 08 00
+define(CWndMan__OnKey,019100C0)
+
+
+
+
+[Enable]
+alloc(HPPotHook,128)
+alloc(PressKey,128)
+label(DontFeed)
+
+
+
+define(KEY_PRESS,0)
+define(KEY_UP,1)
+define(MAPVK_VK_TO_VSC,0)
+
+HPLeftAddy:
+jmp HPPotHook
+nop
+
+
+
+HPPotHook:
+mov [esi+00002A94],ebx
+cmp [esi+00002A94],Threshold
+jg DontFeed
+
+
+
+push KEY_PRESS
+push HPPotKeyType
+push HPPotKey // virtual_key
+call PressKey
+
+
+
+DontFeed:
+jmp HPLeftAddy+6
+
+
+
+PressKey:
+push ebx
+push edx
+push esi
+push ecx
+
+
+
+mov edx, [esp+10+4]
+mov esi, [esp+10+8]
+mov ebx, [esp+10+C]
+mov ecx, edx
+
+
+
+push MAPVK_VK_TO_VSC
+push ecx
+call MapVirtualKeyA
+shl eax,#16
+shl esi,#24
+shl ebx,#31
+or eax, esi
+or eax, ebx
+mov ecx,eax
+
+
+
+push ecx
+push edx
+mov ecx,[TSingleton_CWndMan___ms_pInstance]
+call CWndMan__OnKey
+
+
+
+pop ecx
+pop esi
+pop edx
+pop ebx
+ret 000C
+
+
+
+
+
+[Disable]
+HPLeftAddy:
+mov [esi+00002A94],ebx
+
+
+
+dealloc(HPPotHook)
+dealloc(PressKey)
