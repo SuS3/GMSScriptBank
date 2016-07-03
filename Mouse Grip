@@ -1,4 +1,4 @@
-//Credits to Outhaven
+//Credits to ???
 define(SkillGrip_Addy,0074F953)
 define(SkillGrip_RET,SkillGrip_Addy+7)
 define(Skill_ID, #21120024) // Skill_ID
