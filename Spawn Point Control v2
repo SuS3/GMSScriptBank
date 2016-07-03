@@ -1,9 +1,15 @@
-//v174.2 Spawn point control
-//Credit to CT/FameGuy?
-//updated by ngnam87
-Define(SpawnX,#100)
-Define(SpawnY,#-100)
-[ENABLE]
+//GMS v174.3 - Updated by Randomcity2
+//Spawn Point Control by FameGuy / CT
+/*
+Tower of Oz:
+12F ending x = 3732   y =  270
+17F ending x = 1522   y = -240
+22F ending x = 3222   y = -907
+44F ending x = 4036   y = -178
+*/
+Define(SpawnX,#3732) //X Coord
+Define(SpawnY,#270) //Y Coord
+[Enable]
 Alloc(Hook,128)
 label(returnhere)
 label(originalcode)
@@ -13,17 +19,18 @@ Hook:
 mov edi,SpawnX
 mov ebx,SpawnY
 originalcode:
-call 018CC620
+call 018CC710 //Original OpCode
 
 exit:
 jmp returnhere
 
-017EE543:
+017EE633:
 jmp Hook
 returnhere:
 
-[DISABLE]
-017EE543: //85 C0 7D 0D 3D ? ? ? ? 74 06 50 E8 ? ? ? ? 8D 45 ? 50 8B CE E8 (the call after lea)
-call 018CC620
+[Disable]
+// Back up AOB: 85 C0 7D 0D 3D ? ? ? ? 74 06 50 E8 ? ? ? ? 8D 45 ? 50 8B CE E8 (the call after lea)
+017EE633: //E8 ? ? ? ? 8B 85 ? ? ? ? 8B ? 8B 52 ? 6A ? 50 6A ? 6A ? 83 C3 ? 53 57 6A ? 8B ? FF ? 6A ? 6A
+call 018CC710
 
 DeAlloc(Hook)
