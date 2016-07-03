@@ -1,4 +1,4 @@
-//174.2
+//174.3
 //Updated by Randomcity2
 [ENABLE]
 007618F7: // Somewhere down CDropPool::TryPickUpDrop
@@ -12,7 +12,7 @@ pop ecx
 jmp 00761976 // Address in jne
 dw 9090
 
-01A12A00: // CWvsContext::SendBoobyTrapAlert
+01A12AF0: // CWvsContext::SendBoobyTrapAlert
 ret 0004
 
 [DISABLE]
@@ -27,5 +27,5 @@ jne 0076195F
 lea ecx,[esp+20]
 mov [esp+40],FFFFFFFF
 
-01A12A00: // push FF/-01 below: E9 ? ? ? ? CC CC CC CC CC 6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 83 ? ? A1 [Third result]
+01A12AF0: // push FF/-01 below: E9 ? ? ? ? CC CC CC CC CC 6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 83 ? ? A1 [Third result]
 db 6A FF 68
