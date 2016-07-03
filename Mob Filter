@@ -104,4 +104,4 @@ call 004D0940
 
 Dealloc(MobFilter1)
 Dealloc(MobFilter2)
-Dealloc(MobList
+Dealloc(MobList)
