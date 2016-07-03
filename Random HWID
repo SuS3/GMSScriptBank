@@ -86,4 +86,4 @@ db 8D 41 14 C3 90 90 90
 
 dealloc(macformathook)
 dealloc(randomhwid)
-unregistersymbol(randomhwid)
+unregistersymbol(randomhwid) 
