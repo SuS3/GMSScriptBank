@@ -1,4 +1,4 @@
-//174.2
+//174.3
 //Updated by Randomcity2
 [Enable]
 alloc(MobFilter1,256)
@@ -44,7 +44,7 @@ dd #9300229
 dd #9500102
 dd 00
 
-00C0453B: //E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
+00C045FB: //E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
 jmp MobFilter1
 
 MobFilter1:
@@ -62,13 +62,13 @@ jmp FilterMobs1
 
 Filter1:
 pop ebx
-jmp 00C046EE //mov ecx,[esp+24] | address RIGHT BELOW last CALL in function
+jmp 00C047AE //mov ecx,[esp+24] | address RIGHT BELOW last CALL in function
 
 Exit1:
 pop ebx
-jmp 00C04540 //mov[esp+18),eax | RIGHT BELOW MobFilter1 00B92A70
+jmp 00C04600 //mov[esp+18),eax | RIGHT BELOW MobFilter1 00B92A70
 
-00C0477A: //E8 ? ? ? ? 8B ? 85 ? 74 ? 8D ? ? ? 00 00 B9 [2nd Result]
+00C0483A: //E8 ? ? ? ? 8B ? 85 ? 74 ? 8D ? ? ? 00 00 B9 [2nd Result]
 jmp MobFilter2
 
 MobFilter2:
@@ -87,19 +87,19 @@ Filter2:
 pop ebx
 call 004D0940 //original op
 mov esi,eax //original op
-jmp 00C04A56 //address below last CALL in function
+jmp 00C04B16 //address below last CALL in function
 
 Exit2:
 pop ebx
 call 004D0940 //original op
-jmp 00C0477F //Below MobFilter2 address
+jmp 00C0483F //Below MobFilter2 address
 
 
 [Disable]
-00C0453B:
+00C045FB:
 call 0042C5C0
 
-00C0477A:
+00C0483A:
 call 004D0940
 
 Dealloc(MobFilter1)
