@@ -1,36 +1,36 @@
-//v174.2
-//Updated by ngnam87
+//v174.3
+//Updated by Randomcity2
 [ENABLE]
-00B59CB8: // CWvsPhysicalSpace2D::Load
+00B59D78: // CWvsPhysicalSpace2D::Load
 db 90 90 90 90 90
 
-00B59CD8: // CMapLoadable::RestoreTile
+00B59D88: // CMapLoadable::RestoreBack
 db 90 90 90 90 90
 
-00B59CC8: // CMapLoadable::RestoreBack
+00B59D91: // CMapLoadable::RestoreWeather
 db 90 90 90 90 90
 
-00B59CD1: // CMapLoadable::RestoreWeather
+00B59D98: // CMapLoadable::RestoreTile
 db 90 90 90 90 90
 
-00BF03F0: // No mob reaction, hitmarks or damage
+00BF04B0: // No mob reaction, hitmarks or damage
 retn 60
 
 
 [DISABLE]
-00B59CB8: // E8 ? ? ? ? 8B C8 E8 ? ? ? ? 8B 4F ? C6 45 ? ? 3B CE 75 0A 68 ? ? ? ? E8 ? ? ? ? 8D ? ? 50 C6 45 ? ? E8 (2nd result, shjet AOB idk)
+00B59D78: // E8 ? ? ? ? 8B C8 E8 ? ? ? ? 8B 4F ? C6 45 ? ? 3B CE 75 0A 68 ? ? ? ? E8 ? ? ? ? 8D ? ? 50 C6 45 ? ? E8 (2nd result, shjet AOB idk)
 //backup AOB: E8 ? ? ? ? 8B CF E8 ? ? ? ? 6A 01 8B CF E8 ? ? ? ? 6A 01 8B CF E8 ? ? ? ? 8B CF E8 ? ? ? ? 8B CF E8 ? ? ? ? 6A 00 8B CF E8
-call 00B42410
+call 00B424D0
 
-00B59CD8:
-call 00B42B00
+00B59D88:
+call 00B59130
 
-00B59CC8:
-call 00B59070
+00B59D91:
+call 00B54CB0
 
-00B59CD1:
-call 00B54BF0
+00B59D98:
+call 00B42BC0
 
-00BF03F0: // 81 FD ? ? ? ? 0F 8F ? ? ? ? 74 76 81 FD ? ? ? ? 7F 78 0F 84 ? ? ? ? 81 FD ? ? ? ? 7F 29 { ["/delayShowDamage"] }
+00BF04B0: // 81 FD ? ? ? ? 0F 8F ? ? ? ? 74 76 81 FD ? ? ? ? 7F 78 0F 84 ? ? ? ? 81 FD ? ? ? ? 7F 29 { ["/delayShowDamage"] }
 push -01
-push 01B81CE8
+push 01B81DE8
