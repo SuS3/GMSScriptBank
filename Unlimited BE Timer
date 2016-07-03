@@ -18,4 +18,4 @@ jmp AppearUnlimited
 
 [disable]
 00993DDA:
-mov [esi+000000F8],eax
+mov [esi+000000F8],eax 
