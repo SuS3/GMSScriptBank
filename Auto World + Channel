@@ -1,5 +1,6 @@
 //174.3
-//Updated By Qybae :D
+//Updated By Qybah
+
 [ENABLE]
 alloc(CLogin__OnRecommendWorldMessage_Hook,1024)
 label(CLogin__OnRecommendWorldMessage_Hook_callback)
