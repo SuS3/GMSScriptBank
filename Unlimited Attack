@@ -7,4 +7,4 @@ db EB
 
 [DISABLE]
 00751710: // 8B 01 8B 54 24 ? 56 8B 74 24 ? 2B C6 [JNGE below]
-db 7C
+db 7C 
