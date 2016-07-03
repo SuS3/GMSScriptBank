@@ -6,7 +6,7 @@ alloc(CUIAvatar__SelectCharacter_Hook,1024)
 alloc(StringPIC,40)
 
 StringPIC:
-db '277332' 00
+db 'enterPIChere' 00
 
 CUIAvatar__SelectCharacter_Hook:
 push ebp
@@ -15,7 +15,7 @@ sub esp,04
 
 push esi
 mov esi,[0226E69C] // CLogin__GetInstance: 8B 3D ? ? ? ? 33 DB 89 7C 24 18 3B FB 0F 84 ? ? ? ? 8B
-mov eax, #4 // Character Slot -1 (first char = 0, second char = 1, etc)
+mov eax, #0 // Character Slot -1 (first char = 0, second char = 1, etc)
 mov [esi+000004AC],eax //8B ? ? ? ? ? 8B ? ? ? ? ? 50 8B ? E8 ? ? ? ? 8B ? ? C6 [Offset Below
 push -01
 push StringPIC
