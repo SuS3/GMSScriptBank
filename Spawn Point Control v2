@@ -32,4 +32,4 @@ returnhere:
 017EE633: //E8 ? ? ? ? 8B 85 ? ? ? ? 8B ? 8B 52 ? 6A ? 50 6A ? 6A ? 83 C3 ? 53 57 6A ? 8B ? FF ? 6A ? 6A
 call 018CC710
 
-DeAlloc(Hook)
+DeAlloc(Hook) 
