@@ -1,5 +1,5 @@
-//174.2
-//Updated by Randomcity2
+//174.3
+//Su was here
 [ENABLE]
 alloc(Tubi,64)
 label(Ret)
@@ -9,7 +9,7 @@ mov eax, 0
 push esi
 jmp Ret
 
-01954FF0:
+019550E0:
 jmp Tubi
 Ret:
 
@@ -17,7 +17,7 @@ Ret:
 db 81 FE 00 00 00 00
 
 [DISABLE]
-01954FF0: // FUNCTION START (mov eax,[esp+04]): 8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50
+019550E0: // FUNCTION START (mov eax,[esp+04]): 8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50
 mov eax,[esp+04]
 push esi
 
