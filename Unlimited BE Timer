@@ -1,20 +1,21 @@
 //Unlimited Blazing Extinction Time (Blaze Wizard Skill)
 //Created by ????
+//Updated to 174.3 by Randomcity2
 
 [enable]
 alloc(SkillTimer,1024)
 label(AppearUnlimited)
 
-00993DEA://89 86 ? ? ? ? 89 9e ? ? ? ? 89 9e ? ? ? ? e8 ? ? ? ? 83 ? ? 85 c0
+00993DDA://89 86 ? ? ? ? 89 9e ? ? ? ? 89 9e ? ? ? ? e8 ? ? ? ? 83 ? ? 85 c0
 jmp SkillTimer
 db 90
 AppearUnlimited:
 
 SkillTimer:
-mov [esi+000000F0],7FFFFFFF
+mov [esi+000000F8],7FFFFFFF
 jmp AppearUnlimited
 
 
 [disable]
-00993DEA:
-mov [esi+000000F0],eax
+00993DDA:
+mov [esi+000000F8],eax
