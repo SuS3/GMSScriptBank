@@ -1,15 +1,13 @@
-//174.3
-//no fade stages
-[ENABLE]
-0197EF12: // CStage::FadeOut
-ret 0004
+[enable]
+00E58B42: // CStage::FadeOut 0F 
+db 0F 85
 
-0197EF6C: // CStage::FadeIn
-ret 0004
+00E5857E: // CStage::FadeIn 
+DB 0F 85
 
-[DISABLE]
-0197EF12: // 33 C9 6A 00 E8 ? ? ? ? 8B 35 [Call]
-db 6A FF 68
+[disable]
+00E58B42: //33 C9 6A 00 E8 ? ? ? ? 8B 35 follow call --> Address is first JE
+db 0F 84
 
-0197EF6C: // 33 C9 6A 00 E8 ? ? ? ? 8B 44 [Call]
-db 6A FF 68
+00E5857E: //33 C9 6A 00 E8 ? ? ? ? 8B 44 follow call --> Address is first JE
+db 0F 84
