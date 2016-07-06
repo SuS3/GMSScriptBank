@@ -1,0 +1,28 @@
+//Credits to DAVHEED for function and Outerhaven
+[enable]
+alloc(ClearFieldUI,128)
+
+00E58B01:
+jmp ClearFieldUI
+
+ClearFieldUI:
+mov ecx,[0225B840] //Above or Below the AOB below
+call 019A10C0 //56 8B F1 8B 0D ? ? ? ? E8 ? ? ? ? A1 ? ? ? ? C7 80 ? ? ? ? 00 00 00 00 Call below
+
+pop ecx
+pop edi
+pop esi
+pop ebp
+pop ebx
+add esp,00000088
+ret 0004
+
+[disable]
+dealloc(ClearFieldUI)
+
+00E58B01: //85 C0 74 ? C7 ? ? ? 00 00 01 00 00 00 [end of function]
+pop ecx
+pop edi
+pop esi
+pop ebp
+pop ebx
