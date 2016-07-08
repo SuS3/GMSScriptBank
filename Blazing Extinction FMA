@@ -1,8 +1,7 @@
-//Updated By Su
+//Credits to Sprux for FindHitInMobRect FMA Method
+//v174.3
 [ENABLE]
-
 alloc(find_hit_mob_in_rect_hook,128)
-
 find_hit_mob_in_rect_hook:
 
 mov eax,[0225FEF4] ////CWvsPhysicalSpace2D:
@@ -15,15 +14,14 @@ jmp 00BFF720 // Original call (CMobPool::FindHitMobInRect)
 //Function CUser::TryDoingFlameBallAttack
 call find_hit_mob_in_rect_hook
 
-
 //Function //Function CGrendade::Update
-00995307: //FlameBallObject X/Y Check, allows continous attack
+00995305: //FlameBallObject X/Y Check, allows continous attack
+nop
 nop
 
 [disable]
-
 017D38AC: //E8 ? ? ? ? 89 85 ? ? ? ? 8B 8D ? ? ? ? 89 8D ? ? ? ? 83 BD ? ? ? ? 00 75 ? C7 [SECOND RESULT]
 call 00BFF720
 
-00995307: //0F 84 ? ? ? ? D9 EE 8B ? ? ? DC 9E 8B [test eax,eax above]
+00995305: //0F 84 ? ? ? ? D9 EE 8B ? ? ? DC 9E [test eax,eax above]
 test eax,eax
