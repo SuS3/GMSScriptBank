@@ -1,10 +1,11 @@
 //Mob Confusion - Couresty of ClanTag
+//175.1
 [ENABLE]
-018E471D: //Mob Confuse
+018E53BD: //Mob Confuse
 db 0F 8B
 
 
 [DISABLE]
 //0F 8A ?? ?? ?? ?? D9 EE DC ?? ?? ?? DF E0 DD 05 ?? ?? ?? ?? F6 C4 05 7A 34
-018E471D: //Mob Confuse
+018E53BD: //Mob Confuse
 db 0F 8A
