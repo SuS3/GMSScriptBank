@@ -1,5 +1,4 @@
-//Updated by Randomcity2
-//v174.3
+//v175.1
 [ENABLE]
 alloc(ItemFilter,256)
 alloc(ItemList,2048)
@@ -469,6 +468,8 @@ dd #2432001 // Anti-magic Stone Piece
 dd #2432002 // Anti-magic Container (I.M.S.)
 dd #4009005 // Anti-magic Stone
 dd #2431974 // Anti-magic Stone Piece
+dd #4010000 // Bronze Ore
+dd #4010003 // Adamantium Ore
 dd 00 // End of list
 
 ItemFilter:
@@ -516,12 +517,12 @@ mov ecx,ebx // Original Opcode
 mov [esi+48],eax // Original Opcode
 jmp Return
 
-0076A689:
+0076A7E9:
 jmp ItemFilter
 Return:
 
 [DISABLE]
-0076A689: // 8B ? 89 ? ? E8 ? ? ? ? 8B ? 89 ? ? E8 ? ? ? ? 0F ? ? 89 ? ? 8B ? E8 ? ? ? ? 0F [Second Result]
+0076A7E9: // 8B ? 89 ? ? E8 ? ? ? ? 8B ? 89 ? ? E8 ? ? ? ? 0F ? ? 89 ? ? 8B ? E8 ? ? ? ? 0F [Second Result]
 mov ecx,ebx
 mov [esi+48],eax
 
