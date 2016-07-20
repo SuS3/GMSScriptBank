@@ -1,4 +1,4 @@
-//174.3
+//175.1
 //Updated by Su
 [ENABLE]
 alloc(BlockRecvHook,256)
@@ -31,7 +31,7 @@ xor eax,eax
 End:
 pop edx
 cmp eax,00000422 //Opcode below Hook address
-jmp 0083D569 //Address of jg
+jmp 0083D7C9 //Address of jg
 
 RecvList:
 dd 01E6 //Block Pierre's Hat/Vellum Rocks
@@ -39,12 +39,12 @@ dd 01E6 //Block Pierre's Hat/Vellum Rocks
 // dd 4100 //or // dd 0041 // block pet loot lag
 dd 00 //This signifies the end of the list DO NOT REMOVE; add headers above it
 
-01EA7F08: //4 Bytes scan Hook address [1st Result]
+01EAAC98: //4 Bytes scan Hook address [1st Result]
 dd BlockRecvHook
 
 [DISABLE]
-01EA7F08: //Same as above
-dd 0083D560 //Hook address
+01EAAC98: //Same as above
+dd 0083D7C0 //Hook address
 
 dealloc(BlockRecv)
 dealloc(RecvList)
