@@ -1,17 +1,17 @@
-//v174.3
+//v175.1
 //Updated by Su
 [Enable]
-017C642F: //85 F6 75 ? 39 ? 24 ? ? ? ? 74
+017C6F7F: //85 F6 75 ? 39 ? 24 ? ? ? ? 74
 xor esi,esi
 nop
 nop
 
-017C643A: //address of JE below
+017C6F81: //address of JE below
 db EB
 
 [Disable]
-017C642F:
+017C6F7F:
 db 85 F6 75 09
 
-017C643A:
+017C6F81:
 db 74
