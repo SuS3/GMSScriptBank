@@ -1,4 +1,4 @@
-//174.3
+//175.1
 //Updated By Su
 //Credit to Qybah or whoever made this thing
 [ENABLE]
@@ -9,7 +9,7 @@ alloc(StringUser,64)
 alloc(StringPW,64)
 
 StringUser:
-db 'enterUserrname' 00
+db 'enterUsername' 00
 
 StringPW:
 db 'enterPassword' 00
@@ -20,48 +20,48 @@ sub esp,08
 push -01
 push StringUser
 lea ecx,[esp+08]
-call 0047D5C0 // ZXString_char___ZXString_char__char_: 8B 44 24 08 56 8B F1 8B 4C 24 08 50 51 8B CE C7 [First Result]
+call 0047D7C0 // ZXString_char___ZXString_char__char_: 8B 44 24 08 56 8B F1 8B 4C 24 08 50 51 8B CE C7 [First Result]
 push eax
-mov ecx,[0226DAD4] // CUITitle__GetInstance: //A1 ?? ?? ?? ?? 85 C0 ?? ?? 8B ?? ?? 8D ?? ?? 8B ?? ?? FF D0 [2ND Result]
+mov ecx,[02270B64] // CUITitle__GetInstance: //A1 ?? ?? ?? ?? 85 C0 ?? ?? 8B ?? ?? 8D ?? ?? 8B ?? ?? FF D0 [2ND Result]
 mov ecx,[ecx+0000018C] // User Textbox
 lea ecx,[ecx+3C]
-call 0047D640 // ZXString_unsigned_char___operator_: 8B 44 24 04 56 8B F1 3B F0 74 [First Result]
+call 0047D840 // ZXString_unsigned_char___operator_: 8B 44 24 04 56 8B F1 3B F0 74 [First Result]
 
 push -01
 push StringPW
 lea ecx,[esp+0C]
-call 0047D5C0 // ZXString_char___ZXString_char__char_: 8B 44 24 08 56 8B F1 8B 4C 24 08 50 51 8B CE C7 [First Result]
+call 0047D7C0 // ZXString_char___ZXString_char__char_: 8B 44 24 08 56 8B F1 8B 4C 24 08 50 51 8B CE C7 [First Result]
 push eax
-mov ecx,[0226DAD4]
+mov ecx,[02270B64]
 mov ecx,[ecx+00000194] // Password Textbox
 lea ecx,[ecx+3C]
-call 0047D640 // ZXString_unsigned_char___operator_: 8B 44 24 04 56 8B F1 3B F0 74 [First Result]
+call 0047D840 // ZXString_unsigned_char___operator_: 8B 44 24 04 56 8B F1 3B F0 74 [First Result]
 
 push 01
-mov ecx,[0226DAD4]
+mov ecx,[02270B64]
 call 00B106E0 // CUITitle__SetRet: 6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 83 EC 10 53 55 56 57 A1 ? ? ? ? 33 C4 50 8D 44 24 24 64 A3 ? ? ? ? 8B F1 E8 ? ? ? ? 85 C0 0F 84 ? ? ? ? 8B 86 ? ? ? ? 8B 80 ? ? ? ? 33 DB 3B C3 0F 85
 lea ecx,[esp]
-call 0047D300 // ZXString_char____ZXString_char_: 56 8B F1 8B 06 85 C0 74 [Third Result]
+call 0047D500 // ZXString_char____ZXString_char_: 56 8B F1 8B 06 85 C0 74 [Third Result]
 lea ecx,[esp+04]
-call 0047D300 // ZXString_char____ZXString_char_: 56 8B F1 8B 06 85 C0 74 [Third Result]
+call 0047D500 // ZXString_char____ZXString_char_: 56 8B F1 8B 06 85 C0 74 [Third Result]
 
 add esp,08
 ret
 
 1stLogin:
 mov [esp],1stLogin_callback
-jmp 00B0E9F0 // Original Call
+jmp 00B0EBA0 // Original Call
 
 1stLogin_callback:
 call 1stLogin_callback2
-jmp 00ABE746 // Address Below Hook Address
+jmp 00ABE9A6 // Address Below Hook Address
 
-00ABE741:
+00ABE9A1:
 call 1stLogin
 
 [DISABLE]
-00ABE741: // E8 ? ? ? ? C6 ? ? ? ? ? ? ? 8B ? ? ? 8B ? ? ? ? ? 8D
-call 00B0E9F0
+00ABE9A1: // E8 ? ? ? ? C6 ? ? ? ? ? ? ? 8B ? ? ? 8B ? ? ? ? ? 8D
+call 00B0EBA0
 
 dealloc(1stLogin)
 dealloc(StringUser)
