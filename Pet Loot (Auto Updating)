@@ -1,0 +1,50 @@
+/*
+Pet Item Teleport
+Creator Sprux
+Auto-Updating EMS/GMS
+*/
+[enable]
+label(pet_teleport_restore)
+registersymbol(pet_teleport_restore)
+
+alloc(pet_teleport_hook,128)
+label(pet_teleport_return)
+
+aobscan(pet_teleport_aob,8B 50 04 8B 00 ? ? 8D 4D)
+aobscan(vecctrl_set_position_aob,8B ? 24 ? 8B 41 ? 8B 40 ? 56 8D 71 ? 8B 4C 24 10)
+
+pet_teleport_aob:
+pet_teleport_restore:
+jmp pet_teleport_hook
+pet_teleport_return:
+
+pet_teleport_hook:
+push esi
+mov esi,eax
+mov edx,[eax+04]
+mov eax,[eax]
+pushad
+
+lea ecx,[edi+4]
+mov ebx,[edi+4]
+mov ebx,[ebx+20]
+call ebx
+
+push [esi+04]
+push [esi]
+push 00
+mov ecx,eax
+call vecctrl_set_position_aob
+
+popad
+pop esi
+jmp pet_teleport_return
+
+[disable]
+pet_teleport_restore:
+mov edx,[eax+04]
+mov eax,[eax]
+
+unregistersymbol(pet_teleport_restore)
+
+dealloc(pet_teleport_hook)
