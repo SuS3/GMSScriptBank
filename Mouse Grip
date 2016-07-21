@@ -1,5 +1,8 @@
+//v175.1
+//Updated & AOB added by Randomcity2
 //Credits to Outhaven
-define(SkillGrip_Addy,0074F953)
+define(SkillGrip_Addy,0074FAB3) //89 4E ?? 8B 4C 24 ?? 8B 11 8B 42 ?? 6A 00
+//Back up AOB: 74 ?? 83 7C 24 ?? 00 75 ?? 8A 06 3C ?? 74 ?? 3C ?? 74 ?? 3C ?? 75 ?? (mov [esi+01],ecx below)
 define(SkillGrip_RET,SkillGrip_Addy+7)
 define(Skill_ID, #21120024) // Skill_ID
 alloc(SkillGrip_Hook,305)
