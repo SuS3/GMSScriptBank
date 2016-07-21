@@ -1,4 +1,4 @@
-//174.3
+//175.1
 //Updated by Randomcity2
 [Enable]
 alloc(MobFilter1,256)
@@ -32,6 +32,8 @@ dd #8240121 // Self-destructive Chaos
 dd #8240102 // Self-destructive Yellow
 dd #8240101 // Self-destructive Blue
 dd #8240100 // Self-destructive Red
+dd #8930001 // Chaos Vellum's Tail
+dd #8930101 // Vellum's Tail
 dd #9309300 // Finley - Tower of Oz
 dd #9309130 // Infuriated Fairy - Tower of Oz
 //dd #9309109 // Black Flower Golem - Tower of Oz
@@ -44,7 +46,7 @@ dd #9300229
 dd #9500102
 dd 00
 
-00C045FB: //E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
+00C047AB: //E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
 jmp MobFilter1
 
 MobFilter1:
@@ -62,13 +64,13 @@ jmp FilterMobs1
 
 Filter1:
 pop ebx
-jmp 00C047AE //mov ecx,[esp+24] | address RIGHT BELOW last CALL in function
+jmp 00C0495E //mov ecx,[esp+24] | address RIGHT BELOW last CALL in function
 
 Exit1:
 pop ebx
-jmp 00C04600 //mov[esp+18),eax | RIGHT BELOW MobFilter1 00B92A70
+jmp 00C047B0 //mov[esp+18),eax | RIGHT BELOW MobFilter1 00B92A70
 
-00C0483A: //E8 ? ? ? ? 8B ? 85 ? 74 ? 8D ? ? ? 00 00 B9 [2nd Result]
+00C049EA: //E8 ? ? ? ? 8B ? 85 ? 74 ? 8D ? ? ? 00 00 B9 [2nd Result]
 jmp MobFilter2
 
 MobFilter2:
@@ -85,22 +87,22 @@ jmp FilterMobs2
 
 Filter2:
 pop ebx
-call 004D0940 //original op
+call 004D0B40 //original op
 mov esi,eax //original op
-jmp 00C04B16 //address below last CALL in function
+jmp 00C04CC6 //address below last CALL in function
 
 Exit2:
 pop ebx
-call 004D0940 //original op
-jmp 00C0483F //Below MobFilter2 address
+call 004D0B40 //original op
+jmp 00C049EF //Below MobFilter2 address
 
 
 [Disable]
-00C045FB:
+00C047AB:
 call 0042C5C0
 
-00C0483A:
-call 004D0940
+00C049EA:
+call 004D0B40
 
 Dealloc(MobFilter1)
 Dealloc(MobFilter2)
