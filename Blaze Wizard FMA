@@ -1,21 +1,22 @@
-//Updated By SU
+//v175.1
+//Blaze Wizard FMA - Updated by NORBIN
 [ENABLE]
 alloc(find_hit_mob_in_rect_hook,128)
 
 find_hit_mob_in_rect_hook:
-mov eax,[0225FEF4] // CWvsPhysicalSpace2D:
-//B8 0A 00 00 00 EB ? 3D                  (mov ecx,[XXXXXXX])
+mov eax,[02262F84] // CWvsPhysicalSpace2D:
+//B8 0A 00 00 00 EB ? 3D  (mov ecx,[XXXXXXX])
 lea eax,[eax+0C] // Left Wall Offset
 mov [esp+04],eax
-jmp 00BFF720 // Original call (CMobPool::FindHitMobInRect)
+jmp 00BFF8D0 // Original call (CMobPool::FindHitMobInRect)
 
 
-0095C0A9: // Function: CForceAtom_NonTargetAttack::UpdateAttackCollision
+0095C309: // Function: CForceAtom_NonTargetAttack::UpdateAttackCollision
 call find_hit_mob_in_rect_hook
 
 [DISABLE]
 
-0095C0A9: // E8 ? ? ? ? 8B ? 89 ? ? ? 85 ? 0F 8E [First Result]
-call 00BFF720
+0095C309: // E8 ? ? ? ? 8B ? 89 ? ? ? 85 ? 0F 8E [First Result]
+call 00BFF8D0
 
 dealloc(find_hit_mob_in_rect_hook)
