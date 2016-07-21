@@ -1,6 +1,6 @@
-//GMS v174.3
+//GMS v175.1
 //created by mahorori
-//Updated by Qybah
+//Updated by Randomcity2
 [ENABLE]
 alloc(CUIAvatar__SelectCharacter_Hook,1024)
 alloc(StringPIC,40)
@@ -14,35 +14,35 @@ mov ebp,esp
 sub esp,04
 
 push esi
-mov esi,[0226E69C] // CLogin__GetInstance: 8B 3D ? ? ? ? 33 DB 89 7C 24 18 3B FB 0F 84 ? ? ? ? 8B
+mov esi,[0227172C] // CLogin__GetInstance: 8B 3D ? ? ? ? 33 DB 89 7C 24 18 3B FB 0F 84 ? ? ? ? 8B
 mov eax, #0 // Character Slot -1 (first char = 0, second char = 1, etc)
 mov [esi+000004AC],eax //8B ? ? ? ? ? 8B ? ? ? ? ? 50 8B ? E8 ? ? ? ? 8B ? ? C6 [Offset Below
 push -01
 push StringPIC
 lea ecx,[ebp-04]
-call 0047D5C0 // ZXString_char___ZXString_char__char_: 8B 44 24 08 56 8B F1 8B 4C 24 08 50 51 8B CE C7 [First Result]
+call 0047D7C0 // ZXString_char___ZXString_char__char_: 8B 44 24 08 56 8B F1 8B 4C 24 08 50 51 8B CE C7 [First Result]
 push eax
 push 1500
 call Sleep
 lea ecx,[esi+00000600] // 8D 8E ? ? 00 00 E8 ? ? ? ? C7 86 ? ? 00 00 00 00 00 00 C6
-call 0047D640 // ZXString_unsigned_char___operator_: 8B 44 24 04 56 8B F1 3B F0 74 [First Result]
+call 0047D840 // ZXString_unsigned_char___operator_: 8B 44 24 04 56 8B F1 3B F0 74 [First Result]
 lea ecx,[ebp-04]
-call 0047D300 // ZXString_char____ZXString_char_: 56 8B F1 8B 06 85 C0 74 [Third Result]
+call 0047D500 // ZXString_char____ZXString_char_: 56 8B F1 8B 06 85 C0 74 [Third Result]
 pop esi
 
 mov esp,ebp
 pop ebp
 ret 0004
 
-00ACF510:
+00ACF710:
 jmp CUIAvatar__SelectCharacter_Hook
 db 90 90
 
 [DISABLE]
-00ACF510:
+00ACF710:
 //func start 0F 8D ? ? ? ? 8B 86 ? ? ? ? 89 B8
 push -01
-push 01B61620
+push 01B62650
 
 dealloc(CUIAvatar__SelectCharacter_Hook)
 dealloc(StringPIC)
