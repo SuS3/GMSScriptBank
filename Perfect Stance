@@ -6,12 +6,12 @@ xor esi,esi
 nop
 nop
 
-017C6F81: //address of JE below
+017C6F8A: //address of JE below
 db EB
 
 [Disable]
 017C6F7F:
 db 85 F6 75 09
 
-017C6F81:
+017C6F8A:
 db 74
