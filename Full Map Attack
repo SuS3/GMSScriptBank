@@ -1,20 +1,19 @@
-//v174.3
-//General FMA Super Freaking Simplified - Courtesy of ClanTag (In CT We trust <3)
-
+//v175
+//General FMA Courtesy of ClanTag
 [ENABLE]
 
-00BFFB61: //FullMapAttack
+00BFFD11: //FullMapAttack
 db 74 18
 
-019A0B53: //NoLvDmg
+019A1945: //NoLvDmg
 db EB
 
 [DISABLE]
 //75 18 81 BC 24 ?? ?? 00 00 ?? ?? ?? ?? 0F 85 ?? ?? ?? ?? 83 7C ?? ?? 01 75
-00BFFB61: //FullMapAttack
+00BFFD11: //FullMapAttack
 db 75 18
 
 
 // 89 9E ? ? ? ? 8B 0D ? ? ? ? 3B CB 74 ? 53 (je below)
-019A0B53: //NoLvDmg
+019A1945: //NoLvDmg
 db 74
