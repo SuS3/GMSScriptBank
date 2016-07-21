@@ -1,22 +1,21 @@
-//174.3
-//Updated by Su
-//Updated AOBs By Su
+//Updated by Randomcity2
+//v175.1
 [ENABLE]
-007618A6:
+00761A06:
 db 90 90
 
-007618AC:
+00761A0C:
 db 90 90
 
-007618B9:
+00761A19:
 db 90 90
 
 [DISABLE]
-007618A6: // 74 ? 83 ? ? ? 75 ? 8B ? 2B ? ? 81 ? ? ? ? ? 7C ?
+00761A06: // 74 ? 83 ? ? ? 75 ? 8B ? 2B ? ? 81 ? ? ? ? ? 7C ?
 db 74 77
 
-007618AC: // 75 ? 8B ? 2B ? ? 81 ? ? ? ? ? 7C ?
+00761A0C: // jne below
 db 75 71
 
-007618B9: // 7C ? 8B ? ? 3D ? ? ? ? 74 ?
+00761A19: // jnge below
 db 7C 64
