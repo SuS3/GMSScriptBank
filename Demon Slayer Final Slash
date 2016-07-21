@@ -1,9 +1,9 @@
-//174.3
-// Demon Slayer Final Slash Updated by HackBender
+//175.1
+// Demon Slayer Final Slash Updated by Randomcity2
 [ENABLE]
-017BF091:
+017BFBA1:
 push 01D909B0
 
 [DISABLE]
-017BF091: // 68 C4 05 D9 01 8B CE
+017BFBA1: // 68 C4 05 D9 01 8B CE
 push 01D905C4
