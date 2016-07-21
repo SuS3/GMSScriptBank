@@ -1,0 +1,8 @@
+//v175.1 - Updated by Randomcity2
+[ENABLE]
+018D4AEF:
+db 00
+
+[DISABLE]
+018D4AEF: // 02 00 00 00 89 74 24 ?? 89 74 24 ?? 89
+db 02
