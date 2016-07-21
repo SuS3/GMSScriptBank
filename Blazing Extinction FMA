@@ -1,29 +1,26 @@
-//Updated By Su
+//Credits to Sprux for FindHitInMobRect FMA Method
+//v175.1 - Updated by Randomcity2
 [ENABLE]
-
 alloc(find_hit_mob_in_rect_hook,128)
-
 find_hit_mob_in_rect_hook:
 
-mov eax,[0225FEF4] ////CWvsPhysicalSpace2D:
-//B8 0A 00 00 00 EB ? 3D mov ecx,[XXXXXXXX] below
+mov eax,[02262F84] //CWvsPhysicalSpace2D: B8 0A 00 00 00 EB ? 3D mov ecx,[XXXXXXXX] below
 lea eax,[eax+0C] // Left Wall Offset
 mov [esp+04],eax
-jmp 00BFF720 // Original call (CMobPool::FindHitMobInRect)
+jmp 00BFF8D0 // Original call (CMobPool::FindHitMobInRect)
 
-017D38AC:
+017D443C:
 //Function CUser::TryDoingFlameBallAttack
 call find_hit_mob_in_rect_hook
 
-
 //Function //Function CGrendade::Update
-00995307: //FlameBallObject X/Y Check, allows continous attack
+00995565: //FlameBallObject X/Y Check, allows continous attack
+nop
 nop
 
 [disable]
+017D443C: //E8 ? ? ? ? 89 85 ? ? ? ? 8B 8D ? ? ? ? 89 8D ? ? ? ? 83 BD ? ? ? ? 00 75 ? C7 [SECOND RESULT]
+call 00BFF8D0
 
-017D38AC: //E8 ? ? ? ? 89 85 ? ? ? ? 8B 8D ? ? ? ? 89 8D ? ? ? ? 83 BD ? ? ? ? 00 75 ? C7 [SECOND RESULT]
-call 00BFF720
-
-00995307: //0F 84 ? ? ? ? D9 EE 8B ? ? ? DC 9E 8B [test eax,eax above]
+00995565: //0F 84 ? ? ? ? D9 EE 8B ? ? ? DC 9E [test eax,eax above]
 test eax,eax
