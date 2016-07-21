@@ -1,0 +1,9 @@
+//v175.1 Updated by NORBIN
+//ND BE - Credits to OuterHaven
+[ENABLE]
+00995567: //0F 84 ? ? ? ? D9 EE 8B ? ? ? DC 9E ? ? ? ? 8B
+db 0F 85
+
+[DISABLE]
+00995567: //0F 84 ? ? ? ? D9 EE 8B ? ? ? DC 9E ? ? ? ? 8B
+db 0F 84
