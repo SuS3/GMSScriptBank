@@ -1,0 +1,10 @@
+//Updated by Outerhaven
+[ENABLE]
+00BF0660: // No mob reaction, hitmarks or damage
+ret 0068
+
+
+[DISABLE]
+00BF0660: // 81 FD ? ? ? ? 0F 8F ? ? ? ? 74 76 81 FD ? ? ? ? 7F 78 0F 84 ? ? ? ? 81 FD ? ? ? ? 7F 29
+push -01
+push 01B82E18
