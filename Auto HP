@@ -1,5 +1,5 @@
-// Auto HP GMS v174.3
-//By OChemMaster
+// Auto HP GMS v175.1
+//Created by OChemMaster Updated by Randomcity2 just cause its in the bank on Su's fork
 //Mostly Reused Code From Franc[e]sco
 // and foster
 
@@ -23,17 +23,17 @@ define(HPPotKeyType,KEY_NORMAL)
 
 
 // 89 ?? ?? ?? ?? ?? EB ?? 0F AF ?? B8 ?? ?? ?? ?? F7 ?? C1 ?? 05 8B ?? C1 ?? 1F 03 ?? 89 ?? ?? ?? ?? ?? 80
-define(HPLeftAddy,01524721)
+define(HPLeftAddy,01524771)
 
 
 
 // 8B 15 ?? ?? ?? ?? 85 D2 74 23
-define(TSingleton_CWndMan___ms_pInstance,005FB810)
+define(TSingleton_CWndMan___ms_pInstance,005FBA10)
 
 
 
 // ?? ?? ?? ?? ?? 85 ?? 74 ?? 8D ?? ?? 8B ?? 8B ?? FF ?? C2 08 00
-define(CWndMan__OnKey,019100C0)
+define(CWndMan__OnKey,01910D60)
 
 
 
@@ -56,8 +56,8 @@ nop
 
 
 HPPotHook:
-mov [esi+00002A94],ebx
-cmp [esi+00002A94],Threshold
+mov [esi+00002AD8],ebx
+cmp [esi+00002AD8],Threshold
 jg DontFeed
 
 
@@ -120,7 +120,7 @@ ret 000C
 
 [Disable]
 HPLeftAddy:
-mov [esi+00002A94],ebx
+mov [esi+00002AD8],ebx
 
 
 
