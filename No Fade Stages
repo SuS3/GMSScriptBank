@@ -1,15 +1,15 @@
-//174.3
-//no fade stages
+//175.1
+//Updated by Randomcity2
 [ENABLE]
-0197EF12: // CStage::FadeOut
+00E58AF0: // CStage::FadeOut
 ret 0004
 
-0197EF6C: // CStage::FadeIn
+00E58530: // CStage::FadeIn
 ret 0004
 
 [DISABLE]
-0197EF12: // 33 C9 6A 00 E8 ? ? ? ? 8B 35 [Call]
+00E58AF0: // 33 C9 6A 00 E8 ? ? ? ? 8B 35 [Call]
 db 6A FF 68
 
-0197EF6C: // 33 C9 6A 00 E8 ? ? ? ? 8B 44 [Call]
+00E58530: // 33 C9 6A 00 E8 ? ? ? ? 8B 44 [Call]
 db 6A FF 68
