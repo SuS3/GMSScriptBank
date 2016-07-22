@@ -1,0 +1,47 @@
+//175.1
+//Updated by Randomcity2
+[Enable]
+/*
+Kinesis: 142120030 - Mental Tempest (works with SI)
+
+Fire / Poison Mage: 2100010 - Ignite (works with FMA, do not inject if using No delay)
+
+Shade / Eunwol: 25100010 - Fox Spirits (works with FMA & SI)
+                25100002 - Ground Pound (works with SI)
+                25110003 - Shockwave Punch (works with SI)
+
+Blaze Wizard: 12100029 - Ignition (works with SI)
+              12120011 - Blazing Extinction (works with FMA, but not FMA + SI)
+              12121002 - Towering Inferno (works with SI - burns mana stupid fast)
+
+Dual Blade: 4321006 - Flying Assaulter (jump to activate, works with SI)
+            4331000 - Bloody Storm (works with SI)
+            4331006 - Chains of Hell (removes cooldown, works with SI)
+
+Phantom: 24111006 - Rapier Wit Dash & Damage
+
+Xenon: 36110005 - Triangulation (works with SI & FMA)
+       Blade Dance
+       WARNING: DO NOT USE WITH BEAM SPLIME - IT AUTO-BANS
+
+Mechanic: 35121052 - Distortion Bomb (works with SI & FMA, turn down delay if inject)
+
+Beast Tamer: 112001006 - Majestic Trumpet (works with SI & FMA)
+
+Demon Avenger: 31201010 - Demon Strike (works with SI)
+
+Cannoneer: Barrel Bomb
+
+Jett: Blaster Barrage (slight Dps increase)
+
+Zero: Beta- 101000101 - Air Riot (works with SI)
+      Alpha- 101000201 - Shadow Strike (works with SI)
+      Both- 101001100 - Shadow Strike (works with SI)
+*/
+
+0178BF91://Mach GND //8B 95 ?? ?? ?? ?? 89 55 ?? 8B 85 ?? ?? ?? ?? 50 E8 ?? ?? ?? ?? 83 C4 ?? 85 C0 75 ?? 83 7D ?? ?? 75 ?? 8B 8D ?? ?? ?? ?? 8B 11
+db 8A
+
+[Disable]
+0178BF91:
+db 8B
