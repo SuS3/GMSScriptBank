@@ -1,4 +1,4 @@
-//174.3
+//175.1
 //Updated by Randomcity2
 [Enable]
 alloc(macformathook, 512)
@@ -10,21 +10,21 @@ registersymbol(randomhwid)
 CreateThread(initrandomhwid)
 
 // CSystemInfo::Init (does some registry shit which we prolly dont want)
-01A7FA30: // 81 ? ? ? ? ? 33 ? ? 89 ? ? ? ? 89 ? ? ? 89
+01A80A70: // 81 ? ? ? ? ? 33 ? ? 89 ? ? ? ? 89 ? ? ? 89
 db C3 90 90 90 90 90
 
 // CLogin::GetLocalMacAddressWithHDDSerialNo
 // (scroll down to where it pushes the string format specifier and hook the 10th push above)
 // 6A ? 68 ? ? ? ? 64 ? ? ? ? ? ? ? ? ? ? ? E8 ? ? ? ? ? ? ? ? ? ? ? 89 ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? 33 ? ? 8D ? ? ? ? ? ? 64 ? ? ? ? ? 8B ? ? ? ? ? ? 89 ? ? ? ? ? C6
 // or just scan for the hook point directly: ? C1 ? ? 0F ? ? ? 0F ? ? ? ? ? ? ? C1 ? ? 0F
-00AB5FDE:
+00AB623E:
 jmp macformathook
 db 90 90
 
 // const unsigned char * __thiscall CSystemInfo::GetMachineId(void)
 // 8D 41 14 C3
 // (thanks Taku)
-01A7FD00:
+01A80D40:
 lea eax, [randomhwid]
 ret
 
@@ -52,7 +52,7 @@ push eax
 movzx eax, byte ptr [ecx+9]
 push eax
 
-jmp 00AB602C // lea ecx,[esp+40] above the string format specifier push
+jmp 00AB628C // lea ecx,[esp+40] above the string format specifier push
 
 initrandomhwid:
 // init random seed
@@ -75,15 +75,15 @@ jbe inithwidloop
 ret
 
 [Disable]
-01A7FA30:
+01A80A70:
 db 81 EC B8 09 00 00
 
-00AB5FDE:
+00AB623E:
 db 51 C1 EA 10 0F B6 CA
 
-01A7FD00:
+01A80D40:
 db 8D 41 14 C3 90 90 90
 
 dealloc(macformathook)
 dealloc(randomhwid)
-unregistersymbol(randomhwid) 
+unregistersymbol(randomhwid)
