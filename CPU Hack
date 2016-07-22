@@ -15,7 +15,7 @@ db 90 90 90 90 90
 db 90 90 90 90 90
 
 00BF0660: // No mob reaction, hitmarks or damage
-retn 60
+retn 0068
 
 00BB9BB0:
 ret
