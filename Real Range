@@ -1,16 +1,16 @@
 //Credits to Chubbz
-//Updated by Su
-// AoBs updated
+//Updated to v175.1 by Randomcity2
+// AoBs updated by Su
 [ENABLE]
-00E9BB7C: //7B ? DD DA D9 C9 DD ? ? ? D9 C9
+00E9BC3C: //7B ? DD DA D9 C9 DD ? ? ? D9 C9
 db EB
 
-00E9BB9E: //7A ? DD D8 EB ? DD DA D9 C0
+00E9BC5E: //7A ? DD D8 EB ? DD DA D9 C0
 db 90 90
 
 [DISABLE]
-00E9BB7C:
+00E9BC3C:
 db 7B
 
-00E9BB9E:
-jp 00E9BBB8
+00E9BC5E:
+jp 00E9BC78
