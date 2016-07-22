@@ -1,5 +1,5 @@
-// Auto MP GMS v174.3
-//By OChemMaster
+// Auto MP GMS v175.1
+//Created by OChemMaster Updated by Randomcity2 just cause its in the bank in Su's fork
 //This script is less cancer v2
 //Appreciate any help on improving it
 //Mostly Reused Code From Franc[e]sco
@@ -25,17 +25,17 @@ define(MPPotKeyType,KEY_NORMAL)
 
 
 // 89 9E ?? ?? ?? ?? EB ?? 0F AF ?? B8 ?? ?? ?? ?? F7 ?? C1 ?? 05 8B ?? C1 ?? 1F 03 ?? 89 ?? ?? ?? ?? ?? DF 6C ?? ?? DC 0D ?? ?? ?? ??
-define(MPLeftAddy,01524788)
+define(MPLeftAddy,015247D8)
 
 
 
 // 8B 15 ?? ?? ?? ?? 85 D2 74 23
-define(TSingleton_CWndMan___ms_pInstance,005FB810)
+define(TSingleton_CWndMan___ms_pInstance,005FBA10)
 
 
 
 // ?? ?? ?? ?? ?? 85 ?? 74 ?? 8D ?? ?? 8B ?? 8B ?? FF ?? C2 08 00
-define(CWndMan__OnKey,019100C0)
+define(CWndMan__OnKey,01910D60)
 
 
 
@@ -58,8 +58,8 @@ nop
 
 
 MPPotHook:
-mov [esi+00002A98],ebx
-cmp [esi+00002A98],Threshold
+mov [esi+00002ADC],ebx
+cmp [esi+00002ADC],Threshold
 jg DontFeed
 
 
@@ -122,7 +122,7 @@ ret 000C
 
 [Disable]
 MPLeftAddy:
-mov [esi+00002A98],ebx
+mov [esi+00002ADC],ebx
 
 
 
