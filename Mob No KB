@@ -1,8 +1,8 @@
 [ENABLE]
-00BF0B33: // 75 11 8b 4c 24 14 e8 ? ? ? ? 3b d8 7d 04
+00BF0CE3: // 75 11 8b 4c 24 14 e8 ? ? ? ? 3b d8 7d 04
 db EB 0D
 
 
 [DISABLE]
-00BF0B33:
+00BF0CE3:
 db 75 11
