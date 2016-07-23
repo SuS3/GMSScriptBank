@@ -1,10 +1,10 @@
-//174.2
-//Updated by Randomcity2
+//175.1
+//Updated by NORBIN
 [Enable]
-00EB789A:
+00EB7A1A:
 db 00
 
 
 [Disable]
-00EB789A: //01 00 00 00 d8 d1 df e0
+00EB7A1A: //01 00 00 00 d8 d1 df e0
 db 01
