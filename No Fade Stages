@@ -1,13 +1,15 @@
-[enable]
-00E58B42: // CStage::FadeOut 0F 
-db 0F 85
+//175.1
+//Updated by Randomcity2
+[ENABLE]
+00E58AF0: // CStage::FadeOut
+ret 0004
 
-00E5857E: // CStage::FadeIn 
-DB 0F 85
+00E58530: // CStage::FadeIn
+ret 0004
 
-[disable]
-00E58B42: //33 C9 6A 00 E8 ? ? ? ? 8B 35 follow call --> Address is first JE
-db 0F 84
+[DISABLE]
+00E58AF0: // 33 C9 6A 00 E8 ? ? ? ? 8B 35 [Call]
+db 6A FF 68
 
-00E5857E: //33 C9 6A 00 E8 ? ? ? ? 8B 44 follow call --> Address is first JE
-db 0F 84
+00E58530: // 33 C9 6A 00 E8 ? ? ? ? 8B 44 [Call]
+db 6A FF 68
