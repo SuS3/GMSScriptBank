@@ -1,15 +1,16 @@
-//174.3
-//Updated by Su
+//175.1
+//Updated by Randomcity2
 [ENABLE]
-019A72C3:
+019A8123:
 db 90 E9
 
-01A09201:
+01A0A241:
 db 90 E9
 
 [DISABLE]
-019A72C3: // 0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1
+019A8123: // 0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1
 db 0F 85
 
-01A09201: // 0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85
+// 0192214E: addy in v173.1
+01A0A241: // 0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85 [Second Result]
 db 0F 85
