@@ -1,5 +1,5 @@
 //Mob Suspend by AIRRIDE
-// GMS v174.3
+// GMS v175.1 updated by Randomcity2
 [ENABLE]
 alloc(MobControl,256)
 label(Return)
@@ -7,30 +7,30 @@ label(SuspendMob)
 
 MobControl:
 mov ecx,[esi+7E8] // Mob Direction
-call 004C43C0 // E8 ?? ?? ?? ?? BB ?? ?? ?? ?? 85 C0 0F 8F ?? ?? ?? ?? 83 BE ?? ?? ?? ?? ?? 0F 84 ?? ?? ?? ?? 57
+call 004C45C0 // E8 ?? ?? ?? ?? BB ?? ?? ?? ?? 85 C0 0F 8F ?? ?? ?? ?? 83 BE ?? ?? ?? ?? ?? 0F 84 ?? ?? ?? ?? 57
 test eax,eax
 je SuspendMob
 push 00
 mov ecx,[esi+7EC] // Set Delay
-call 004C35B0 // Second Call Below
+call 004C37B0 // Second Call Below
 mov ecx,[esi+7EC]
-call 004C43C0
+call 004C45C0
 jmp Return
 
 SuspendMob:
 push 10
 mov ecx,[esi+7EC] // Set Delay
-call 004C35B0
+call 004C37B0
 mov ecx,[esi+7EC]
-call 004C43C0
+call 004C45C0
 jmp Return
 
-018E02E7:
+018E0F87:
 jmp MobControl
 Return:
 
 [DISABLE]
-018E02E7: // 0F 8F ? ? 00 00 83 BE ? ? 00 00 00 0F 84 [Second Result & Call Above]
-call 004C43C0
+018E0F87: // 0F 8F ? ? 00 00 83 BE ? ? 00 00 00 0F 84 [Second Result & Call Above]
+call 004C45C0
 
 dealloc(MobControl)
