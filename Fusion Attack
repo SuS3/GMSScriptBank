@@ -1,0 +1,35 @@
+//Fusion Attack - Auto updated
+//New aob by DAVHEED?
+// This this will most likely crash / DC you, but a few skills work with it cause nexon forgets old checks in new stuff
+[Enable]
+alloc(hook,512)
+label(return)
+
+label(fusionattack_return)
+registersymbol(fusionattack_return)
+
+aobscan(fusionattack_aob,89 ? ? 40 89 ? ? 1c 8b 84 ? ? 00 00 00 85 c0)
+
+/* CMobPool::FindHitMobInRect */
+fusionattack_aob:
+fusionattack_return:
+jmp hook
+db 90 90 90
+return:
+
+hook:
+mov [ecx+eax*4],esi
+inc eax
+cmp eax,[esp+78]
+jl hook
+mov [esp+1C],eax
+jmp return
+
+[Disable]
+fusionattack_return:
+mov [ecx+eax*4],esi
+inc eax
+mov [esp+1C],eax
+
+unregistersymbol(fusionattack_return)
+dealloc(hook)
