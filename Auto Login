@@ -119,10 +119,3 @@ jmp JumpOne
 Hook:
 call 1stLogin
 
-[DISABLE]
-Hook:
-call OpCode
-
-dealloc(1stLogin)
-dealloc(StringUser)
-dealloc(StringPW)
