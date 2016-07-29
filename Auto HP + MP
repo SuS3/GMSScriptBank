@@ -1,0 +1,98 @@
+//Updated to v175.1 by Randomcity2
+//AutoPot by ClanTag
+//Credits - ShivvTek for updating PressKey + whoever created PressKey.
+[ENABLE]
+Alloc(GiveHealth,256)
+Label(HealthEnd)
+Alloc(HealthVar,4)
+RegisterSymbol(HealthVar)
+Alloc(GiveMana,256)
+Label(ManaEnd)
+Alloc(ManaVar,4)
+RegisterSymbol(ManaVar)
+Alloc(PressKey,256)
+
+define(CTRL,001D0000)
+define(SHIFT,002A0000)
+define(INSERT,01520000)
+define(DEL,01530000)
+define(HOME,01470000)
+define(END,014F0000)
+define(PAGEUP,01490000)
+define(PAGEDOWN,01510000)
+define(ALT,00380000)
+define(Z,002C0000)
+
+
+
+GiveHealth:
+pushad
+mov [esi+00002AD8],ebx
+mov [HealthVar],ebx
+test ebx,ebx
+je HealthEnd
+mov ecx,[022630B8]
+test ecx,ecx
+je HealthEnd
+mov [ecx+58],#20
+cmp [HealthVar],#500 //Change Health Potting Value
+jge HealthEnd
+mov edx, PAGEUP //Change Health Key
+call PressKey
+
+HealthEnd:
+popad
+jmp 01524786
+
+
+GiveMana:
+pushad
+mov [esi+00002ADC],ebx
+mov [ManaVar],ebx
+test ebx,ebx
+je ManaEnd
+mov eax,[022630B8]    //Randomcity2 here ..  .where the hell do I find the update value for that if it needs one ** I'm just gonna guess at 8B ? ? ? ? ? 8B 4A ? 8D ? ? 3B CD 74 ?  in the move at beginning of this mess of code for the first green result
+test eax,eax
+je ManaEnd
+mov [eax+5c],#20
+cmp [ManaVar],#100 //Change Mana Potting Value
+jge ManaEnd
+mov edx, PAGEDOWN //Change Mana Key
+call PressKey
+
+ManaEnd:
+popad
+jmp 015247ED
+
+
+PressKey:
+mov esi,[0225E8D0] //A1 ? ? ? ? 8B ? ? ? ? ? 85 ? 74 ? 8B ? ? 51 83 ? ? 50 E8 ? ? ? ? 98 83 ? ? 3D ? ? ? ? 74 ? 3D ? ? ? ? 74 [in MOV]
+mov ecx,[esi+A4]
+push edx
+push 00
+call 01910D60 //A1 ?? ?? ?? ?? 85 C0 74 ?? 8D 48 ?? 8B 01 8B 00
+ret
+
+01524771:
+jmp GiveHealth
+nop
+
+015247D8:
+jmp GiveMana
+nop
+
+[DISABLE]
+//89 8E ? ? 00 00 80 BE ? ? 00 00 00 {Scroll up till you see it}[GOD DAMN THAT ASSHOLE THAT GAVE ME A HEADACHE LEAVING THIS OUT]
+01524771:
+mov [esi+00002AD8],ebx
+//scroll down from AOB address till you see it
+015247D8:
+mov [esi+00002ADC],ebx
+
+DeAlloc(GiveHealth)
+DeAlloc(HealthVar)
+UnRegisterSymbol(HealthVar)
+DeAlloc(GiveMana
+DeAlloc(ManaVar)
+UnRegisterSymbol(ManaVar)
+DeAlloc(PressKey)
