@@ -1,0 +1,298 @@
+//Kami + Kami Loot by Francesco v175.1
+define(KEY_NORMAL,0)
+define(KEY_EXTENDED,1)
+
+// you can add more virtual key codes by getting them here
+// http://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
+// for letters, the uppercase character is enough
+define(VK_CONTROL,11)
+
+// Kami Setting (optional)
+
+// 1 if you want the autoattack to trigger combos
+// 0 for normal attacks
+define(Kami_HoldAttack,0)
+
+// attack key
+//define(Kami_AttackKey,VK_CONTROL)
+define(Kami_AttackKey,VK_CONTROL)
+
+// KEY_EXTENDED if the attack key is an extended key (such as CTRL, ALT, etc...)
+// for every other key, use KEY_NORMAL
+// NOTE: I dont think this actually matters for maplestory keypresses, but w/e
+define(Kami_AttackKeyType,KEY_EXTENDED)
+
+// loot key
+define(Kami_LootKey,'Z')
+define(Kami_LootKeyType,KEY_NORMAL)
+
+// X, Y offset (you usually wont need to change this)
+define(Kami_RangeX,#0)
+define(Kami_RangeY,#0)
+
+// loot when items > ...
+// Options
+// set to -1 to only loot when monsters run out
+// set to 30 for looting periodically but not when monsters run out
+define(Kami_LootWhen,#999999)
+
+// Adresses and offsets
+
+define(TSingleton_CUserLocal___ms_pInstance,0225E764) // A1 ? ? ? ? 85 C0 75 ? 5F C3 8D 48 [POINTER]
+define(TSingleton_CMobPool___ms_pInstance,02262F90) // 8B 0D ? ? ? ? ? E8 ? ? ? ? 8B ? 85 ? 74 ? 8B ? ? 8B ? ? 8D [POINTER]
+define(TSingleton_CWndMan___ms_pInstance,022630C8) // 8B ? ? ? ? ? C6 ? ? ? E8 ? ? ? ? 8B ? BA ? ? ? ? C6 [POINTER]
+define(CWndMan__OnKey,01910D60) // A1 ? ? ? ? 85 ? 74 ? 8D ? ? 8B ? 8B ? FF ? C2 08 00
+define(GetVectorController,018370D0) // E8 ? ? ? ? 85 C0 74 ? B8 ? ? ? ? 5E  [Before Last Green Result & Function Below]
+define(TeleportFunc,0167DAA0) // 8B ? 24 ? 8B ? ? 8B ? ? ? 8D ? ? 8B ? ? ? ? ? ? FF ? 85 C0 ? ? ? ? ? ? ? ? ? E8 [Second Result]
+define(TSingleton_CDropPool___ms_pInstance,022639DC) // 89 3D ? ? ? ? 8D 4E ? C7 [POINTER]
+define(pUpdateFunc,01FD5F28) // 4-Byte Scan Exact Value UpdateFunc
+define(UpdateFunc,0173C770) // 6A ? 68 ? ? ? ? 64 ? ? ? ? ? 50 83 ? ? 56 A1 ? ? ? ? 33 ? 50 8D ? ? ? 64 ? ? ? ? ? 8B ? ? ? ? ? 85 ? 74 ? 8D ? ? ? 50
+define(UpdateHook_ret,0171FBFA) // 8B ? ? FF ? 8B ? B8 ? ? ? ? F7 ? C1 ? ? 8B ? C1 ? ? 03 ? 83 ? ? 74 ? 81 ? ? ? ? ? 75 ? 80 ? ? ? ? ? ? 74 [mov ecx,eax]
+define(TSingleton_CWvsPhysicalSpace2D___ms_pInstance,02262F84) // B8 0A 00 00 00 EB ? 3D [POINTER] (mov ecx,[XXXXXXX])
+define(pPtInRect,02279D2C) // Above PtInRectHook_ret
+define(PtInRectHook_ret,00761A64) // 85 C0 75 ? 8D ? 24 ? C7 ? 24 ? ? ? ? ? E8 ? ? ? ? 8B
+define(Mob3Offset,1B4) // 83 ? ? ? ? ? ? 0F 84 ? ? ? ? 83 ? ? 39 ? ? ? ? ? 0F 8E ? ? ? ? 68 ? ? ? ? 8D ? ? ? E8 ? ? ? ? 68 ? ? ? ? 8D ? ? ? C7 ? ? ? ? ? ? ? E8 [OFFSET]
+
+//--------------------------------------------------//
+
+[ENABLE]
+alloc(Kami,512)
+label(TeleTopLeft)
+alloc(ItemHook,128)
+alloc(GetMobXY,512)
+alloc(NewTeleportXY,128)
+alloc(PressKey,128)
+alloc(ItemX,4)
+alloc(ItemY,4)
+alloc(HoldAttack,1)
+alloc(IsLooting,1)
+alloc(LootWhen,4)
+label(GetMobXYFalse)
+label(GetMobXYTrue)
+label(TeleportEnd)
+label(NextMob)
+label(Loot)
+label(KamiExit)
+label(NoLoot)
+
+HoldAttack:
+db Kami_HoldAttack
+
+LootWhen:
+dw Kami_LootWhen
+
+IsLooting:
+db 0
+
+GetMobXY:
+push esi
+push edx
+push ebx
+mov esi,[TSingleton_CMobPool___ms_pInstance]
+test esi,esi
+je GetMobXYFalse
+mov edx,[esi+10] // mob count
+test edx,edx
+je GetMobXYFalse
+mov esi,[esi+28] // mob 1
+test esi,esi
+je GetMobXYFalse
+sub esi,10 // mob 1 points to first mob struct + 0x10 for some reason
+
+NextMob:
+mov edx,[esi+14] // mob 2
+test edx,edx
+je GetMobXYFalse
+mov edx,[edx+Mob3Offset] // mob 3
+test edx,edx
+je GetMobXYFalse
+mov edx,[edx+24] // mob 4
+test edx,edx
+je GetMobXYFalse
+mov ebx,[edx+68] // mob invx
+or ebx,[edx+6C] // mob invy
+test ebx,ebx
+jne GetMobXYTrue
+mov esi,[esi+04] // next mob
+test esi,esi
+je GetMobXYFalse
+jmp NextMob
+
+GetMobXYFalse:
+pop ebx
+pop edx
+pop esi
+xor eax,eax
+ret
+
+GetMobXYTrue:
+lea eax,[edx+60] // mob x
+pop ebx
+pop edx
+pop esi
+ret
+
+NewTeleportXY:
+mov esi,[TSingleton_CUserLocal___ms_pInstance]
+lea ecx,[esi+04]
+call GetVectorController
+test eax,eax
+je TeleportEnd
+push ebx
+push edx
+push 00
+mov ecx,eax
+call TeleportFunc
+
+TeleportEnd:
+ret
+
+// PressKey flags and internal stuff
+define(KEY_PRESS,0)
+define(KEY_UP,1)
+define(MAPVK_VK_TO_VSC,0)
+
+// void __stdcall PressKey(uint32_t virtual_key, uint32_t extended_flag, uint32_t transition_state)
+PressKey:
+push ebx // backup
+push edx // backup
+push esi // backup
+push ecx // backup
+
+mov edx, [esp+10+4] // edx = virtual keycode
+mov esi, [esp+10+8] // esi = is extended keycode
+mov ebx, [esp+10+C] // ebx = transition state flag
+mov ecx, edx  // ecx = virtual keycode (will later contain the scancode)
+
+// generate scancode with MapVirtualKeyA(virtual_key, MAPVK_VK_TO_VSC) << 16
+// credits to Shadow and Waty
+push MAPVK_VK_TO_VSC
+push ecx
+call MapVirtualKeyA
+shl eax,#16
+shl esi,#24 // extended flag
+shl ebx,#31 // transition state
+or eax, esi
+or eax, ebx
+mov ecx,eax
+
+push ecx // lparam (keycode)
+push edx // wparam (virtual keycode)
+mov ecx,[TSingleton_CWndMan___ms_pInstance]
+call CWndMan__OnKey
+
+pop ecx // backup
+pop esi // backup
+pop edx // backup
+pop ebx // backup
+ret 000C
+
+Kami:
+cmp dword ptr [esp], UpdateHook_ret
+pushad
+jne KamiExit
+
+mov eax,[TSingleton_CUserLocal___ms_pInstance]
+test eax,eax
+je KamiExit
+call GetMobXY
+test eax,eax
+je Loot
+
+cmp byte ptr [IsLooting], 1
+je Loot
+
+cmp dword ptr [LootWhen], #-1
+je NoLoot
+mov esi,[TSingleton_CDropPool___ms_pInstance]
+mov esi,[esi+14] // item count offset (shouldnt change)
+cmp esi,dword ptr [LootWhen]
+jge Loot
+
+NoLoot:
+mov ebx,[eax+4]
+sub ebx,Kami_RangeY
+mov edx,[eax]
+sub edx,Kami_RangeX
+call NewTeleportXY
+
+push KEY_PRESS  // transition_state
+push Kami_AttackKeyType // extended_flag
+push Kami_AttackKey  // virtual_key
+call PressKey
+
+cmp byte ptr [HoldAttack], 0
+je KamiExit
+
+push KEY_UP  // transition_state
+push Kami_AttackKeyType // extended_flag
+push Kami_AttackKey  // virtual_key
+call PressKey
+
+jmp KamiExit
+
+Loot:
+mov esi,[TSingleton_CDropPool___ms_pInstance]
+mov esi,[esi+14] // item count offset (shouldnt change)
+cmp esi,0
+je TeleTopLeft
+
+mov byte ptr [IsLooting], 1
+
+push KEY_PRESS  // transition_state
+push Kami_LootKeyType // extended_flag
+push Kami_LootKey  // virtual_key
+call PressKey
+
+mov ebx,[ItemY]
+mov edx,[ItemX]
+call NewTeleportXY
+jmp KamiExit
+
+TeleTopLeft:
+mov byte ptr [IsLooting], 0
+mov edx,[TSingleton_CWvsPhysicalSpace2D___ms_pInstance]
+mov edx,[edx+0C] // left offset (shouldnt change)
+mov ebx,[TSingleton_CWvsPhysicalSpace2D___ms_pInstance]
+mov ebx,[ebx+10] // top offset (shouldnt change)
+call NewTeleportXY
+
+KamiExit:
+popad
+jmp UpdateFunc
+
+ItemHook:
+cmp [esp],PtInRectHook_ret
+jne PtInRect
+push eax
+mov eax,[esp+0C]
+mov [ItemX],eax
+mov eax,[esp+10]
+mov [ItemY],eax
+pop eax
+jmp PtInRect
+
+pUpdateFunc:
+dd Kami
+
+pPtInRect:
+dd ItemHook
+
+[DISABLE]
+pUpdateFunc:
+dd UpdateFunc
+
+pPtInRect:
+dd PtInRect
+
+dealloc(Kami)
+dealloc(ItemHook)
+dealloc(GetMobXY)
+dealloc(NewTeleportXY)
+dealloc(PressKey)
+dealloc(TeleTopLeft)
+dealloc(ItemX)
+dealloc(ItemY)
+dealloc(HoldAttack)
+dealloc(IsLooting)
+dealloc(LootWhen)
