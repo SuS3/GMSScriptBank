@@ -1,19 +1,19 @@
-//v175
 //General FMA Courtesy of ClanTag
+//v175.2
 [ENABLE]
 
-00BFFD11: //FullMapAttack
+00BFFDE1: //FullMapAttack
 db 74 18
 
-019A1945: //NoLvDmg
+019A1A95: //NoLvDmg
 db EB
 
 [DISABLE]
 //75 18 81 BC 24 ?? ?? 00 00 ?? ?? ?? ?? 0F 85 ?? ?? ?? ?? 83 7C ?? ?? 01 75
-00BFFD11: //FullMapAttack
+00BFFDE1: //FullMapAttack
 db 75 18
 
 
 // 89 9E ? ? ? ? 8B 0D ? ? ? ? 3B CB 74 ? 53 (je below)
-019A1945: //NoLvDmg
+019A1A95: //NoLvDmg
 db 74
