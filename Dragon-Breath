@@ -1,0 +1,7 @@
+[enable]
+0075E1D2: 
+db 0F 84
+
+[disable]
+0075E1D2: //E8 ? ? ? ? 83 C4 08 83 F8 0A 0F 85 ? ? ? ? FF 15 ? ? ? ? 8B 6C 24 ? 8B C5 [jne below]
+db 0F 85
