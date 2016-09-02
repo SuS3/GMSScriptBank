@@ -1,0 +1,8 @@
+//GMSv175.2
+[enable]
+0087F720: // No Dropping Stones (Vellum)
+ret 0004
+
+[disable]
+0087F720: //7F ? 8B 44 24 ? C7 44 24 ? FF FF FF FF 3B [1ST RESULT] [FUNCTION START]
+db 6A FF 68
