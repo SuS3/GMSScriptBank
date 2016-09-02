@@ -1,9 +1,10 @@
-//175.1
+//View Swears
+//v175.2
 [Enable]
-00EAD65B: //74 ? 80 ? ? 75 ? 0FB6 ? 52
+00EAD72B: //74 ? 80 ? ? 75 ? 0FB6 ? 52
 db 90 90
 
 
 [Disable]
-00EAD65B:
+00EAD72B:
 db 74 27
