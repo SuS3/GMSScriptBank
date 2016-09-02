@@ -1,12 +1,10 @@
-//v175
 //BE Effect Removal Credits to Outerhaven
-//AOBs updated by Su
-[ENABLE]
+//v175.2
+[enable]
 //CFlameBallAttack::UpdateFlameBallAttack
-00953D32: //68 ? ? ? ? 64 ? ? ? ? ? 50 83 ? ? 53 55 56 57 A1 ? ? ? ? 33 ? 50 8D ? ? ? 64 ? ? ? ? ? 8B ? 8B ? ? ? 8B ? 2B ? ? 85 ? 7E ? 8B ? ? 85 ? 74 ? C7 ? ? ? ? ? ? [1 above hook address]
+00953E00:
 ret 0010
 
-[DISABLE]
-00953D32:
-push -01
-push 01B34830
+[disable]
+00953E00: //E8 ? ? ? ? 3B C3 75 ? 39 5E
+db 6A FF 68
