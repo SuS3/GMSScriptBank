@@ -1,0 +1,10 @@
+//v175.2
+define(CMob_OnDie,00BE85D0)//BF 08 00 00 00 C6 ? ? ? 00 00 00 01 66 ? ? ? ? 75 ? 33 C0 66 ? ? ? ? 8B ? ? ? 3B C3 74 [FIRST] [FUNCTION START]
+  
+[enable]
+CMob_OnDie:
+ret 
+
+[disable]
+CMob_OnDie:
+db 6A FF
