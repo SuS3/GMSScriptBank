@@ -1,9 +1,10 @@
-//175.1
+//Crazy Mobs
+//v175.2
 
 [Enable]
-00C5A2C6: //D9 C0 D8 C9 D9 C0
+00C5A396: //D9 C0 D8 C9 D9 C0
 db D9 C1
 
 [Disable]
-00C5A2C6:
+00C5A396:
 db D9 C0
