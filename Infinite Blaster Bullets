@@ -1,0 +1,9 @@
+//GMSv175.2
+//Credits to OuterHaven
+[enable]
+01A026FE: //Infinite Bullets
+db 0F 85
+
+[disable]
+01A026FE: //0F 84 ? ? 00 00 8D 4C 24 ? E8 ? ? ? ? 84 C0 0F 84 ? ? 00 00 68 ? ? ? ? 8D 94 24 ? ? ? ? 52
+db 0f 84
