@@ -1,10 +1,9 @@
-//v175.1
-//Updated by Su
+//Slide & Attack
+//v175.2
 [Enable]
-018EED2B: //74 0B 8B CF E8 ? ? ? ? 85 C0 74 72 81 FB
+018EEE7B: //74 0B 8B CF E8 ? ? ? ? 85 C0 74 72 81 FB
 db 75 0B
 
-
 [Disable]
-018EED2B:
+018EEE7B:
 db 74 0B
