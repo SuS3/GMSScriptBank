@@ -1,16 +1,16 @@
-//175.1
-//Updated by Randomcity2
+//No Crusader Codex
+//v175.2
 [ENABLE]
-019A8123:
+019A8273:
 db 90 E9
 
-01A0A241:
+01A0A3A1:
 db 90 E9
 
 [DISABLE]
-019A8123: // 0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1
+019A8273: // 0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1
 db 0F 85
 
 // 0192214E: addy in v173.1
-01A0A241: // 0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85 [Second Result]
+01A0A3A1: // 0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85 [Second Result]
 db 0F 85
