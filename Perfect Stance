@@ -1,16 +1,23 @@
-//v175.1
-//Updated by Su
+define(H1,017F0B23) //85 F6 75 ? 39 ? 24 ? ? ? ? 74
+define(H2,017F0B2E) //Address of je below HookOne
+
+//v176.1
+
 [Enable]
-017C6F7F: //85 F6 75 ? 39 ? 24 ? ? ? ? 74
+H1:
 xor esi,esi
 nop
 nop
 
-017C6F8A: //address of JE below
+H2:
 db EB
 
 [Disable]
-017C6F7F:
+H1:
+db 85 F6 75 09
+
+H2:
+db 74
 db 85 F6 75 09
 
 017C6F8A:
