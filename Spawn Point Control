@@ -1,35 +1,83 @@
-//GMS v175.1 - Updated by Randomcity2
-//Spawn Point Control by FameGuy / CT
+define(SPC,01819183) // E8 ? ? ? ? 8B 85 ? ? ? ? 8B ? 8B 52 ? 6A ? 50 6A ? 6A ? 83 C3 ? 53 57 6A ? 8B ? FF ? 6A ? 6A
+define(SPCC,018F8710) //Original Call
+
+//GMS v175.2
+
 /*
 Tower of Oz:
-12F ending x = 3732   y =  270
-17F ending x = 1522   y = -240
-22F ending x = 3222   y = -907
+9F ending x = 924     y = 1605
+12F ending x = 3720   y =  270
+17F ending x = 1535   y = -240
+22F ending x = 3226   y = -907
+24F ending x = 313    y = -1658
+33F ending x = -119   y = 450
+44F ending x = 4043   y = -178
 */
-Define(SpawnX,#190) //X Coord
-Define(SpawnY,#381) //Y Coord
-[Enable]
-Alloc(Hook,128)
-label(returnhere)
-label(originalcode)
-label(exit)
+[ENABLE]
+alloc(SpawnPointControl,128)
+label(Ending)
+label(FirstMap)
+label(SecondMap)
+label(ThirdMap)
+label(FourthMap)
+label(FifthMap)
+label(SixthMap)
 
-Hook:
-mov edi,SpawnX
-mov ebx,SpawnY
-originalcode:
-call 018CD3B0 //Original OpCode
+SpawnPointControl:
+mov eax,[022C93BC] // Map Info Base: A1 ? ? ? ? 85 C0 74 ? 8B ? ? ? 00 00 8B ? 89
+mov eax,[eax+147C] // Map ID Offset
+cmp eax,#992009000 // Undersea 9F
+je FirstMap
+cmp eax,#992012000 // Undersea 12F
+je SecondMap
+cmp eax,#992017000 // Undersea 17F
+je ThirdMap
+cmp eax,#992022000 // Undersea 22F
+je FourthMap
+cmp eax,#992024000 // Undersea 24F
+je FifthMap
+cmp eax,#992033000 // Undersea 33F
+je SixthMap
 
-exit:
-jmp returnhere
+FirstMap:
+mov edi,#924 // X
+mov ebx,#1605 // Y
+jmp Ending
 
-017EF1F3:
-jmp Hook
-returnhere:
+SecondMap:
+mov edi,#3720 // X
+mov ebx,#270 // Y
+jmp Ending
 
-[Disable]
-// Back up AOB: 85 C0 7D 0D 3D ? ? ? ? 74 06 50 E8 ? ? ? ? 8D 45 ? 50 8B CE E8 (the call after lea)
-017EF1F3: //E8 ? ? ? ? 8B 85 ? ? ? ? 8B ? 8B 52 ? 6A ? 50 6A ? 6A ? 83 C3 ? 53 57 6A ? 8B ? FF ? 6A ? 6A
-call 018CD3B0
+ThirdMap:
+mov edi,#1535 // X
+mov ebx,#-240 // Y
+jmp Ending
 
-DeAlloc(Hook)
+FourthMap:
+mov edi,#3226 // X
+mov ebx,#-907 // Y
+jmp Ending
+
+FifthMap:
+mov edi,#313 // X
+mov ebx,#-1658 // Y
+jmp Ending
+
+SixthMap:
+mov edi,#-119 // X
+mov ebx,#450 // Y
+jmp Ending
+
+Ending:
+call SPCC // Original opcode
+jmp SPC+5
+
+SPC:
+jmp SpawnPointControl
+
+[DISABLE]
+SPC: // E8 ? ? ? ? 8B 85 ? ? ? ? 8B ? 8B 52 ? 6A ? 50 6A ? 6A ? 83 C3 ? 53 57 6A ? 8B ? FF ? 6A ? 6A
+call SPCC
+
+dealloc(SpawnPointControl)
