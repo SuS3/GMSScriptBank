@@ -1,34 +1,33 @@
-//175.1
-//Credit To Qybah
-//Updated by Randomcity2
+define(SIV,005E1CB4)//E8 ? ? ? ? 8B ? 8B ? ? ? 89 ? 5F 89 ? ? 5E ? ? ? CC CC CC CC CC CC CC 56 8D ? ? ? ? ? 57 8D ? ? E8 ? ? ? ? 8B ? 8B ? E8 ? ? ? ?  8B ? 8B ? ? ? 89 ? 5F 89 ? ? 5E C2 ? ? CC CC CC CC CC CC CC 6A ? 68 ? ? ? ? 64 ? ? ? ? ? 50 83 ? ? 56 57 A1 ? ? ? ? 33 ? 50
+define(SIC,004E94C0)//Original Call of SIV
+define(Char,022C404C)// CUserLocal: 8B 3D ? ? ? ? 8B 40
+define(CHX,1294C)//// Character X Location Offset: 89 8E ? ? ? ? 8B 50 ? 8B 06 89 96 ? ? ? ? 8B 50
+
+//176.1
 [ENABLE]
 alloc(Hook,64)
 
 Hook:
-call 004E7E20// Original Call
+call SIC // Original Call
 mov ecx,eax
 mov eax,[esp+0C]
-//mov edi,[0225E764]// CUserLocal: 8B 3D ? ? ? ? 8B 40
-//mov edi,[edi+12384] // Character X Location Offset: 89 8E ? ? ? ? 8B 50 ? 8B 06 89 96 ? ? ? ? 8B 50
-//add edi,#0 // X
-mov edi, #0 // X - comment this line and uncomment above lines for drop at char location
+mov edi,[Char]// CUserLocal: 8B 3D ? ? ? ? 8B 40
+mov edi,[edi+CHX] // Character X Location Offset: 89 8E ? ? ? ? 8B 50 ? 8B 06 89 96 ? ? ? ? 8B 50
+add edi,#0 // X
 mov [eax],edi
 pop edi
-//mov ecx,[0225E764]
-//mov ecx,[ecx+12384+04]
-//add ecx,#0 // Y
-mov ecx, #0 // Y - comment this line and uncomment above lines for drop at char location
+mov ecx,[Char]
+mov ecx,[ecx+CHX+04]
+add ecx,#0 // Y
 mov [eax+04],ecx
 pop esi
 ret 0004
 
 
-005DBCD4:
+SIV:
 jmp Hook
 
 
 [DISABLE]
-005DBCD4: // E8 ? ? ? ? 8B C8 8B 44 24 ? 89 38 5F 89 48 ? 5E C2 04 00 CC CC CC CC CC CC CC 56 [2nd result]
-call 004E7E20
-
-dealloc(Hook)
+SIV: // E8 ? ? ? ? 8B C8 8B 44 24 ? 89 38 5F 89 48 ? 5E C2 04 00 CC CC CC CC CC CC CC 56 [2nd result]
+call SIC
