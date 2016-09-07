@@ -1,16 +1,18 @@
-//No Crusader Codex
-//v175.2
+define(H1,019D3723)//0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1
+define(H2,01A35501)//0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85
+
+//176.1
+
 [ENABLE]
-019A8273:
+H1:
 db 90 E9
 
-01A0A3A1:
+H2:
 db 90 E9
 
 [DISABLE]
-019A8273: // 0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1
+H1:
 db 0F 85
 
-// 0192214E: addy in v173.1
-01A0A3A1: // 0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85 [Second Result]
+H2:
 db 0F 85
