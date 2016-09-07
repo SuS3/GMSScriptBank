@@ -1,11 +1,12 @@
-//Auto Updating Instant Drop created by NORBIN
-//Original instant drop addy ripped out of Perfect Tubi
-[Enable]
-aobscan(005E8495,0D ? ? ? ? 83 C4 ? E9 ? ? ? ? DD)
+define(ID,00765A15)//0D ? ? ? ? 83 C4 ? E9 ? ? ? ? DD
 
-005E8495:
+//176.1
+[Enable]
+ID:
 DB 25
 
+
 [Disable]
-005E8495:
+ID:
 DB 0D
+
