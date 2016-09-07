@@ -1,20 +1,22 @@
-//Credits to Sprux for FindHitInMobRect FMA Method and OuterHaven
+define(h1,0075FC06)//8B 0D ? ? ? ? 52 E8 ? ? ? ? 8B 3D ? ? ? ? 8B call below
+define(OC,00C14B10)//Original Call of H1
 
+//176.1
 [enable]
 alloc(find_hit_mob_in_rect_hook,128)
 
 find_hit_mob_in_rect_hook:
-mov eax,[02262F84] // CWvsPhysicalSpace2D:
+mov eax,[022C886C] // CWvsPhysicalSpace2D:
 //B8 0A 00 00 00 EB ? 3D                  (mov ecx,[XXXXXXX])
 lea eax,[eax+0C] // Left Wall Offset
 mov [esp+04],eax
-jmp 00BFF9A0 // Original call (CMobPool::FindHitMobInRect)
+jmp OC // Original call (CMobPool::FindHitMobInRect)
 
-007596E6: //CDragon::TryDoingMagicAttack
+h1: //CDragon::TryDoingMagicAttack
 call find_hit_mob_in_rect_hook
 
 [disable]
 dealloc(find_hit_mob_in_rect_hook)
 
-007596E6: //8B 0D ? ? ? ? 52 E8 ? ? ? ? 8B 3D ? ? ? ? 8B call below
-call 00BFF9A0
+h1: //8B 0D ? ? ? ? 52 E8 ? ? ? ? 8B 3D ? ? ? ? 8B call below
+call OC
