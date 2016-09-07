@@ -1,9 +1,10 @@
-//Demon Slayer Final Slash
-//v175.2
+define(H1,017E96F1)//68 C4 05 D9 01 8B CE
+//v176.1
+
 [ENABLE]
-017BFC81:
+H1:
 push 01D909B0
 
 [DISABLE]
-017BFC81: // 68 C4 05 D9 01 8B CE
+H1: // 68 C4 05 D9 01 8B CE
 push 01D905C4
