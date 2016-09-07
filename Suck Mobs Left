@@ -1,0 +1,10 @@
+define(SML,018F8670)// D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 7A ? DD ?
+
+//176.1
+[ENABLE]
+SML:
+db D8 D9
+
+[DISABLE]
+SML:
+db D9 C9
