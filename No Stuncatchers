@@ -1,8 +1,10 @@
-//GMSv175.2
+define(NSC,007B2B20)// 64 A3 00 00 00 00 8B F1 83 7E ? 00 8B 5C 24 ? 74 ? [function start]
+
+//176.1
 [enable]
-007AC5E0: // No Falling Pierre Hats, Gollux Roots, etc
+NSC: // No Falling Pierre Hats, Gollux Roots, etc
 ret 0004
 
 [disable]
-007AC5E0: // 64 A3 00 00 00 00 8B F1 83 7E ? 00 8B 5C 24 ? 74 ? [function start]
+NSC:
 db 6A FF 68
