@@ -1,9 +1,12 @@
-//Slide & Attack
-//v175.2
+define(h1,0191A087) //74 0B 8B CF E8 ? ? ? ? 85 C0 74 72 81 FB
+
+//v176.1
+
 [Enable]
-018EEE7B: //74 0B 8B CF E8 ? ? ? ? 85 C0 74 72 81 FB
+h1:
 db 75 0B
 
+
 [Disable]
-018EEE7B:
+h1:
 db 74 0B
