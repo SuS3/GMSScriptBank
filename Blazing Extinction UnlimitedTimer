@@ -1,8 +1,12 @@
+define(UBET,009A6E5A)//89 86 ? ? ? ? 89 9e ? ? ? ? 89 9e ? ? ? ? e8 ? ? ? ? 83 ? ? 85 c0
+
+//176.1
+
 [enable]
 alloc(SkillTimer,128)
 label(AppearUnlimited)
 
-0099410A:
+UBET:
 jmp SkillTimer
 db 90
 AppearUnlimited:
@@ -12,5 +16,5 @@ mov [esi+000000F8],7FFFFFFF
 jmp AppearUnlimited
 
 [disable]
-0099410A: //89 86 ? ? ? ? 89 9e ? ? ? ? 89 9e ? ? ? ? e8 ? ? ? ? 83 ? ? 85 c0
+UBET:
 mov [esi+000000F8],eax
