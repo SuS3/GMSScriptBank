@@ -1,0 +1,10 @@
+define(SMR,018F864B) // D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 75 ? DD ?
+
+//176.1
+[ENABLE]
+SMR:
+db D8 D9
+
+[DISABLE]
+SMR:
+db D9 C9
