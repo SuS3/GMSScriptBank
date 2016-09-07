@@ -1,9 +1,11 @@
-//Reactor DEM
-//v175.2
+define(RD,00ECE6FA)//01 ? 00 ? D8 D1 DF E0 F6 ? ? 7A ?
+
+//176.1
+
 [Enable]
-00EB7AEA:
+RD:
 db 00
 
 [Disable]
-00EB7AEA: //01 00 00 00 D8 D1 DF E0
+RD:
 db 01
