@@ -1,16 +1,18 @@
-//Real Range Credits to Chubbz
-//AOBs updated by Su
-//v175.2
+define(h1,00EB275C)//7B ? DD DA D9 C9 DD ? ? ? D9 C9
+define(h2,00EB277E)//7A ? DD D8 EB ? DD DA D9 C0
+
+
+//176.1
 [ENABLE]
-00E9BD0C: //7B ? DD DA D9 C9 DD ? ? ? D9 C9
+h1:
 db EB
 
-00E9BD2E: //7A ? DD D8 EB ? DD DA D9 C0
+h2:
 db 90 90
 
 [DISABLE]
-00E9BD0C:
+h1:
 db 7B
 
-00E9BD2E:
-jp 00E9BC78
+h2:
+jp 00EB2798
