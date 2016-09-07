@@ -1,19 +1,20 @@
+define(FMA,00C14F51)//75 18 81 BC 24 ?? ?? 00 00 ?? ?? ?? ?? 0F 85 ?? ?? ?? ?? 83 7C ?? ?? 01 75
+define(NLD,019CCFB3)// 89 9E ? ? ? ? 8B 0D ? ? ? ? 3B CB 74 ? 53 (je below)
+
+//v176.1
 //General FMA Courtesy of ClanTag
-//v175.2
 [ENABLE]
 
-00BFFDE1: //FullMapAttack
-db 73
+FMA: //FullMapAttack
+db 74 18
 
-019A1AA3: //NoLvDmg
+NLD: //NoLvDmg
 db EB
 
 [DISABLE]
-//E8 ? ? ? ? 83 C4 ? 85 C0 75 ? 81 BC 24 ? ? ? ? ? ? ? ? 0F 85 ? ? ? ? 83 [jne below]
-00BFFDE1: //FullMapAttack
-db 75 
+FMA: //FullMapAttack
+db 75 18
 
 
-//89 9E ? ? ? ? 8B 0D ? ? ? ? 3B CB 74 ? 53 [je below]
-019A1AA3: //NoLvDmg
+NLD: //NoLvDmg
 db 74
