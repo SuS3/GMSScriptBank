@@ -1,5 +1,6 @@
-//175.1
-//Updated by Su
+define(H1,00844E10)//8B ? 24 ? 3D ? ? ? ? 0F 8F ? ? ? ? 0F 84 ? ? ? ? 8D
+define(JG,00844E19)//Address of JG below hook address
+//176.1
 [ENABLE]
 alloc(BlockRecvHook,256)
 label(RecvCheckLoop)
@@ -7,9 +8,6 @@ label(BlockRecv)
 label(End)
 
 alloc(RecvList,512)
-
-//Hook address: 0083D560
-//8B ? 24 ? 3D ? ? ? ? 0F 8F ? ? ? ? 0F 84 ? ? ? ? 8D
 
 BlockRecvHook:
 mov eax,[esp+04] //Original Opcode @ Hook address
@@ -30,8 +28,8 @@ xor eax,eax
 
 End:
 pop edx
-cmp eax,00000422 //Opcode below Hook address
-jmp 0083D7C9 //Address of jg
+cmp eax,00000425 //Opcode below Hook address
+jmp JG
 
 RecvList:
 dd 01E6 //Block Pierre's Hat/Vellum Rocks
@@ -39,12 +37,12 @@ dd 01E6 //Block Pierre's Hat/Vellum Rocks
 // dd 4100 //or // dd 0041 // block pet loot lag
 dd 00 //This signifies the end of the list DO NOT REMOVE; add headers above it
 
-01EAAC98: //4 Bytes scan Hook address [1st Result]
+01F04800: //4 Bytes scan Hook address [1st Result]
 dd BlockRecvHook
 
 [DISABLE]
-01EAAC98: //Same as above
-dd 0083D7C0 //Hook address
+01F04800: //Same as above
+dd H1 //Hook address
 
 dealloc(BlockRecv)
 dealloc(RecvList)
