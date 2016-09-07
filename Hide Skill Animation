@@ -1,9 +1,9 @@
-//Credits to the Bae OuterHaven
+define(CMob_ShowAffectedSkill,00BF0D4A) //81 E7 ? ? ? ? 89 7D ? C7 45 64 ? ? ? ? 89 [FUNCTION START]
+define(CMob_ShowHitEffect,00BC69E4)//05 10 27 00 00 3b [FUNCTION START]
+define(CUser_ShowSkillEffect,01710CF1) // 74 ? 8b 45 ? C7 ? ? FF FF FF FF 3B ? 0F 84 [SECOND RESULT] [FUNCTION START]
 
-define(CMob_ShowAffectedSkill,00BDC2C0) //81 E7 ? ? ? ? 89 7D ? C7 45 64 ? ? ? ? 89 [FUNCTION START]
-define(CMob_ShowHitEffect,00BB24D0)//05 10 27 00 00 3b [FUNCTION START]
-define(CUser_ShowSkillEffect,016ECDE0) // 74 ? 8b 45 ? C7 ? ? FF FF FF FF 3B ? 0F 84 [SECOND RESULT] [FUNCTION START]
 
+//176.1
 [enable]
 CMob_ShowAffectedSkill:
 ret 0004
