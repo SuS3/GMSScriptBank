@@ -1,5 +1,14 @@
-//175.1
-//Updated by Randomcity2
+define(h1,00C199EB)//E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
+define(call1,0042CD90)//Original Call of h1 address
+define(h2,00C19B9E)//mov ecx,[esp+24] | address all the way below h1 (scroll down until you see esp +24)
+define(h3,00C199F0)//mov [esp+18],eax address right below h1
+define(1h,00C19C2A)//E8 ? ? ? ? 8B ? 85 ? 74 ? 8D ? ? ? ? ? B9 ? ? ? ? E8 ? ? ? ? 8B ? 89 ? ? ? ? ? E8 ? ? ? ? 84 ? 74 ? 8D ? ? ? ? ? E8 ? ? ? ? 8B ? ? ? ? ? 57 E8 ? ? ? ? 8B ? ? ? 51 57 8B ? E8? ? ? ? E9 ? ? ? ? 55 E8 ? ? ? ? 50 E8 ? ? ? ? 8B ? 83 ? ? 85 ? 0F 84 ? ? ? ? 8D ? ?
+define(call2,004D21E0)//Original Call of 1h address
+define(2h,00C19C2F)//Address below 1h
+define(3h,00C19F06)//Address below the last call for 1h
+
+
+//176.1
 [Enable]
 alloc(MobFilter1,256)
 Label(Filter1)
@@ -32,8 +41,6 @@ dd #8240121 // Self-destructive Chaos
 dd #8240102 // Self-destructive Yellow
 dd #8240101 // Self-destructive Blue
 dd #8240100 // Self-destructive Red
-dd #8930001 // Chaos Vellum's Tail
-dd #8930101 // Vellum's Tail
 dd #9309300 // Finley - Tower of Oz
 dd #9309130 // Infuriated Fairy - Tower of Oz
 //dd #9309109 // Black Flower Golem - Tower of Oz
@@ -44,13 +51,20 @@ dd #100004
 dd #9100011
 dd #9300229
 dd #9500102
+dd #8930001
+dd #8930101
+dd #2600223 //Copper Drake
+dd #2600224 //Drake
+dd #5130100 //Drake
+dd #4130100 //Copper Drake
+
 dd 00
 
-00C047AB: //E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
+h1: //E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
 jmp MobFilter1
 
 MobFilter1:
-call 0042C5C0 //original op
+call call1 //original call of h1 address
 push ebx
 mov ebx,MobList
 
@@ -64,13 +78,13 @@ jmp FilterMobs1
 
 Filter1:
 pop ebx
-jmp 00C0495E //mov ecx,[esp+24] | address RIGHT BELOW last CALL in function
+jmp h2
 
 Exit1:
 pop ebx
-jmp 00C047B0 //mov[esp+18),eax | RIGHT BELOW MobFilter1 00B92A70
+jmp h3
 
-00C049EA: //E8 ? ? ? ? 8B ? 85 ? 74 ? 8D ? ? ? 00 00 B9 [2nd Result]
+1h: //E8 ? ? ? ? 8B ? 85 ? 74 ? 8D ? ? ? 00 00 B9 [2nd Result]
 jmp MobFilter2
 
 MobFilter2:
@@ -87,22 +101,22 @@ jmp FilterMobs2
 
 Filter2:
 pop ebx
-call 004D0B40 //original op
-mov esi,eax //original op
-jmp 00C04CC6 //address below last CALL in function
+call call2 //original call of 1h
+mov esi,eax //original opcode below 1h
+jmp 3h //address below last CALL in function
 
 Exit2:
 pop ebx
-call 004D0B40 //original op
-jmp 00C049EF //Below MobFilter2 address
+call call2 //original op
+jmp 2h //Below MobFilter2 address
 
 
 [Disable]
-00C047AB:
-call 0042C5C0
+h1:
+call call1
 
-00C049EA:
-call 004D0B40
+1h:
+call call2
 
 Dealloc(MobFilter1)
 Dealloc(MobFilter2)
