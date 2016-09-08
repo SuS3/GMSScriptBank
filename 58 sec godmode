@@ -1,4 +1,4 @@
-//Auto Updating 58 Sec. Godmode
+//Auto Updating 58 Sec. Godmode.
 [enable]
 alloc(GodmodeHook,512)
 label(Exit)
