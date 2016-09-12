@@ -1,11 +1,15 @@
-define(RD,00ECE6FA)//01 ? 00 ? D8 D1 DF E0 F6 ? ? 7A ?
+//Auto Updating Reactor DEM
+[enable]
+label(Reactor_DEM)
+registersymbol(Reactor_DEM)
+aobscan(ReactorDEM,74 ? 83 7D ? ? 74 ? 8B 8D ? ? ? ? 81 C1 ? ? ? ? E8 ? ? ? ? 8B F0)
 
-//176.1
+ReactorDEM:
+Reactor_DEM:
+db 90 90
 
-[Enable]
-RD:
-db 00
+[disable]
+Reactor_DEM:
+db 74 73
 
-[Disable]
-RD:
-db 01
+unregistersymbol(Reactor_DEM)
