@@ -1,0 +1,47 @@
+[Enable]
+Alloc(Hook, 128)
+Alloc(People, 4)
+Alloc(Channel, 4)
+
+Label(Return)
+Label(ChangeChannel)
+Label(End)
+
+Channel:
+dd #5 // 0 Indexed
+
+People:
+dd #0
+
+0083B780: // CField::Update()
+jmp Hook
+db 90 90
+Return:
+
+Hook:
+push ecx
+mov ecx, [022C8874] // CUserPool
+mov ecx, [ecx+18] // People Count
+cmp ecx, [People]
+jae ChangeChannel
+jmp End
+
+ChangeChannel:
+push [Channel] // channel
+call 004BD2E0 // get_field()()
+mov ecx,eax
+call 0080B1A0 // CField::SendTransferChannelRequest
+
+End:
+pop ecx
+push -01
+push 01B628B8
+jmp Return
+
+[Disable]
+DeAlloc(Hook)
+DeAlloc(People)
+
+0083B780:
+push -01
+push 01B628B8
