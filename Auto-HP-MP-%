@@ -1,16 +1,7 @@
-//GMS v175.1
-//Percentage Auto_HP_MP
-//Credit to DAVHEED
-//convert and update by ngnam87
-[enable]
-define(CWvsContext__OnKey,01910D60) //A1 ?? ?? ?? ?? 85 C0 74 ?? 8D 48 ?? 8B 01 8B 00
-define(TSingleton_CWndMan___ms_pInstance,022630C8) //8B ? ? ? ? ? C6 ? ? ? E8 ? ? ? ? 8B ? BA ? ? ? ? C6 [POINTER]
-
-alloc(hook_hp, 128)
-alloc(hook_mp, 128)
-alloc(key_press,128)
-label(return_hp)
-label(return_mp)
+//v176.1
+//updated by ngnam87
+define(CWvsContext__OnKey,0193C310) //A1 ?? ?? ?? ?? 85 C0 74 ?? 8D 48 ?? 8B 01 8B 00
+define(TSingleton_CWndMan___ms_pInstance,022C89B0) //00B3C62B: 8B ? ? ? ? ? C6 ? ? ? E8 ? ? ? ? 8B ? BA ? ? ? ? C6
 
 define(CTRL,001D0000)
 define(SHIFT,002A0000)
@@ -22,13 +13,22 @@ define(PAGEUP,01490000)
 define(PAGEDOWN,01510000)
 define(ALT,00380000)
 
-0152475E:
+[enable]
+alloc(hook_hp, 128)
+alloc(hook_mp, 128)
+alloc(key_press,128)
+label(return_normal_hp)
+label(return_normal_mp)
+label(return_hp)
+label(return_mp)
+
+0154150E:
 jmp hook_hp
 db 90 90 90 90 90 90 90
 return_hp:
 
 hook_hp:
-cmp eax, #90 //% To hp on
+cmp eax, #arg1 //% To hp on
 jnl return_normal_hp
 pushad
 mov eax,PAGEUP
@@ -37,18 +37,18 @@ popad
 
 return_normal_hp:
 cmp eax,ecx
-jnl 01524779
+jnl 01541529
 cmp [esi+00002AD8],ebx
-jle 01524771
+jle 01541521
 jmp return_hp
 
-015247C5:
+01541575:
 jmp hook_mp
 db 90 90 90 90 90 90 90
 return_mp:
 
 hook_mp:
-cmp eax, #90 //% To mp on
+cmp eax, #arg2 //% To mp on
 jnl return_normal_mp
 pushad
 mov eax,PAGEDOWN
@@ -57,9 +57,9 @@ popad
 
 return_normal_mp:
 cmp eax,ecx
-jnl 015247E0
+jnl 01541590
 cmp [esi+00002ADC],ebx
-jle 015247D8
+jle 01541588
 jmp return_mp
 
 key_press:
@@ -71,17 +71,18 @@ call CWvsContext__OnKey
 ret
 
 [disable]
-0152475E: //CUI_StatusBar: 7D ? 39 ? ? ? 00 00 7E ? 8B CE - up to cmp
+0154150E: //CUI_StatusBar: 7D ? 39 ? ? ? 00 00 7E ? 8B CE - up to cmp
 cmp eax,ecx
-jnl 01524779
+jnl 01541529
 cmp [esi+00002AD8],ebx
-jle 01524771
+jle 01541521
 
-015247C5: //7D ? 39 ? ? ? 00 00 7E ? 8B CE - scroll to mp part (2nd)
+01541575: //7D ? 39 ? ? ? 00 00 7E ? 8B CE - scroll down to mp
 cmp eax,ecx
-jnl 015247E0
+jnl 01541590
 cmp [esi+00002ADC],ebx
-jle 015247D8
+jle 01541588
 
+dealloc(hook_hp)
 dealloc(hook_mp)
 dealloc(key_press)
