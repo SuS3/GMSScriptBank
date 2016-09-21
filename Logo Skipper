@@ -1,10 +1,12 @@
-define(LS,00B31C09)//74 19 2B F8 81 FF DC 05 00 00 0F 86 ?? ?? 00 00 5F 88 5E ?? C6 46 ?? 00 5E 5B C3
+aobscan(00B31C09,74 19 2B F8 81 FF DC 05 00 00 0F 86 ?? ?? 00 00 5F 88 5E ?? C6 46 ?? 00 5E 5B C3)
+
 //176.1
+
 [Enable]
-LS:
+00B31C09:
 db 75
 
 
 [Disable]
-LS:
+00B31C09:
 db 74
