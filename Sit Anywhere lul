@@ -1,0 +1,12 @@
+aobscan(0175FA83,74 ? 8B ? ? ? 83 ? ? E8 ? ? ? ? 85 ? 74 ? 8B ? ? ? ? ?)
+
+//Sit Anywhere
+//v176.2
+
+[enable]
+0175FA83:
+db 75
+
+[disable]
+0175FA83:
+db 74
