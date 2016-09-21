@@ -1,10 +1,10 @@
-define(SMR,018F864B) // D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 75 ? DD ?
+aobscan(018F86AB,D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 75 ? DD ?)
 
-//176.1
+//176.2
 [ENABLE]
-SMR:
+018F86AB:
 db D8 D9
 
 [DISABLE]
-SMR:
+018F86AB:
 db D9 C9
