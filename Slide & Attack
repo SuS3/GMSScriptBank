@@ -1,12 +1,12 @@
-define(h1,0191A087) //74 0B 8B CF E8 ? ? ? ? 85 C0 74 72 81 FB
+aobscan(0191A0E7,74 0B 8B CF E8 ? ? ? ? 85 C0 74 72 81 FB)
 
-//v176.1
+//v176.2
 
 [Enable]
-h1:
+0191A0E7:
 db 75 0B
 
 
 [Disable]
-h1:
+0191A0E7:
 db 74 0B
