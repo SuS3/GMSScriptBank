@@ -1,11 +1,13 @@
-define(h1,00EC42FB)//74 ? 80 ? ? 75 ? 0FB6 ? 52
+aobscan(00EC42FB,74 ? 80 ? ? 75 ? 0FB6 ? 52)
 
+//Self Updating
 //176.2
+
 [Enable]
-h1:
+00EC42FB:
 db 90 90
 
 
 [Disable]
-h1:
+00EC42FB:
 db 74 27
