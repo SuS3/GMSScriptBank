@@ -1,12 +1,13 @@
-define(ID,00765A15)//0D ? ? ? ? 83 C4 ? E9 ? ? ? ? DD
+aobscan(00765A15,0D ? ? ? ? 83 C4 ? E9 ? ? ? ? DD)
 
-//176.1
+//176.2
+
 [Enable]
-ID:
+00765A15:
 DB 25
 
 
 [Disable]
-ID:
+00765A15:
 DB 0D
 
