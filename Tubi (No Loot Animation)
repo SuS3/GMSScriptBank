@@ -1,6 +1,8 @@
-define(RLA,0051779A)//81 ? ? ? 00 00 0F 8D ? ? 00 00 85 ? 0F 84  [1st result]
-define(TUB,01981628)//8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50
-//176.1
+aobscan(0051779A,81 ? ? ? 00 00 0F 8D ? ? 00 00 85 ? 0F 84 ? ? ? ? 81 ? ? ? ? ? BF ? ? ? ? 7E ? B8 ? ? ? ? 2B ?)
+aobscan(01981628,8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50)
+
+//176.2
+
 [ENABLE]
 alloc(Tubi,64)
 label(Ret)
@@ -10,19 +12,19 @@ mov eax, 0
 push esi
 jmp Ret
 
-TUB:
+01981628:
 jmp Tubi
 Ret:
 
-RLA: // Remove loot animation
+0051779A: // Remove loot animation
 db 81 FE 00 00 00 00
 
 [DISABLE]
-TUB: // FUNCTION START (mov eax,[esp+04]): 8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50
+01981628: // FUNCTION START (mov eax,[esp+04]): 8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50
 mov eax,[esp+04]
 push esi
 
-RLA:
+0051779A:
 db 81 FE BC 02 00 00
 
 dealloc(Tubi)
