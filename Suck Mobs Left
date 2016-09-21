@@ -1,10 +1,10 @@
-define(SML,018F8670)// D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 7A ? DD ?
+aobscan(018F86D0,D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 7A ? DD ?)
 
-//176.1
+//176.2
 [ENABLE]
-SML:
+018F86D0:
 db D8 D9
 
 [DISABLE]
-SML:
+018F86D0:
 db D9 C9
