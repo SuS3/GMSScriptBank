@@ -1,15 +1,14 @@
-//Credits to DAVHEED for function
-//GMSv175
+//Credits to DAVHEED for function GMSv176.2
 
 [enable]
 alloc(ClearFieldUI,128)
 
-00E58AE1:
+00E6F261:
 jmp ClearFieldUI
 
 ClearFieldUI:
-mov ecx,[0225E8D0] //Above or Below the AOB below
-call 019A1EC0 //56 8B F1 8B 0D ? ? ? ? E8 ? ? ? ? A1 ? ? ? ? C7 80 ? ? ? ? 00 00 00 00 Call below
+mov ecx,[022C41B8] //Above or Below the AOB below
+call 019CD580 //56 8B F1 8B 0D ? ? ? ? E8 ? ? ? ? A1 ? ? ? ? C7 80 ? ? ? ? 00 00 00 00 FOLLOW CALL below
 
 pop ecx
 pop edi
@@ -22,7 +21,7 @@ ret 0004
 [disable]
 dealloc(ClearFieldUI)
 
-00E58AE1: //74 ? 89 44 24 ? 3B C5 74 ? 80 B8 ? ? ? ? 00 74 ? C6 80 ? ? ? ? 00 C6 80 ? ? ? ? 01 [END OF FUNCTION/ASSEMBLY SCAN POP BELOW]
+00E6F261: //74 ? 89 44 24 ? 3B C5 74 ? 80 B8 ? ? ? ? 00 74 ? C6 80 ? ? ? ? 00 C6 80 ? ? ? ? 01 [END OF FUNCTION/ASSEMBLY SCAN POP BELOW]
 //FF 15 ? ? ? ? 8B 8C 24 ? 00 00 00 64 89 0D 00 00 00 00 59 5F 5E 5D 5B 81 C4 88 00 00 00 C2 04 00 [1ST RESULT] ADDRESS BELOW
 pop ecx
 pop edi
