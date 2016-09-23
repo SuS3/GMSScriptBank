@@ -1,9 +1,9 @@
-define(H1,019D3723)//0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1
-define(H2,01A35501)//0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85
-
-//176.1
-
 [ENABLE]
+aobscan(H1,0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1)
+aobscan(H2,0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85)
+registersymbol(H1)
+registersymbol(H2)
+
 H1:
 db 90 E9
 
@@ -11,6 +11,9 @@ H2:
 db 90 E9
 
 [DISABLE]
+unregistersymbol(H1)
+unregistersymbol(H2)
+
 H1:
 db 0F 85
 
