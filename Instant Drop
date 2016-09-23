@@ -1,13 +1,15 @@
-aobscan(00765A15,0D ? ? ? ? 83 C4 ? E9 ? ? ? ? DD)
-
-//176.2
 
 [Enable]
-00765A15:
+aobscan(ID,0D ? ? ? ? 83 C4 ? E9 ? ? ? ? DD)
+registersymbol(ID)
+
+ID:
 DB 25
 
 
 [Disable]
-00765A15:
+unregistersymbol(ID)
+
+ID:
 DB 0D
 
