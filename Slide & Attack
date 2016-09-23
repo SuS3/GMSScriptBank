@@ -1,12 +1,15 @@
-aobscan(0191A0E7,74 0B 8B CF E8 ? ? ? ? 85 C0 74 72 81 FB)
-
 //v176.2
 
 [Enable]
-0191A0E7:
+aobscan(SNA,74 0B 8B CF E8 ? ? ? ? 85 C0 74 72 81 FB)
+registersymbol(SNA)
+
+SNA:
 db 75 0B
 
 
 [Disable]
-0191A0E7:
+unregistersymbol(SNA)
+
+SNA:
 db 74 0B
