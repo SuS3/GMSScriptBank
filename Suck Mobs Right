@@ -1,10 +1,15 @@
-aobscan(018F86AB,D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 75 ? DD ?)
+
 
 //176.2
 [ENABLE]
-018F86AB:
+aobscan(SUB,D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 75 ? DD ?)
+registersymbol(SUB)
+
+SUB:
 db D8 D9
 
 [DISABLE]
-018F86AB:
+unregistersymbol(SUB)
+
+SUB:
 db D9 C9
