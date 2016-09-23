@@ -1,9 +1,10 @@
-aobscan(0051779A,81 ? ? ? 00 00 0F 8D ? ? 00 00 85 ? 0F 84 ? ? ? ? 81 ? ? ? ? ? BF ? ? ? ? 7E ? B8 ? ? ? ? 2B ?)
-aobscan(01981628,8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50)
-
 //176.2
 
 [ENABLE]
+aobscan(Tub,81 ? ? ? 00 00 0F 8D ? ? 00 00 85 ? 0F 84 ? ? ? ? 81 ? ? ? ? ? BF ? ? ? ? 7E ? B8 ? ? ? ? 2B ?)
+aobscan(LootA,8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50)
+registersymbol(Tub)
+registersymbol(LootA)
 alloc(Tubi,64)
 label(Ret)
 
@@ -12,19 +13,22 @@ mov eax, 0
 push esi
 jmp Ret
 
-01981628:
+Tub:
 jmp Tubi
 Ret:
 
-0051779A: // Remove loot animation
+LootA: // Remove loot animation
 db 81 FE 00 00 00 00
 
 [DISABLE]
-01981628: // FUNCTION START (mov eax,[esp+04]): 8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50
+unregistersymbol(Tubi)
+unregistersymbol(LootA)
+
+Tub: // FUNCTION START (mov eax,[esp+04]): 8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50
 mov eax,[esp+04]
 push esi
 
-0051779A:
+LootA:
 db 81 FE BC 02 00 00
 
 dealloc(Tubi)
