@@ -1,10 +1,12 @@
-define(CMob_ShowAffectedSkill,00BF0D4A) //81 E7 ? ? ? ? 89 7D ? C7 45 64 ? ? ? ? 89 [FUNCTION START]
-define(CMob_ShowHitEffect,00BC69E4)//05 10 27 00 00 3b [FUNCTION START]
-define(CUser_ShowSkillEffect,01710CF1) // 74 ? 8b 45 ? C7 ? ? FF FF FF FF 3B ? 0F 84 [SECOND RESULT] [FUNCTION START]
 
-
-//176.1
 [enable]
+aobscan(CMob_ShowAffectedSkill,81 E7 ? ? ? ? 89 7D ? C7 45 64 ? ? ? ? 89)
+aobscan(CMob_ShowHitEffect,05 ? ? ? ? 3B ? 7E ? 8B ? E8 ? ? ? ? 8B ? 57 8B ? E8 ? ? ? ? 8B ? 8B ? ? 8B ? FF ? 8B ? 8B ? ? 57)
+aobscan(CUser_ShowSkillEffect,74 ? 8B ? ? C7 ? ? ? ? ? ? 3B ? 0F 84 ? ? ? ? 8B ? 8B ? ? 50 FF ? E9 ? ? ? ? 8B ? ? 3B ? 74 ? 8B ? E8 ? ? ? ? 85 ?)
+registersymbol(CMob_ShowAffectedSkill)
+registersymbol(CMob_ShowHitEffect)
+registersymbol(CUser_ShowSkillEffect)
+
 CMob_ShowAffectedSkill:
 ret 0004
 
@@ -15,6 +17,10 @@ CUser_ShowSkillEffect:
 ret 0038
 
 [disable]
+unregistersymbol(CMob_ShowAffectedSkill)
+unregistersymbol(CMob_ShowHitEffect)
+unregistersymbol(CUser_ShowSkillEffect)
+
 CMob_ShowAffectedSkill:
 db 55 8D 6C 24 8C
 
