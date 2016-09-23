@@ -1,12 +1,15 @@
-define(H1,00ECE6FA)//01 00 00 00 d8 d1 df e0
 
-//176.1
 //Perfect Stance is better ;)
 [Enable]
+aobscan(H1,01 ? 00 ? D8 D1 DF E0 F6 ? ? 7A ? DC ? ? ? ? ? DF E0)
+registersymbol(H1)
+
 H1:
 db 00
 
 
 [Disable]
+unregistersymbol(H1)
+
 H1: //01 ? 00 ? D8 D1 DF E0 F6 ? ? 7A ? DC ? ? ? ? ? DF E0
 db 01
