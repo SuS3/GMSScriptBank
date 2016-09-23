@@ -1,6 +1,6 @@
 define(H1,00844E10)//8B ? 24 ? 3D ? ? ? ? 0F 8F ? ? ? ? 0F 84 ? ? ? ? 8D
 define(JG,00844E19)//Address of JG below hook address
-//176.1
+//176.2
 [ENABLE]
 alloc(BlockRecvHook,256)
 label(RecvCheckLoop)
