@@ -1,13 +1,13 @@
-define(H1,0AD1BF1)//E8 ? ? ? ? C6 ? ? ? ? ? ? ? 8B ? ? ? 8B ? ? ? ? ? 8D
-define(OC,00B21EF0)//Call for H1
-define(H2,00AD1BF6)//Address below H1
-define(OCC,0047EE40)//8B 44 24 08 56 8B F1 8B 4C 24 08 50 51 8B CE C7 [First Result]
-define(GI,022D6AA4)//A1 ?? ?? ?? ?? 85 C0 ?? ?? 8B ?? ?? 8D ?? ?? 8B ?? ?? FF D0 [2ND Result]
-define(OCD,0047EEC0)//8B 44 24 04 56 8B F1 3B F0 74 [First Result]
-define(PUSH,00B23BF0)//6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 83 EC 10 53 55 56 57 A1 ? ? ? ? 33 C4 50 8D 44 24 24 64 A3 ? ? ? ? 8B F1 E8 ? ? ? ? 85 C0 0F 84 ? ? ? ? 8B 86 ? ? ? ? 8B 80 ? ? ? ? 33 DB 3B C3 0F 85
-define(OCE,0047EB80)//56 8B F1 8B 06 85 C0 74 [Third Result]
+define(hook_address,00AD1C01)//E8 ? ? ? ? C6 ? ? ? ? ? ? ? 8B ? ? ? 8B ? ? ? ? ? 8D
+define(Original_Call,00B21F00)//Call for hook_address
+define(Normal_continue,00AD1C06)//Address below hook_address
+define(ZXString_char___ZXString_char__char_,0047EE40)//8B 44 24 08 56 8B F1 8B 4C 24 08 50 51 8B CE C7 [First Result]
+define(CUITitle__GetInstance,022D6AA4)//A1 ?? ?? ?? ?? 85 C0 ?? ?? 8B ?? ?? 8D ?? ?? 8B ?? ?? FF D0 [2ND Result]
+define(ZXString_unsigned_char___operator_,0047EEC0)//8B 44 24 04 56 8B F1 3B F0 74 [First Result]
+define(CUITitle__SetRet,00B23C00)//6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 83 EC 10 53 55 56 57 A1 ? ? ? ? 33 C4 50 8D 44 24 24 64 A3 ? ? ? ? 8B F1 E8 ? ? ? ? 85 C0 0F 84 ? ? ? ? 8B 86 ? ? ? ? 8B 80 ? ? ? ? 33 DB 3B C3 0F 85
+define(ZXString_char____ZXString_char_,0047EB80)//56 8B F1 8B 06 85 C0 74 [Third Result]
 
-//176.1
+//176.2
 [ENABLE]
 alloc(1stLogin,1024)
 label(1stLogin_callback)
@@ -16,10 +16,10 @@ alloc(StringUser,64)
 alloc(StringPW,64)
 
 StringUser:
-db 'enterUSERNAMEhere' 00
+db 'arg1' 00
 
 StringPW:
-db 'enterPASSWORDhere' 00
+db 'arg2' 00
 
 1stLogin_callback2:
 sub esp,08
@@ -27,48 +27,48 @@ sub esp,08
 push -01
 push StringUser
 lea ecx,[esp+08]
-call OCC
+call ZXString_char___ZXString_char__char_
 push eax
-mov ecx,[GI]
+mov ecx,[CUITitle__GetInstance]
 mov ecx,[ecx+0000018C] // User Textbox
 lea ecx,[ecx+3C]
-call OCD
+call ZXString_unsigned_char___operator_
 
 push -01
 push StringPW
 lea ecx,[esp+0C]
-call OCC
+call ZXString_char___ZXString_char__char_
 push eax
-mov ecx,[GI]
+mov ecx,[CUITitle__GetInstance]
 mov ecx,[ecx+00000194] // Password Textbox
 lea ecx,[ecx+3C]
-call OCD
+call ZXString_unsigned_char___operator_
 
 push 01
-mov ecx,[GI]
-call PUSH
+mov ecx,[CUITitle__GetInstance]
+call CUITitle__SetRet
 lea ecx,[esp]
-call OCE
+call ZXString_char____ZXString_char_
 lea ecx,[esp+04]
-call OCE
+call ZXString_char____ZXString_char_
 
 add esp,08
 ret
 
 1stLogin:
 mov [esp],1stLogin_callback
-jmp OC
+jmp Original_Call
 
 1stLogin_callback:
 call 1stLogin_callback2
-jmp H2
+jmp Normal_continue
 
-H1:
+hook_address:
 call 1stLogin
 
 [DISABLE]
-H1:
-call OC
+hook_address:
+call Original_Call
 
 dealloc(1stLogin)
 dealloc(StringUser)
