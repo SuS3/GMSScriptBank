@@ -1,11 +1,16 @@
-aobscan(00934E80,55 8B ? 83 ? ? 6A ? 68 ? ? ? ? 64 A1 00 00 00 00 50 83 ? ? 53 56 57 A1 ? ? ? ? 33 ? 50 8D ? 24 ? 64 A3 00 00 00 00 8B ? 8B ? ? E8)
+
 
 //Self Updating
 
 [ENABLE]
-00934E80:
+aobscan(UAP,55 8B ? 83 ? ? 6A ? 68 ? ? ? ? 64 A1 00 00 00 00 50 83 ? ? 53 56 57 A1 ? ? ? ? 33 ? 50 8D ? 24 ? 64 A3 00 00 00 00 8B ? 8B ? ? E8)
+registersymbol(UAP)
+
+UAP:
 db C2 04 00
 
 [DISABLE]
-00934E80:
+unregistersymbol(UAP)
+
+UAP:
 db 55 8B EC
