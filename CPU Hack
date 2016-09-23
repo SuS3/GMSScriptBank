@@ -1,13 +1,17 @@
-define(H1,00B6D7B8) //E8 ? ? ? ? 8B ? E8 ? ? ? ? 6A ? 8B ? E8 ? ? ? ? 6A ? 8B ? E8 ? ? ? ? 8B CF
-define(OC1,00B55F10)//Call of H1
-define(H2,00B6D7BF) //Address of second call below
-define(OC2,00B50810)//Call of H2
-define(H3,00B6D7C8) //Address of third call below
-define(OC3,00B6CB70)//Call of H3
-define(H4,00B6D7D1) //Address of fourth call below
-define(OC4,00B686F0)//Call of H4
-
-//176.1
+//GMS v176.2
+//Full CPU Hack
+//update by Su+ngnam87
+define(H1,00B6D808) //E8 ? ? ? ? 8B ? E8 ? ? ? ? 6A ? 8B ? E8 ? ? ? ? 6A ? 8B ? E8 ? ? ? ? 8B CF
+define(OC1,00B55F60)//Call of H1
+define(H2,00B6D80F) //Address of second call below
+define(OC2,00B50860)//Call of H2
+define(H3,00B6D818) //Address of third call below
+define(OC3,00B6CBC0)//Call of H3
+define(H4,00B6D821) //Address of fourth call below
+define(OC4,00B68740)//Call of H4
+define(NoComboShown,00BCE1D0) //6A FF 68 ? ? ? ? 64  A1 00 00 00 00 50 81 EC ? ? ? ? 53 55 56 57 A1 ? ? ? ? 33 C4 50 8D 84 ? ? ? ? ? 64 A3 00 00 00 00 89 4C 24 ? 33 DB 39 99 ? ? ? ?
+define(NoMultiKill,01A0B0B0) //6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 83 EC ? 53 55 56 57 A1 ? ? ? ? 33 C4 50 8D 44 24 ? 64 A3 00 00 00 00 8D 44 24 ? 68 ? ? ? ? 50
+define(NoMobReaction,00C05340) //Function start push -01: 83 C4 08 81 C2 ? ? ? ? 8B CE E8 (1sr result)
 [Enable]
 H1: //CWvsPhysicalSpace2D::Load
 db 90 90 90 90 90
@@ -21,6 +25,15 @@ db 90 90 90 90 90
 H4://CMapLoadable::RestoreTile
 db 90 90 90 90 90
 
+NoComboShown:
+ret
+
+NoMultiKill:
+ret
+
+NoMobReaction:
+ret 0068
+
 [Disable]
 H1:
 call OC1
@@ -33,3 +46,13 @@ call OC3
 
 H4:
 call OC4
+
+NoComboShown:
+db 6A
+
+NoMultiKill:
+db 6A
+
+NoMobReaction:
+push -01
+push 01BD29E8
