@@ -1,19 +1,21 @@
-aobscan(00EB27BC,7B ? DD DA D9 C9 DD ? ? ? D9 C9)
-aobscan(00EB27DE,7A ? DD D8 EB ? DD DA D9 C0)
-
-
-//176.2
-
 [ENABLE]
-00EB27BC:
+aobscan(RR1,7B ? DD DA D9 C9 DD ? ? ? D9 C9)
+aobscan(RR2,7A ? DD D8 EB ? DD DA D9 C0)
+registersymbol(RR1)
+registersymbol(RR2)
+
+RR1:
 db EB
 
-00EB27DE:
+RR2:
 db 90 90
 
 [DISABLE]
-00EB27BC:
+unregistersymbol(RR1)
+unregistersymbol(RR2)
+
+RR1:
 db 7B
 
-00EB27DE:
-jp 00EB2798
+RR2:
+jp 00EB27F8
