@@ -1,0 +1,15 @@
+
+
+[ENABLE]
+aobscan(MNK,75 11 8b 4c 24 14 e8 ? ? ? ? 3b)
+registersymbol(MNK)
+
+MNK:
+db EB 0D
+
+
+[DISABLE]
+unregistersymbol(MNK)
+
+MNK:
+db 75 11
