@@ -1,20 +1,25 @@
-aobscan(017F0B83,85 F6 75 ? 39 ? 24 ? ? ? ? 74)
-aobscan(017F0B8E,74 ? 8B ? ? 8B ? ? 8D ? ? FF ? 8B ? ? ? ? ? ? 8B ? 8B ? ? 51 56 6A ? 6A ? 6A ? 8B ?)
-
 //v176.2
 
 [Enable]
-017F0B83:
+aobscan(PS1,85 F6 75 ? 39 ? 24 ? ? ? ? 74)
+aobscan(PS2,74 ? 8B ? ? 8B ? ? 8D ? ? FF ? 8B ? ? ? ? ? ? 8B ? 8B ? ? 51 56 6A ? 6A ? 6A ? 8B ?)
+registersymbol(PS1)
+registersymbol(PS2)
+
+PS1:
 xor esi,esi
 nop
 nop
 
-017F0B8E:
+PS2:
 db EB
 
 [Disable]
-017F0B83:
+unregistersymbol(PS1)
+unregistersymbol(PS2)
+
+PS1:
 db 85 F6 75 09
 
-017F0B8E:
+PS2:
 db 74
