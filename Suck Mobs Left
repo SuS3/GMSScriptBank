@@ -1,10 +1,13 @@
-aobscan(018F86D0,D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 7A ? DD ?)
-
 //176.2
 [ENABLE]
-018F86D0:
+aobscan(SML,D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 7A ? DD ?)
+registersymbol(SML)
+
+SML:
 db D8 D9
 
 [DISABLE]
-018F86D0:
+unregistersymbol(SML)
+
+SML:
 db D9 C9
