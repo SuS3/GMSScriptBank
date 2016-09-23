@@ -1,9 +1,14 @@
-aobscan(00C70216,D9 C0 D8 C9 D9 C0)
+
 
 [Enable]
-00C70216:
+aobscan(CM,D9 C0 D8 C9 D9 C0)
+registersymbol(CM)
+
+CM:
 db D9 C1
 
 [Disable]
-00C70216:
+unregistersymbol(CM)
+
+CM:
 db D9 C0
