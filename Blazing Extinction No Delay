@@ -1,10 +1,14 @@
-define(ND,009A8401)// 0F 84 ? ? ? ? D9 EE 8B ? ? ? DC 9E ? ? ? ? 8B
-
-//v176.1
 [enable]
+aobscan(ND,0F 84 ? ? ? ? D9 EE 8B ? ? ? DC 9E ? ? ? ? 8B)
+registersymbol(ND)
+
+
+//CGrendade::Update
 ND: // No Delay Blazing Extinction
 db 0F 85
 
 [disable]
+unregistersymbol(ND)
+
 ND:
 db 0F 84
