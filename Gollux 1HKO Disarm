@@ -1,0 +1,13 @@
+
+[enable]
+aobscan(h1,74 ? 8D 54 24 ? 52 E8 ? ? ? ? 8D 4C 24 ? C6 ? ? ? 01 E8 ? ? ? ? 8B 44 24 ? C6 ? ? ? 00 3B)
+registersymbol(h1)
+
+h1: //Mobs dont trigger counter for 1HIT KO
+db 75
+
+[disable]
+unregistersymbol(h1)
+
+h1:
+db 74
