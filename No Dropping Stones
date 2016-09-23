@@ -1,10 +1,15 @@
-define(NDS,0088936B)//7F ? 8B 44 24 ? C7 44 24 ? FF FF FF FF 3B [1ST RESULT] [FUNCTION START]
+//define(NDS,0088936B)//7F ? 8B 44 24 ? C7 44 24 ? FF FF FF FF 3B [1ST RESULT] [FUNCTION START] 176.1
 
-//176.1
+//Self Updating
 [enable]
+aobscan(NDS,7F ? 8B ? ? ? C7 ? ? ? ? ? ? ? 3B ? 74 ? 83 ? ? 50 E8 ? ? ? ? 83 ? ? 8B ? ? ? 64 ? ? ? ? ? ? 59 5F 5E 5D 5B 83 ? ? C2 ? ? 90 8B ? ? ? ? ? ? 8B ? )
+registersymbol(NDS)
+
 NDS: // No Dropping Stones (Vellum)
 ret 0004
 
 [disable]
+unregistersymbol(NDS)
+
 NDS:
 db 6A FF 68
