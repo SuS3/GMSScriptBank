@@ -1,13 +1,17 @@
-aobscan(00EC42FB,74 ? 80 ? ? 75 ? 0FB6 ? 52)
+
 
 //Self Updating
 //176.2
 
 [Enable]
-00EC42FB:
+aobscan(VS,74 ? 80 ? ? 75 ? 0FB6 ? 52)
+registersymbol(VS)
+VS:
 db 90 90
 
 
 [Disable]
-00EC42FB:
+unregistersymbol(VS)
+
+VS:
 db 74 27
