@@ -1,0 +1,34 @@
+/*
+"Animation Speed Up"
+(or whatever you wanna call it)
+by NORBIN
+v176.2
+*/
+
+[enable]
+alloc(speedup,2048)
+label(return)
+label(animation)
+label(exit)
+
+speedup:
+animation:
+inc [ebp+0C]
+mov ecx,[GR2D_DX9.DLL+3A798]
+
+exit:
+jmp return
+
+"GR2D_DX9.DLL"+20D8C:
+jmp speedup
+nop
+nop
+nop
+nop
+return:
+
+[disable]
+"GR2D_DX9.DLL"+20D8C:
+db FF 47 0C 8B 0D 98 A7 23 52
+
+dealloc(speedup)
