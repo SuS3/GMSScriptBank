@@ -1,17 +1,18 @@
-
-
 //Self Updating
-//176.2
+
 
 [Enable]
+label(V_S)
+registersymbol(V_S)
 aobscan(VS,74 ? 80 ? ? 75 ? 0FB6 ? 52)
-registersymbol(VS)
+
 VS:
+V_S:
 db 90 90
 
 
 [Disable]
-unregistersymbol(VS)
-
-VS:
+V_S:
 db 74 27
+
+unregistersymbol(V_S)
