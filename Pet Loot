@@ -1,10 +1,13 @@
-//GMS v175.2
-//Credit to Sprux 
+define(PL,00768470)//8B 50 04 8B 00 ? ? 8D 4D
+define(CPL,016A0940)// 8B ? 24 ? 8B ? ? 8B ? ? ? 8D ? ? 8B ? ? ? ? ? ? FF ? 85 C0 ? ? ? ? ? ? ? ? ? E8
+
+
+//GMS v176.3
 [enable]
 alloc(pet_teleport_hook,128)
 label(pet_teleport_return)
 
-00761DD0:
+PL:
 jmp pet_teleport_hook
 pet_teleport_return:
 
@@ -26,14 +29,14 @@ push [esi+04]
 push [esi]
 push 00
 mov ecx,eax
-call 0167DB70 // 8B ? 24 ? 8B ? ? 8B ? ? ? 8D ? ? 8B ? ? ? ? ? ? FF ? 85 C0 ? ? ? ? ? ? ? ? ? E8
+call CPL
 
 popad
 pop esi
 jmp pet_teleport_return
 
 [disable]
-00761DD0: // 8B 50 04 8B 00 ? ? 8D 4D
+PL: // 8B 50 04 8B 00 ? ? 8D 4D
 mov edx,[eax+04]
 mov eax,[eax]
 
