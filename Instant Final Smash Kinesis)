@@ -1,36 +1,45 @@
-//176.2
+//Semi Self Updating
+//Update Disable for IFA2
 
 [enable]
+label(I_FA1)
+label(I_FA2)
+label(No_Grab)
+registersymbol(I_FA1)
+registersymbol(I_FA2)
+registersymbol(No_Grab)
 aobscan(IFA1,74 ?? 8D A4 24 ?? ?? ?? ?? 8B 46 ?? 50 8D 4C 24 ?? 51)
 aobscan(IFA2,8B 81 ?? ?? ?? ?? 48 33 D2 85 C0 0F 9E C2)
 aobscan(NoGrab,74 ?? 52 6A ?? 6A ?? 6A ?? 6A ?? 6A ??)
-registersymbol(IFA1)
-registersymbol(IFA2)
-registersymbol(NoGrab)
+
 
 //Changes the attack loop by swapping the regular Psychic Grab attack with the strongest part of the skill Final Psychic Smash attack (5th hit)
 IFA1:
+I_FA1:
 db 75
 
 //CKinesis_PsychicLock::DecUsableCount
 //No loopback to regular attack after the 5th attack, also denies reset of the skill loop allowing you to constantly attack.
 IFA2: // Infinite Psychic Smash Usage.
+I_FA2:
 ret
 
 NoGrab:
+No_Grab:
 db 75
 
 [disable]
-unregistersymbol(IFA1)
-unregistersymbol(IFA2)
-unregistersymbol(NoGrab)
 
-IFA1:
+I_FA1:
 db 74
 
-IFA2:
+I_FA2:
 mov eax,[ecx+00000088]
 dec eax
 
-IFA2:
+No_Grab:
 db 74
+
+unregistersymbol(I_FA1)
+unregistersymbol(I_FA2)
+unregistersymbol(No_Grab)
