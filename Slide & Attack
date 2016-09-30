@@ -1,15 +1,19 @@
-//v176.2
+//Self Updating
 
 [Enable]
+label(S_NA)
+registersymbol(S_NA)
 aobscan(SNA,74 0B 8B CF E8 ? ? ? ? 85 C0 74 72 81 FB)
-registersymbol(SNA)
+
 
 SNA:
+S_NA:
 db 75 0B
 
 
 [Disable]
-unregistersymbol(SNA)
 
-SNA:
+S_NA:
 db 74 0B
+
+unregistersymbol(S_NA)
