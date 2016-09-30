@@ -1,21 +1,29 @@
+//Semi-Self Updating
+//However, Disable for R_R2 must be updated each time
+
 [ENABLE]
+label(R_R1)
+label(R_R2)
+registersymbol(R_R1)
+registersymbol(R_R2)
 aobscan(RR1,7B ? DD DA D9 C9 DD ? ? ? D9 C9)
 aobscan(RR2,7A ? DD D8 EB ? DD DA D9 C0)
-registersymbol(RR1)
-registersymbol(RR2)
 
 RR1:
+R_R1:
 db EB
 
 RR2:
+R_R2:
 db 90 90
 
 [DISABLE]
-unregistersymbol(RR1)
-unregistersymbol(RR2)
 
-RR1:
+R_R1:
 db 7B
 
-RR2:
-jp 00EB27F8
+R_R2:
+jp 00EB2978
+
+unregistersymbol(R_R1)
+unregistersymbol(R_R2)
