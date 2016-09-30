@@ -1,10 +1,13 @@
-//176.2
+//Self Updating
 
 [ENABLE]
+label(TU_BI)
+label(Loot_A)
+registersymbol(TU_BI)
+registersymbol(Loot_A)
 aobscan(Tub,81 ? ? ? 00 00 0F 8D ? ? 00 00 85 ? 0F 84 ? ? ? ? 81 ? ? ? ? ? BF ? ? ? ? 7E ? B8 ? ? ? ? 2B ?)
 aobscan(LootA,8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50)
-registersymbol(Tub)
-registersymbol(LootA)
+
 alloc(Tubi,64)
 label(Ret)
 
@@ -14,21 +17,24 @@ push esi
 jmp Ret
 
 Tub:
+TU_BI:
 jmp Tubi
 Ret:
 
 LootA: // Remove loot animation
+Loot_A:
 db 81 FE 00 00 00 00
 
 [DISABLE]
-unregistersymbol(Tubi)
-unregistersymbol(LootA)
 
-Tub: // FUNCTION START (mov eax,[esp+04]): 8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50
+TU_BI: // FUNCTION START (mov eax,[esp+04]): 8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50
 mov eax,[esp+04]
 push esi
 
-LootA:
+Loot_A:
 db 81 FE BC 02 00 00
+
+unregistersymbol(TU_BI)
+unregistersymbol(Loot_A)
 
 dealloc(Tubi)
