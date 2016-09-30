@@ -1,7 +1,7 @@
-define(SPC,01819183) // E8 ? ? ? ? 8B 85 ? ? ? ? 8B ? 8B 52 ? 6A ? 50 6A ? 6A ? 83 C3 ? 53 57 6A ? 8B ? FF ? 6A ? 6A
-define(SPCC,018F8710) //Original Call
+define(SPC,01819363) // E8 ? ? ? ? 8B 85 ? ? ? ? 8B ? 8B 52 ? 6A ? 50 6A ? 6A ? 83 C3 ? 53 57 6A ? 8B ? FF ? 6A ? 6A
+define(SPCC,018F88F0) //Original Call
 
-//GMS v175.2
+//GMS v175.3
 
 /*
 Tower of Oz:
