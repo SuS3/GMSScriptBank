@@ -1,12 +1,19 @@
-aobscan(0175FA83,74 ? 8B ? ? ? 83 ? ? E8 ? ? ? ? 85 ? 74 ? 8B ? ? ? ? ?)
-
 //Sit Anywhere
-//v176.2
+//Self Updating
 
 [enable]
-0175FA83:
+label(S_A)
+registersymbol(S_A)
+aobscan(SA,74 ? 8B ? ? ? 83 ? ? E8 ? ? ? ? 85 ? 74 ? 8B ? ? ? ? ?)
+
+
+SA:
+S_A:
 db 75
 
 [disable]
-0175FA83:
+
+S_A:
 db 74
+
+unregistersymbol(S_A)
