@@ -1,13 +1,17 @@
-//176.2
+//Self Updating
 [ENABLE]
+label(S_ML)
+registersymbol(S_ML)
 aobscan(SML,D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 7A ? DD ?)
-registersymbol(SML)
+
 
 SML:
+S_ML:
 db D8 D9
 
 [DISABLE]
-unregistersymbol(SML)
 
-SML:
+S_ML:
 db D9 C9
+
+unregistersymbol(S_ML)
