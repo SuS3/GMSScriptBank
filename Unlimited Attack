@@ -1,17 +1,19 @@
-
-
 //Self Updating
 
 [ENABLE]
+label(U_A)
+registersymbol(U_A)
 aobscan(UA,7E ? 83 ? ? 7D ? 8B ? ? 2B ? 3D ? ? ? ? 7E ? 3D ? ? ? ? 7D ?)
-registersymbol(UA)
+
 
 UA:
+U_A:
 db EB
 
 
 [DISABLE]
-unregistersymbol(UA)
 
-UA:
+U_A:
 db 7E
+
+unregistersymbol(U_A)
