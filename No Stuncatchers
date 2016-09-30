@@ -3,14 +3,18 @@
 //Self Updating
 
 [enable]
+label(N_SC)
+registersymbol(N_SC)
 aobscan(NSC,64 A3 00 00 00 00 8B F1 83 7E ? 00 8B 5C 24 ? 74 ? )
-registersymbol(NSC)
+
 
 NSC: // No Falling Pierre Hats, Gollux Roots, etc
+N_SC:
 ret 0004
 
 [disable]
-unregistersymbol(NSC)
 
-NSC:
+N_SC:
 db 6A FF 68
+
+unregistersymbol(N_SC)
