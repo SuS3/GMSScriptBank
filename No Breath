@@ -3,14 +3,17 @@ Works with orbital flame and a couple other skills
 */
 
 [ENABLE]
+label(N_B)
+registersymbol(N_B)
 aobscan(NB,79 ? 89 ? ? ? ? ? E8 ? ? ? ? 83 ? ? 83 ? ? 75 ? E8 ? ? ? ? 8B ? 23 ? 23 ?)
-registersymbol(NB)
+
 
 NB:
+N_B:
 db 78
 
 [DISABLE]
-unregistersymbol(NB)
 
-NB: // 8B 86 ? ? 00 00 3B C3 74 ? 8B ? ? ? 2B D0 [Move Up]
+N_B: // 8B 86 ? ? 00 00 3B C3 74 ? 8B ? ? ? 2B D0 [Move Up]
 db 79
+unregistersymbol(N_B)
