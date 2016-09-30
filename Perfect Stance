@@ -1,25 +1,31 @@
 //v176.2
 
 [Enable]
+label(P_S1)
+label(P_S2)
+registersymbol(P_S1)
+registersymbol(P_S2)
 aobscan(PS1,85 F6 75 ? 39 ? 24 ? ? ? ? 74)
 aobscan(PS2,74 ? 8B ? ? 8B ? ? 8D ? ? FF ? 8B ? ? ? ? ? ? 8B ? 8B ? ? 51 56 6A ? 6A ? 6A ? 8B ?)
-registersymbol(PS1)
-registersymbol(PS2)
+
 
 PS1:
+P_S1:
 xor esi,esi
 nop
 nop
 
 PS2:
+P_S2:
 db EB
 
 [Disable]
-unregistersymbol(PS1)
-unregistersymbol(PS2)
 
-PS1:
+P_S1:
 db 85 F6 75 09
 
-PS2:
+P_S2:
 db 74
+
+unregistersymbol(P_S1)
+unregistersymbol(P_S2)
