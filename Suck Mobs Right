@@ -1,15 +1,17 @@
-
-
-//176.2
+//Self Updating
 [ENABLE]
+label(S_UB)
+registersymbol(S_UB)
 aobscan(SUB,D9 C9 DC ? ? ? DC ? ? ? DC ? DD ? D8 D9 DF E0 F6 ? ? 75 ? DD ?)
-registersymbol(SUB)
+
 
 SUB:
+S_UB:
 db D8 D9
 
 [DISABLE]
-unregistersymbol(SUB)
 
-SUB:
+S_UB:
 db D9 C9
+
+unregistersymbol(S_UB)
