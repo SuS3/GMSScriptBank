@@ -1,21 +1,27 @@
 [ENABLE]
+label(H_1)
+label(H_2)
+registersymbol(H_1)
+registersymbol(H_2)
 aobscan(H1,0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1)
 aobscan(H2,0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85)
-registersymbol(H1)
-registersymbol(H2)
+
 
 H1:
+H_1:
 db 90 E9
 
 H2:
+H_2:
 db 90 E9
 
 [DISABLE]
-unregistersymbol(H1)
-unregistersymbol(H2)
 
-H1:
+H_1:
 db 0F 85
 
-H2:
+H_2:
 db 0F 85
+
+unregistersymbol(H_1)
+unregistersymbol(H_2)
