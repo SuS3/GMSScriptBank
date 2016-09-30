@@ -1,30 +1,38 @@
 [ENABLE]
+label(H_1)
+label(H_2)
+label(H_3)
+registersymbol(H_1)
+registersymbol(H_2)
+registersymbol(H_3)
 aobscan(H1,7C ? 83 ? ? ? ? ? ? 7F ? 6A ? 6A ? 8B ? E8 ? ? ? ? 5F)
 aobscan(H2,7F ? 6A ? 6A ? 8B ? E8 ? ? ? ? 5F 5E 83 ? ? C2 ? ? 8B ? ? ? ? ?)
 aobscan(H3,75 13 55 ? ? ? ? 8B CB)
-registersymbol(H1)
-registersymbol(H2)
-registersymbol(H3)
+
 
 H1:
+H_1:
 db 90 90
 
 H2:
+H_2:
 db EB
 
 H3:
+H_3:
 db 90 90
 
 [DISABLE]
-unregistersymbol(H1)
-unregistersymbol(H2)
-unregistersymbol(H3)
 
-H1:
+H_1:
 db 7C 42
 
-H2:
+H_2:
 db 7F 13
 
-H3:
+H_3:
 db 75 13
+
+unregistersymbol(H_1)
+unregistersymbol(H_2)
+unregistersymbol(H_3)
