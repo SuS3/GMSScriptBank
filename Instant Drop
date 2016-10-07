@@ -1,15 +1,16 @@
-
 [Enable]
+label(I_D)
+registersymbol(I_D)
 aobscan(ID,0D ? ? ? ? 83 C4 ? E9 ? ? ? ? DD)
-registersymbol(ID)
+
 
 ID:
+I_D:
 DB 25
 
 
 [Disable]
-unregistersymbol(ID)
-
-ID:
+I_D:
 DB 0D
 
+unregistersymbol(I_D)
