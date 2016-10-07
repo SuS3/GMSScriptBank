@@ -1,0 +1,29 @@
+/*
+Block Familiar Movement
+(credits to kevintjuh93 for suggesting CUserLocal offsets)
+by NORBIN
+v176.3
+*/
+
+[enable]
+{$lua}
+Record = getAddressList().getMemoryRecordByDescription("Familiar") -- name of your script
+if Delay == nil then
+  Delay = createTimer(nil, false)
+end
+Delay.Interval = 6500  -- change to your desired delay
+Delay.OnTimer = function(timer)
+  Record.Active = not Record.Active
+end
+Delay.Enabled = true
+
+{$asm}
+[022C404C]+11160:
+db 00
+
+[disable]
+[022C404C]+11160:
+db 01
+
+{$lua}
+Delay.Enabled = false -- take this out to loop the timer function
