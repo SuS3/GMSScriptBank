@@ -1,6 +1,8 @@
 [ENABLE]
+label(H_1)
+registersymbol(H_1)
 aobscan(H1,8B ? 89 ? ? E8 ? ? ? ? 8B ? 89 ? ? E8 ? ? ? ? 0F ? ? 89 ? ? 8B ? E8 ? ? ? ? 0F BF ? 8B ? 89 ? ? E8 ? ? ? ? 98 8B ?)
-registersymbol(H1)
+
 alloc(ItemFilter,256)
 alloc(ItemList,2048)
 alloc(Mesos,4)
@@ -471,6 +473,12 @@ dd #4009005 // Anti-magic Stone
 dd #2431974 // Anti-magic Stone Piece
 dd #4010000 // Bronze Ore
 dd #4010003 // Adamantium Ore
+dd #4000446 //SMiley
+dd #4000451 //neutral
+dd #4000456 //Frowny
+
+
+
 dd 00 // End of list
 
 ItemFilter:
@@ -519,15 +527,18 @@ mov [esi+48],eax // Original Opcode
 jmp Return
 
 H1:
+H_1:
 jmp ItemFilter
 Return:
 
 [DISABLE]
-unregistersymbol(H1)
 
-H1: // 8B ? 89 ? ? E8 ? ? ? ? 8B ? 89 ? ? E8 ? ? ? ? 0F ? ? 89 ? ? 8B ? E8 ? ? ? ? 0F [Second Result]
+
+H_1: // 8B ? 89 ? ? E8 ? ? ? ? 8B ? 89 ? ? E8 ? ? ? ? 0F ? ? 89 ? ? 8B ? E8 ? ? ? ? 0F [Second Result]
 mov ecx,ebx
 mov [esi+48],eax
+
+unregistersymbol(H_1)
 
 dealloc(ItemFilter)
 dealloc(ItemList)
