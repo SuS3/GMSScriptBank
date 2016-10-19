@@ -1,7 +1,7 @@
-define(SPC,01819363) // E8 ? ? ? ? 8B 85 ? ? ? ? 8B ? 8B 52 ? 6A ? 50 6A ? 6A ? 83 C3 ? 53 57 6A ? 8B ? FF ? 6A ? 6A
-define(SPCC,018F88F0) //Original Call
+define(SPC,018B5664) // E8 ? ? ? ? 8B 85 ? ? ? ? 8B ? 8B 52 ? 6A ? 50 6A ? 6A ? 83 C3 ? 53 57 6A ? 8B ? FF ? 6A ? 6A
+define(SPCC,01998ED0) //Original Call
 
-//GMS v175.3
+//GMS v177.1
 
 /*
 Tower of Oz:
@@ -24,7 +24,7 @@ label(FifthMap)
 label(SixthMap)
 
 SpawnPointControl:
-mov eax,[022C93BC] // Map Info Base: A1 ? ? ? ? 85 C0 74 ? 8B ? ? ? 00 00 8B ? 89
+mov eax,[023B3438] // Map Info Base: A1 ? ? ? ? 85 C0 74 ? 8B ? ? ? 00 00 8B ? 89
 mov eax,[eax+147C] // Map ID Offset
 cmp eax,#992009000 // Undersea 9F
 je FirstMap
