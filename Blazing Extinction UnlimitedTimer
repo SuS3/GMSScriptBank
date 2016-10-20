@@ -1,6 +1,6 @@
-define(UBET,009A6E6A)//89 86 ? ? ? ? 89 9e ? ? ? ? 89 9e ? ? ? ? e8 ? ? ? ? 83 ? ? 85 c0
+define(UBET,00A059D0)//89 86 ? ? ? ? 89 9e ? ? ? ? 89 9e ? ? ? ? e8 ? ? ? ? 83 ? ? 85 c0
 
-//176.2
+//177.1
 
 [enable]
 alloc(SkillTimer,128)
@@ -12,9 +12,10 @@ db 90
 AppearUnlimited:
 
 SkillTimer:
-mov [esi+000000F8],7FFFFFFF
+mov [esi+000000FC],7FFFFFFF
 jmp AppearUnlimited
 
 [disable]
 UBET:
-mov [esi+000000F8],eax
+mov [esi+000000FC],eax
+
