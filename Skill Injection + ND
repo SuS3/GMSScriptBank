@@ -104,7 +104,7 @@ mov edx,[esi+00011538]
 h_5:
 db 0F 87 71 01 00 00
 h_6:
-jmp dword ptr [ecx*4+018D89E0]
+jmp dword ptr [ecx*4+018D8730]
 dealloc(skill_id_hook)
 
 
