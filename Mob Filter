@@ -1,14 +1,13 @@
-define(h1,00C19BBB)//E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
-define(call1,0042CD90)//Original Call of h1 address
-define(h2,00C19D6E)//mov ecx,[esp+24] | address all the way below h1 (scroll down until you see esp +24)
-define(h3,00C19BC0)//mov [esp+18],eax address right below h1
-define(1h,00C19DFA)//E8 ? ? ? ? 8B ? 85 ? 74 ? 8D ? ? ? ? ? B9 ? ? ? ? E8 ? ? ? ? 8B ? 89 ? ? ? ? ? E8 ? ? ? ? 84 ? 74 ? 8D ? ? ? ? ? E8 ? ? ? ? 8B ? ? ? ? ? 57 E8 ? ? ? ? 8B ? ? ? 51 57 8B ? E8? ? ? ? E9 ? ? ? ? 55 E8 ? ? ? ? 50 E8 ? ? ? ? 8B ? 83 ? ? 85 ? 0F 84 ? ? ? ? 8D ? ?
-define(call2,004D21E0)//Original Call of 1h address
-define(2h,00C19DFF)//Address below 1h
-define(3h,00C1A0D6)//Address below the last call for 1h
+define(h1,00C7B2AB)//E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
+define(call1,0042D9A0)//Original Call of h1 address
+define(h2,00C7B45E)//mov ecx,[esp+24] | address all the way below h1 (scroll down until you see esp +24)
+define(h3,00C7B2B0)//mov [esp+18],eax address right below h1
+define(1h,00C7B4EA)//E8 ? ? ? ? 8B ? 85 ? 74 ? 8D ? ? ? ? ? B9 ? ? ? ? E8 ? ? ? ? 8B ? 89 ? ? ? ? ? E8 ? ? ? ? 84 ? 74 ? 8D ? ? ? ? ? E8 ? ? ? ? 8B ? ? ? ? ? 57 E8 ? ? ? ? 8B ? ? ? 51 57 8B ? E8? ? ? ? E9 ? ? ? ? 55 E8 ? ? ? ? 50 E8 ? ? ? ? 8B ? 83 ? ? 85 ? 0F 84 ? ? ? ? 8D ? ?
+define(call2,004DA4B0)//Original Call of 1h address
+define(2h,00C7B4EF)//Address below 1h
+define(3h,00C7B7C6)//Address below the last call for 1h
 
-
-//176.3
+//177.2
 [Enable]
 alloc(MobFilter1,256)
 Label(Filter1)
@@ -57,7 +56,29 @@ dd #2600223 //Copper Drake
 dd #2600224 //Drake
 dd #5130100 //Drake
 dd #4130100 //Copper Drake
-
+dd #9500332  //Pianus
+dd #9500363
+dd #9390303
+dd #9303096
+dd #9300515
+dd #9300468
+dd #9300461
+dd #8520000
+dd #8510000
+dd #9303202
+dd #9303203
+dd #9303204
+dd #9303205
+dd #9303206
+dd #9303207
+dd #9303208
+dd #9303209
+dd #9303210
+dd #9303213
+dd #9303214
+dd #9303215
+dd #9303216
+dd #9303217
 dd 00
 
 h1: //E8 ? ? ? ? 89 ? 24 ? 85 ? 0F 85 ? ? ? ? 50
