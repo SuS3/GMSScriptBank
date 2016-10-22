@@ -1,0 +1,16 @@
+//Just allows you to buff in one place unlimited times lel
+
+[ENABLE]
+label(U_B)
+registersymbol(U_B)
+aobscan(UB,40 89 ? ? Eb ? 3B ? 75 ? 85 ? 7C ? 8B ? ? 8D ? ? 52 8B ? E8 ? ? ? ? 8B ? 8B ? ? ? 64 ? ? ? ? ? ? 59)
+
+UB:
+U_B:
+db 90
+
+[DISABLE]
+U_B: //40 89 41 ? EB
+db 40
+
+unregistersymbol(U_B)
