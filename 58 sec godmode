@@ -45,13 +45,13 @@ ret 002C
 
 Exit2:
 push -01
-push 01BB1BB8
+push 01DEB570
 jmp GodmodeHookRet
 
 [disable]
 
 CUserLocal::SetDamaged:
-db 6A FF 68 B8 1B BB 01
+db 6A FF 68 70 B5 DE 01
 
 unregistersymbol(GodmodeDelay)
 dealloc(GodmodeDelay)
