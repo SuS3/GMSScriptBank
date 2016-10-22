@@ -1,12 +1,12 @@
-define(H1,0096C919)//E8 ? ? ? ? 8B ? 89 ? ? ? 85 ? 0F 8E ? ? ? ? FF ? ? ? ? ? 89 ? ? ? 33 ? 89 ? ? ? 85 ?
-define(OC,00C14CE0)//Original Call of H1
-
-//176.3
+define(H1,009C0329)//E8 ? ? ? ? 8B ? 89 ? ? ? 85 ? 0F 8E ? ? ? ? FF ? ? ? ? ? 89 ? ? ? 33 ? 89 ? ? ? 85 ?
+define(OC,00C76390)//Original Call of H1
+define(CPS,023B10AC)//B8 0A 00 00 00 EB ? 3D
+//177.2
 [ENABLE]
 alloc(find_hit_mob_in_rect_hook,128)
 
 find_hit_mob_in_rect_hook:
-mov eax,[022C886C] // CWvsPhysicalSpace2D:
+mov eax,[CPS] // CWvsPhysicalSpace2D:
 //B8 0A 00 00 00 EB ? 3D                  (mov ecx,[XXXXXXX] down below)
 lea eax,[eax+0C] // Left Wall Offset
 mov [esp+04],eax
