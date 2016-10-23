@@ -1,12 +1,12 @@
-define(h1,0075FC06)//8B 0D ? ? ? ? 52 E8 ? ? ? ? 8B 3D ? ? ? ? 8B call below
-define(OC,00C14B10)//Original Call of H1
+define(h1,007AAA16)//8B 0D ? ? ? ? 52 E8 ? ? ? ? 8B 3D ? ? ? ? 8B call below
+define(OC,00C76390)//Original Call of H1
 
 //176.1
 [enable]
 alloc(find_hit_mob_in_rect_hook,128)
 
 find_hit_mob_in_rect_hook:
-mov eax,[022C886C] // CWvsPhysicalSpace2D:
+mov eax,[023B10AC] // CWvsPhysicalSpace2D:
 //B8 0A 00 00 00 EB ? 3D                  (mov ecx,[XXXXXXX])
 lea eax,[eax+0C] // Left Wall Offset
 mov [esp+04],eax
