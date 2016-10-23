@@ -1,16 +1,17 @@
+// Updated by tiger9646
 define(H1,0188A55E)// 74 ? 8D ? ? ? ? ? E8 ? ? ? ? 85 C0 0F 85 ? ? ? ? 8D ? ? ? ? ? E8 [jne below]
-
-//v177.1
+define(H2,00C6F19F)// FUNCTION START (55/push ebp) or 00 55 8D / add [ebp-73],dl  scroll up from this AOB: 33 FF 39 BE ? ? ? ? 75 ? 8B 8E
+//v177.2
 [ENABLE]
 H1: //Physical God Mode
 db 0F 84
 
-00C6F3CF: // Magical God Mode
+H2: // Magical God Mode
 db 90 C2 04 00 90 90
 
 [DISABLE]
 H1:
 db 0F 85
 
-00C6F3CF: // FUNCTION START (55/push ebp) or 00 55 8D / add [ebp-73],dl  scroll up from this AOB: 33 FF 39 BE ? ? ? ? 75 ? 8B 8E
+H2:
 db 00 55 8D 6C 24 90
