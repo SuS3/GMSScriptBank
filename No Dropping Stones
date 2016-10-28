@@ -1,6 +1,5 @@
-//define(NDS,008D9510)//7F ? 8B 44 24 ? C7 44 24 ? FF FF FF FF 3B [1ST RESULT] [FUNCTION START] 176.1
+define(NDS,008D9510)//7F ? 8B 44 24 ? C7 44 24 ? FF FF FF FF 3B [1ST RESULT] [FUNCTION START] 176.1
 
-//Self Updating
 [enable]
 
 NDS: // No Dropping Stones (Vellum)
