@@ -6,7 +6,6 @@ NDS: // No Dropping Stones (Vellum)
 ret 0004
 
 [disable]
-unregistersymbol(NDS)
 
 NDS:
 db 6A FF 68
